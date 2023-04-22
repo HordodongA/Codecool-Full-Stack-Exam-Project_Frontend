@@ -7,6 +7,7 @@ import Login from './Login'
 import Callback from './Callback'
 import Protected from './Route'
 import Assets from './Assets'
+import NotFound from './NotFound'
 
 
 const Main: FC = () => {
@@ -19,7 +20,7 @@ const Main: FC = () => {
 
             <Routes>
                 <Route
-                    path="/assets"
+                    path="/assets/*"
                     element={
                         <Protected hasAccess={!!user}>
                             <Assets />
@@ -28,7 +29,7 @@ const Main: FC = () => {
                 />
                 <Route path="/callback" element={<Callback />} />
                 <Route path="/" element={!user && <Login />} />
-                <Route path="*" element={<div>404: Page not found</div>} />
+                <Route path="*" element={<NotFound />} />
             </Routes>
 
         </div>

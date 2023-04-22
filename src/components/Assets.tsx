@@ -1,8 +1,11 @@
 import { FC, useEffect } from 'react'
 import useGlobal from '../hooks/useGlobal'
-// import { $user } from '../states/user'
+import { Routes, Route } from "react-router-dom"
 import { $userData } from '../states/userData'
 import { downloadUserData } from '../states/userData'
+// Import Components
+import NotFound from './NotFound'
+
 
 const Assets: FC = () => {
 
@@ -15,19 +18,26 @@ const Assets: FC = () => {
 
     return (
         <div>
-            <h2>My assets:</h2>
-            Assets
-            {userData && userData.assets && userData.assets.map((asset, i) => {
-                return (
-                    <div key={i}>
-                        <h3>{asset.name}</h3>
-                    </div>
-                )
-            })}
             <div>
-                <h3>+ Add new asset</h3>
+                <h2>My assets:</h2>
+                Assets
+                {userData && userData.assets && userData.assets.map((asset, i) => {
+                    return (
+                        <div key={i}>
+                            <h3>{asset.name}</h3>
+                        </div>
+                    )
+                })}
+                <div>
+                    <h3>+ Add new asset</h3>
+                </div>
             </div>
+            <Routes>
+                <Route path="/test" element={<div>***** TEST *****</div>} />
+                <Route path="*" element={<NotFound />} />
+            </Routes>
         </div>
+
     )
 }
 
