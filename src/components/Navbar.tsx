@@ -1,14 +1,22 @@
 import { FC } from 'react'
-import { logout } from '../states/user'
+import useGlobal from '../hooks/useGlobal'
+import { $user, logout } from '../states/user'
+import { useNavigate } from "react-router-dom"
+
 
 const Navbar: FC = () => {
+    const navigate = useNavigate()
 
-    // itt kell a user basic object
+
+    const user = useGlobal($user)
+
 
     return (
         <div>
             <div>Navbar: menu, user name, profile picture</div>
-            <button onClick={logout}>LOGOUT</button>
+            {user && <p>Hello {user.name}</p>}
+            {/* {user && <button onClick={logout}>LOGOUT</button>} */}
+            {user && <button onClick={() => logout({ onSuccess: () => navigate("/") })}>LOGOUT</button>}
             <div>/ Navbar</div>
         </div>
     )

@@ -30,18 +30,19 @@ $token.subscribe(token => $user.next(decodeUser(token)))
 
 type Callback = {
     onSuccess: () => any
-    onError: () => any
+    onError?: () => any
 }
 
 export const login = async (code: string, callback: Callback): Promise<void> => {
     const token = await sendAuthCode(code)
     const user = decodeUser(token)
     if (!user)
-        return callback.onError()
+        return callback.onError!()
     $user.next(user)
     callback.onSuccess()
 }
 
-export const logout = () => {
+export const logout = (callback: Callback) => {
     endSession()
+    callback.onSuccess()
 }

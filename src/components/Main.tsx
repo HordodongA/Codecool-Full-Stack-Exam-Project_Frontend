@@ -1,34 +1,36 @@
 import { FC } from 'react'
 import useGlobal from '../hooks/useGlobal'
 import { $user } from '../states/user'
-import fullUrl from '../config'
-import { Routes, Route, useNavigate } from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
 // Import Components
+import Login from './Login'
 import Callback from './Callback'
+import Protected from './Route'
 
 
 const Main: FC = () => {
-    const navigate = useNavigate()
 
     const user = useGlobal($user)
 
 
     return (
         <div>
+            {/* {!user && <Login />} */}
 
-            {user && <p>Hello {user.name}</p>}
-
-            <div>
-                <h3>Welcome to</h3>
-                <h1>landlord</h1>
-                <h4>maintenance assist</h4>
-                <a href={fullUrl}>Login with Google</a>
-            </div>
 
 
             <Routes>
-                <Route path="/dashboard" element={<div>Dashboard</div>} />
+                <Route
+                    path="/dashboard"
+                    element={
+                        <Protected hasAccess={!!user}>
+                            <div>Dashboard</div>
+                        </Protected>
+                    }
+                />
                 <Route path="/callback" element={<Callback />} />
+                {/* <Route path="/" element={<div>PERSEMMI</div>} /> */}
+                <Route path="/" element={!user && <Login />} />
                 <Route path="*" element={<div>404: Page not found</div>} />
             </Routes>
 
