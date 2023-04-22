@@ -16,7 +16,7 @@ const Main: FC = () => {
     return (
         <div>
 
-            {user && <p>Hello, {user.email}</p>}
+            {user && <p>Hello {user.name}</p>}
 
             <div>
                 <h3>Welcome to</h3>

@@ -1,5 +1,5 @@
 import { BehaviorSubject } from "rxjs"
-import { sendAuthCode } from "../api/landlordBackend"
+import { $token, sendAuthCode, endSession } from "../api/landlordBackend"
 import jwt_decode from "jwt-decode"
 import { z } from "zod"
 
@@ -12,27 +12,36 @@ const UserSchema = z.object({
 })
 export type UserType = z.infer<typeof UserSchema>
 
-export const $user = new BehaviorSubject<UserType | null>(null)
 
-
-
-export const login = async (code: string) => {
-    const token = await sendAuthCode(code)
-    if (!token) return
+// kiolvassa a payloadot
+const decodeUser = (token: string | null): UserType | null => {
+    if (!token) return null
     const decodedToken = jwt_decode(token)
     const result = UserSchema.safeParse(decodedToken)
-    if (result.success === false) { return console.log(result.error) }
-    // console.log(result.data)
-    $user.next(result.data)
-    localStorage.setItem("token", token)
-    console.log($user.getValue())
+    if (!result.success) return null
+    return result.data
 }
 
+// ha van token, akkor az az init user
+export const $user = new BehaviorSubject<UserType | null>(decodeUser($token.getValue()))
+// feliratkozunk a $token változásaira: frissítjük a usert
+$token.subscribe(token => $user.next(decodeUser(token)))
 
 
+type Callback = {
+    onSuccess: () => any
+    onError: () => any
+}
 
+export const login = async (code: string, callback: Callback): Promise<void> => {
+    const token = await sendAuthCode(code)
+    const user = decodeUser(token)
+    if (!user)
+        return callback.onError()
+    $user.next(user)
+    callback.onSuccess()
+}
 
 export const logout = () => {
-    localStorage.removeItem("token")
-    $user.next(null)
+    endSession()
 }
