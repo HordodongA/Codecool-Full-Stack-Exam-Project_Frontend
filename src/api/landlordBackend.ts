@@ -1,14 +1,12 @@
 import axios from "axios"
 import { z } from "zod"
 import { BehaviorSubject } from "rxjs"
-// import jwt_decode from "jwt-decode"
-
-
-const client = axios.create({ baseURL: "http://localhost:3003" })
-// ezt is config a fájlba?
+import { landlordBackendUrl } from "../config"
+import jwt_decode from "jwt-decode"
+// Configure Axios
+const client = axios.create({ baseURL: landlordBackendUrl })
 
 const ResponseSchema = z.object({ sessionToken: z.string() })
-
 
 export const $token = new BehaviorSubject<string | null>(localStorage.getItem("token"))
 
@@ -17,14 +15,21 @@ export const endSession = () => {
     $token.next(null)
 }
 
+// Token expiration handler
+let tokenTimeout: number | null = null
+$token.subscribe(token => {
+    if (tokenTimeout) { clearTimeout(tokenTimeout) }
+    if (!token) return
+    const decoded = jwt_decode(token) as any
+    const expiresIn = decoded.exp * 1000 - new Date().getTime()
+    tokenTimeout = setTimeout(endSession, expiresIn)
+})
+
+
 export const sendAuthCode = async (code: string): Promise<string | null> => {
-    // console.log("code received: " + code)
     try {
         const response = await client.post("/api/login", { code })
-        // console.log("result after axios:  ", response)
-
         const result = ResponseSchema.safeParse(response.data)
-        // console.log("result after safeParse:  ", result)
         if (result.success === false) {
             console.log(result.error)
             return null

@@ -15,9 +15,6 @@ const Main: FC = () => {
 
     return (
         <div>
-            {/* {!user && <Login />} */}
-
-
 
             <Routes>
                 <Route
@@ -29,7 +26,6 @@ const Main: FC = () => {
                     }
                 />
                 <Route path="/callback" element={<Callback />} />
-                {/* <Route path="/" element={<div>PERSEMMI</div>} /> */}
                 <Route path="/" element={!user && <Login />} />
                 <Route path="*" element={<div>404: Page not found</div>} />
             </Routes>

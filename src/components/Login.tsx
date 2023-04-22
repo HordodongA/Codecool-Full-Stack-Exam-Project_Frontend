@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import fullUrl from "../config"
+import { fullUrl } from "../config"
 
 const Login: FC = () => {
     return (

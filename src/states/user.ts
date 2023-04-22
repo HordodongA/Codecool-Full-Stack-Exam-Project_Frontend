@@ -28,6 +28,7 @@ export const $user = new BehaviorSubject<UserType | null>(decodeUser($token.getV
 $token.subscribe(token => $user.next(decodeUser(token)))
 
 
+// Login & Logout handling
 type Callback = {
     onSuccess: () => any
     onError?: () => any

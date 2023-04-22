@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom"
 
 
 const Navbar: FC = () => {
-    const navigate = useNavigate()
 
+    const navigate = useNavigate()
 
     const user = useGlobal($user)
 
@@ -15,7 +15,6 @@ const Navbar: FC = () => {
         <div>
             <div>Navbar: menu, user name, profile picture</div>
             {user && <p>Hello {user.name}</p>}
-            {/* {user && <button onClick={logout}>LOGOUT</button>} */}
             {user && <button onClick={() => logout({ onSuccess: () => navigate("/") })}>LOGOUT</button>}
             <div>/ Navbar</div>
         </div>

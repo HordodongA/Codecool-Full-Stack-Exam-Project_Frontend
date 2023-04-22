@@ -6,9 +6,12 @@ type Props = {
     children: ReactNode
 }
 
+
 const Protected: FC<Props> = ({ children, hasAccess }) => {
+    
     if (!hasAccess)
         return <Navigate to="/" />
+
 
     return (
         <div>
