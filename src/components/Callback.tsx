@@ -12,7 +12,7 @@ const Callback: FC = () => {
         const code = urlSearchParams.get("code")
 
         if (code) login(code, {
-            onSuccess: () => navigate("/dashboard"),
+            onSuccess: () => navigate("/assets"),
             onError: () => navigate("/")
         })
     }, [])

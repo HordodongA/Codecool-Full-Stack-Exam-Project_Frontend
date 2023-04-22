@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom"
 import Login from './Login'
 import Callback from './Callback'
 import Protected from './Route'
+import Assets from './Assets'
 
 
 const Main: FC = () => {
@@ -18,10 +19,10 @@ const Main: FC = () => {
 
             <Routes>
                 <Route
-                    path="/dashboard"
+                    path="/assets"
                     element={
                         <Protected hasAccess={!!user}>
-                            <div>Dashboard</div>
+                            <Assets />
                         </Protected>
                     }
                 />
