@@ -1,10 +1,13 @@
 import ReactDOM from 'react-dom/client'
+import { BrowserRouter } from "react-router-dom"
+import { ChakraProvider } from '@chakra-ui/react'
 import App from './App'
-import { BrowserRouter } from "react-router-dom";
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+  <ChakraProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </ChakraProvider>
 )

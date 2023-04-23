@@ -1,6 +1,9 @@
 import { FC, useEffect } from "react"
 import { login } from "../states/user"
 import { useNavigate } from "react-router-dom"
+// Import Chakra UI components
+import { Spinner } from '@chakra-ui/react'
+import { Center, VStack, Square, Circle, Heading } from '@chakra-ui/react'
 
 
 const Callback: FC = () => {
@@ -18,9 +21,18 @@ const Callback: FC = () => {
     }, [])
 
     return (
-        <div>
-            <h2>Logging you in...</h2>
-        </div>
+        <VStack>
+            <Heading as='h3' size='lg'>
+                Logging you in...
+            </Heading>
+            <Spinner
+                thickness='4px'
+                speed='0.65s'
+                emptyColor='gray.200'
+                color='blue.500'
+                size='xl'
+            />
+        </VStack>
     )
 }
 
