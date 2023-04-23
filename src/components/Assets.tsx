@@ -1,8 +1,8 @@
 import { FC, useEffect } from 'react'
 import useGlobal from '../hooks/useGlobal'
 import { Routes, Route } from "react-router-dom"
-import { $userData } from '../states/userData'
-import { downloadUserData, updateUserData, deleteUserData } from '../states/userData'
+import { $userData, downloadUserData, updateUserData } from '../states/userData'
+import { deleteUser } from '../states/user'
 // Import Components
 import NotFound from './NotFound'
 
@@ -35,7 +35,7 @@ const Assets: FC = () => {
                             <h3>+ Add new asset</h3>
                         </div>
                         <button onClick={updateUserData}>UPDATE DATA TEST</button>
-                        <button onClick={deleteUserData}>DELETE USER TEST</button>
+                        <button onClick={deleteUser}>DELETE USER TEST</button>
                     </div>
                 } />
                 <Route path="/test" element={<div>***** TEST *****</div>} />

@@ -1,5 +1,6 @@
 import { BehaviorSubject } from "rxjs"
-import { $token, sendAuthCode, endSession } from "../api/landlordBackend"
+import { $token, sendAuthCode, endSession, dataRequest } from "../api/landlordBackend"
+import { deleteUserData } from "./userData"
 import jwt_decode from "jwt-decode"
 import { z } from "zod"
 
@@ -48,7 +49,11 @@ export const logout = (callback: Callback) => {
     callback.onSuccess()
 }
 
-export const terminateUser = () => {
+
+export const deleteUser = async (): Promise<void> => {
+    const response = await dataRequest("delete", "/api/user", null)
+    if (response.status !== 204) return
+    deleteUserData()
     $user.next(null)
     endSession()
 }

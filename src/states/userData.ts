@@ -1,7 +1,6 @@
 import { BehaviorSubject } from "rxjs"
 import { z } from "zod"
 import { dataRequest } from "../api/landlordBackend"
-import { terminateUser } from "./user"
 // import { getUserData } from "../api/landlordBackend"
 
 export const UserDataShema = z.object({
@@ -37,7 +36,7 @@ export const downloadUserData = async (): Promise<void> => {
 }
 
 
-// testing area
+// ! testing area: user object for update data
 const testDataForPUT = {
     sub: '106261926372593079723', assets:
         [
@@ -61,32 +60,17 @@ const testDataForPUT = {
             }
         ]
 }
-// /testing area
+// ! /testing area
+
 
 export const updateUserData = async (): Promise<void> => {
     // const payload = $userData.getValue()
-    const payload = testDataForPUT
+    const payload = testDataForPUT          // ! while testing
     const response = await dataRequest("put", "/api/user", payload)
     if (response.status !== 200) return
     $userData.next(response.data)
-    console.log("USER DATA $$$: ", $userData.getValue())
 }
-
 
 export const deleteUserData = async (): Promise<void> => {
-    const response = await dataRequest("delete", "/api/user", null)
-    if (response.status !== 204) return
     $userData.next(null)
-    console.log("USER DATA $$$: ", $userData.getValue())
-    terminateUser()
 }
-
-
-
-
-
-
-
-// Edit user data
-
-// call dataRequest (method, path, payload)

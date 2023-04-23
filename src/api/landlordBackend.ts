@@ -3,7 +3,7 @@ import { z } from "zod"
 import { BehaviorSubject } from "rxjs"
 import jwt_decode from "jwt-decode"
 import { landlordBackendUrl } from "../config"
-import { UserDataShema, UserDataType } from "../states/userData"
+import { UserDataShema } from "../states/userData"
 // Configure Axios
 const client = axios.create({ baseURL: landlordBackendUrl })
 
@@ -27,6 +27,7 @@ $token.subscribe(token => {
 })
 
 
+// Handling login process
 export const sendAuthCode = async (code: string): Promise<string | null> => {
     try {
         const response = await client.post("/api/login", { code })
@@ -47,44 +48,8 @@ export const sendAuthCode = async (code: string): Promise<string | null> => {
 }
 
 
-export const getUserData = async (): Promise<UserDataType | null> => {
-    try {
-        const response = await client.get("/api/user", { headers: { "Authorization": localStorage.getItem("token") } })
-        const result = UserDataShema.safeParse(response.data)
-        if (result.success === false) {
-            console.log(result.error)
-            return null
-        }
-        return result.data
-    }
-    catch (error) {
-        console.log(error)
-        return null
-    }
-}
-
-
-export const updateUserData = async (payload: UserDataType): Promise<UserDataType | null> => {
-    try {
-        const response = await client.put("/api/user", payload, { headers: { "Authorization": localStorage.getItem("token") } })
-        const result = UserDataShema.safeParse(response.data)
-        if (result.success === false) {
-            console.log(result.error)
-            return null
-        }
-        return result.data
-    }
-    catch (error) {
-        console.log(error)
-        return null
-    }
-}
-
-
-
-
+// Handling user data management
 type dataResponseType = { // generic type + zod
-    // data: UserDataType | null,
     data: any,
     status: number
 }
@@ -97,13 +62,25 @@ export const dataRequest = async <T>(method: string, path: string, payload: T | 
             data: payload,
             headers: { "Authorization": localStorage.getItem("token") },
         })
-        console.log("RESPONSE DATA: " , response.data)
-        console.log("RESPONSE STATUS: " , response.status)
+        if (method === "get" || method === "put") {
+            const result = UserDataShema.safeParse(response.data)
+            if (result.success === false) {
+                console.log(result.error)
+                return {
+                    data: null,
+                    status: 500
+                }
+            }
+            return {
+                data: result.data,
+                status: response.status
+            }
+        }
         return {
             data: response.data,
             status: response.status
         }
-    } 
+    }
     catch (error) {
         const response = (error as AxiosError).response
         if (response?.status === 401) endSession()
@@ -119,8 +96,3 @@ export const dataRequest = async <T>(method: string, path: string, payload: T | 
         }
     }
 }
-
-
-
-// update user data PUT + token + {} kér req bodyt, visszaad userobjectet
-// delete user data DELETE + token + {}
