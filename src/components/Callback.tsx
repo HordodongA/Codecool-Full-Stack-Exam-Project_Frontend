@@ -3,7 +3,7 @@ import { login } from "../states/user"
 import { useNavigate } from "react-router-dom"
 // Import Chakra UI components
 import { Spinner } from '@chakra-ui/react'
-import { Center, VStack, Square, Circle, Heading } from '@chakra-ui/react'
+import { VStack, Heading } from '@chakra-ui/react'
 
 
 const Callback: FC = () => {
@@ -20,6 +20,7 @@ const Callback: FC = () => {
         })
     }, [])
 
+    
     return (
         <VStack>
             <Heading as='h3' size='lg'>

@@ -15,7 +15,7 @@ const Navbar: FC = () => {
 
 
     return (
-        <Flex as='nav' p='1% 2%' mb='1rem' width='100%' justify='space-between' bg='gray.300'>
+        <Flex as='nav' p='1% 2%' width='100%' justify='space-between' bg='gray.300'>
 
             <Center>
                 <Menu>

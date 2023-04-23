@@ -4,6 +4,7 @@ import { BehaviorSubject } from "rxjs"
 import jwt_decode from "jwt-decode"
 import { landlordBackendUrl } from "../config"
 import { UserDataShema } from "../states/userData"
+
 // Configure Axios
 const client = axios.create({ baseURL: landlordBackendUrl })
 

@@ -9,6 +9,8 @@ import Protected from './Route'
 import Assets from './Assets'
 import NotFound from './NotFound'
 // Import Chakra UI components
+import { Container, Heading } from '@chakra-ui/react'
+
 
 
 const Main: FC = () => {
@@ -17,7 +19,7 @@ const Main: FC = () => {
 
 
     return (
-        <div>
+        <Container maxW='90%'  p='2% 2%' centerContent>
 
             <Routes>
                 <Route
@@ -33,7 +35,7 @@ const Main: FC = () => {
                 <Route path="*" element={<NotFound />} />
             </Routes>
 
-        </div>
+        </Container>
     )
 }
 
