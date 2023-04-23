@@ -8,8 +8,9 @@ import Callback from './Callback'
 import Protected from './Route'
 import Assets from './Assets'
 import NotFound from './NotFound'
+import Profile from '../pages/Profile'
 // Import Chakra UI components
-import { Container, Heading } from '@chakra-ui/react'
+import { Container } from '@chakra-ui/react'
 
 
 
@@ -19,7 +20,8 @@ const Main: FC = () => {
 
 
     return (
-        <Container maxW='90%'  p='2% 2%' centerContent>
+
+        <Container maxW='95%' p='2% 2%' centerContent>
 
             <Routes>
                 <Route
@@ -30,12 +32,21 @@ const Main: FC = () => {
                         </Protected>
                     }
                 />
+                <Route
+                    path="/profile/*"
+                    element={
+                        <Protected hasAccess={!!user}>
+                            <Profile />
+                        </Protected>
+                    }
+                />
                 <Route path="/callback" element={<Callback />} />
                 <Route path="/" element={!user && <Login />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
 
         </Container>
+
     )
 }
 

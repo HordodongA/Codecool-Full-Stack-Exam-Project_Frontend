@@ -20,12 +20,15 @@ const Callback: FC = () => {
         })
     }, [])
 
-    
+
     return (
+
         <VStack>
+
             <Heading as='h3' size='lg'>
                 Logging you in...
             </Heading>
+
             <Spinner
                 thickness='4px'
                 speed='0.65s'
@@ -33,7 +36,9 @@ const Callback: FC = () => {
                 color='blue.500'
                 size='xl'
             />
+            
         </VStack>
+
     )
 }
 
