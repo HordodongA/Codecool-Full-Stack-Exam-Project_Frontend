@@ -1,18 +1,17 @@
 import type { FC } from 'react'
-import useGlobal from '../hooks/useGlobal'
-import { $user, logout } from '../states/user'
-import { useNavigate } from "react-router-dom"
+// Import Chakra UI components
+import { Flex, Heading, } from '@chakra-ui/react'
+
 
 const Footer: FC = () => {
-    const navigate = useNavigate()
-
-    const user = useGlobal($user)
 
     return (
-        <div>
-            <hr />
-            {user && <button onClick={() => logout({ onSuccess: () => navigate("/") })}>LOGOUT</button>}
-        </div>
+        <Flex as='nav' p='0.5% 2%' mt='1rem' width='100%' justify='center' bg='gray.300'>
+            <Heading as='h6' size='xs'>  © HdA 2023  </Heading>
+            <div>
+                <hr />
+            </div>
+        </Flex>
     )
 }
 
