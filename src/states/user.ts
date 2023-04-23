@@ -47,3 +47,8 @@ export const logout = (callback: Callback) => {
     endSession()
     callback.onSuccess()
 }
+
+export const terminateUser = () => {
+    $user.next(null)
+    endSession()
+}
