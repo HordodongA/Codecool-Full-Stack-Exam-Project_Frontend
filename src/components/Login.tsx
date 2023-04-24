@@ -1,39 +1,39 @@
 import { FC } from 'react'
 import { fullUrl } from "../config"
 // Import Chakra UI components
-import { Box, Center, Circle, Flex, Stack, VStack, Image, Heading, Text, Link } from '@chakra-ui/react'
-
+import { Box, Flex, Center, Circle, Image, Heading, Link } from '@chakra-ui/react'
 
 
 const Login: FC = () => {
+
     return (
+        
+        <Flex h='80vh' alignItems='center'>
+            <Box>
+                <Circle boxShadow='dark-lg' size='300px' bg='gray.400' color='white'>
+                    <Image boxSize='300px' src='../../public/favicon.png' alt='../../public/favicon.png' />
+                </Circle>
 
-        <Box>
-            <Circle boxShadow='dark-lg' size='300px' bg='gray.400' color='white'>
-                <Image boxSize='300px' src='../../public/favicon.png' alt='../../public/favicon.png' />
-            </Circle>
+                <Center flexDirection='column' marginTop='2rem' >
 
-            <Center flexDirection='column' marginTop='2rem' >
+                    <Heading as='h5' size='sm'>
+                        Welcome to
+                    </Heading>
+                    <Heading as='h1' size='4xl'>
+                        landlord
+                    </Heading>
+                    <Heading as='h4' size='md'>
+                        maintenance assist
+                    </Heading>
 
-                <Heading as='h5' size='sm'>
-                    Welcome to
-                </Heading>
-                <Heading as='h1' size='4xl'>
-                    landlord
-                </Heading>
-                <Heading as='h4' size='md'>
-                    maintenance assist
-                </Heading>
+                    <Link href={fullUrl} fontSize='2rem' color='blue.500' marginTop='1rem'>
+                        Login with Google
+                    </Link>
 
-                <Link href={fullUrl} fontSize='2rem' color='blue.500'  marginTop='1rem'>
-                    Login with Google
-                </Link>
+                </Center>
 
-            </Center>
-
-        </Box>
-
-
+            </Box>
+        </Flex>
 
     )
 }

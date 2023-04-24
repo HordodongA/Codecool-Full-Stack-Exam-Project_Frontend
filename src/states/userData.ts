@@ -74,3 +74,30 @@ export const updateUserData = async (): Promise<void> => {
 export const deleteUserData = async (): Promise<void> => {
     $userData.next(null)
 }
+
+// ! Statistics -- NOT WORKING @&#˘!
+/* export const numberOfAssets: number | undefined = $userData!.getValue()!.assets!.length
+
+export const activityCounter = (): number | null => {
+    let allActivities = 0
+    if ($userData!.getValue()!.assets) {
+        let userAssets = $userData!.getValue()!.assets!
+        for (let asset of userAssets) {
+            const activities = asset.activities!.length
+            allActivities += activities
+        }
+    }
+    return allActivities
+}
+
+export const machineCounter = (): number | null => {
+    let allMachines = 0
+    if ($userData!.getValue()!.assets) {
+        let userAssets = $userData!.getValue()!.assets!
+        for (let asset of userAssets) {
+            const machines = asset.machines!.length
+            allMachines += machines
+        }
+    }
+    return allMachines
+} */

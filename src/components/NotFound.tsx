@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 import { useNavigate } from "react-router-dom"
 // Import Chakra UI components
-import { Stack, Button, Heading, Text, } from '@chakra-ui/react'
+import { Stack, Flex, Button, Heading, Text, } from '@chakra-ui/react'
 import { ArrowBackIcon } from '@chakra-ui/icons'
 
 
@@ -20,17 +20,17 @@ const NotFound: FC = () => {
 
             <Text fontSize='md'>Sorry, the page you are looking for doesn't exist or has been moved.</Text>
 
-            <Stack direction='row' spacing='6' align='center' justify='center' paddingTop='1rem'>
+            <Flex direction='row' wrap='wrap' gap='6' align='center' justify='center' paddingTop='1rem'>
                 <Button colorScheme='teal' variant='outline' leftIcon={<ArrowBackIcon />} onClick={() => navigate(-1)}>
                     Go Back
                 </Button>
                 <Button colorScheme='teal' variant='solid' onClick={() => navigate("/assets")}>
                     Take me Home
                 </Button>
-            </Stack>
+            </Flex>
 
         </Stack>
-        
+
     )
 }
 
