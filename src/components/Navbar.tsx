@@ -4,9 +4,9 @@ import { $user, logout } from '../states/user'
 import { useNavigate } from "react-router-dom"
 import { fullUrl } from "../config"
 // Import Chakra UI components
-import { Center, Flex, VStack, Avatar, Menu, MenuButton, MenuList, MenuItem, Button, IconButton, Heading } from '@chakra-ui/react'
+import { Center, Flex, VStack, Menu, MenuButton, MenuList, MenuItem, Avatar, IconButton, Heading } from '@chakra-ui/react'
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, } from '@chakra-ui/react'
-import { ChevronLeftIcon, ChevronRightIcon, QuestionOutlineIcon } from '@chakra-ui/icons'
+import { HamburgerIcon, ChevronLeftIcon, ChevronRightIcon, QuestionOutlineIcon } from '@chakra-ui/icons'
 
 
 const Navbar: FC = () => {
@@ -18,15 +18,20 @@ const Navbar: FC = () => {
     return (
 
         <Flex as='nav' width='100%' direction='column' >
-            <Flex p='0.5% 1%' width='100%' justify='space-between' bg='gray.300'>
+            <Flex p='1% 1%' width='100%' justify='space-between' bg='gray.300'>
 
-                <Center minW='80px'>
+                <Center minW='50px'>
                     <Menu>
-                        {({ isOpen }) => (
+                        {(/* { isOpen } */) => (
                             <>
-                                <MenuButton isActive={isOpen} as={Button} >
-                                    {isOpen ? 'Close' : 'Menu'}
-                                </MenuButton>
+                                <MenuButton
+                                    as={IconButton}
+                                    aria-label='Options'
+                                    icon={<HamburgerIcon boxSize={7} />}
+                                    variant='solid'
+                                    size='lg'
+                                    borderRadius='100'
+                                />
                                 <MenuList>
                                     {user && <MenuItem onClick={() => navigate("/profile")}>My Profile</MenuItem>}
                                     {user && <MenuItem onClick={() => navigate("/assets")}>Home</MenuItem>}
@@ -45,7 +50,7 @@ const Navbar: FC = () => {
                     {user && <Heading as='h4' size='md' marginTop='0rem !important'> {user.name}</Heading>}
                 </VStack>
 
-                <Flex minW='80px' justifyContent='flex-end'>
+                <Flex minW='50px' justifyContent='flex-end'>
                     <Center>
                         <Avatar size='md' name={user?.name} src={user?.picture} />
                     </Center>
@@ -59,7 +64,7 @@ const Navbar: FC = () => {
                     aria-label='Search database'
                     icon={<ChevronLeftIcon boxSize={6} />}
                     size=''
-                    borderRadius='50'
+                    borderRadius='100'
                     onClick={() => navigate(-1)}
                 />
 
@@ -80,8 +85,9 @@ const Navbar: FC = () => {
                 <IconButton
                     aria-label='Search database'
                     icon={<QuestionOutlineIcon boxSize={6} />}
+                    // icon={<QuestionOutlineIcon boxSize={6} />}
                     size=''
-                    borderRadius='50'
+                    borderRadius='100'
                 />
             </Flex>
 
