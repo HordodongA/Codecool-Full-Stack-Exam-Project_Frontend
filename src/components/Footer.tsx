@@ -7,7 +7,7 @@ const Footer: FC = () => {
 
     return (
 
-        <Flex as='nav' p='0.5% 2%' width='100%' justify='center' bg='gray.300'>
+        <Flex as='footer' p='0.3% 2%' width='100%' justify='center' bg='gray.300' marginTop='auto'>
             <Heading as='h6' size='xs'>  © HdA 2023  </Heading>
         </Flex>
 

@@ -4,7 +4,7 @@ import Navbar from './components/Navbar'
 import Main from './components/Main'
 import Footer from './components/Footer'
 // Import Chakra UI components
-import { Container, Spacer } from '@chakra-ui/react'
+import { Container } from '@chakra-ui/react'
 
 
 function App() {
@@ -16,8 +16,6 @@ function App() {
       <Navbar />
 
       <Main />
-
-      <Spacer />
 
       <Footer />
 

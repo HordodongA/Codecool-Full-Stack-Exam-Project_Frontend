@@ -8,7 +8,7 @@ type Props = {
 
 
 const Protected: FC<Props> = ({ children, hasAccess }) => {
-    
+
     if (!hasAccess)
         return <Navigate to="/" />
 

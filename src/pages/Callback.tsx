@@ -2,8 +2,7 @@ import { FC, useEffect } from "react"
 import { login } from "../states/user"
 import { useNavigate } from "react-router-dom"
 // Import Chakra UI components
-import { Spinner } from '@chakra-ui/react'
-import { VStack, Heading } from '@chakra-ui/react'
+import { VStack, Heading, Spinner } from '@chakra-ui/react'
 
 
 const Callback: FC = () => {
@@ -24,7 +23,6 @@ const Callback: FC = () => {
     return (
 
         <VStack>
-
             <Heading as='h3' size='lg'>
                 Logging you in...
             </Heading>
@@ -36,7 +34,6 @@ const Callback: FC = () => {
                 color='blue.500'
                 size='xl'
             />
-            
         </VStack>
 
     )

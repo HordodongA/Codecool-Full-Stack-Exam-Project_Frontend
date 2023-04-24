@@ -1,7 +1,7 @@
 import { FC } from 'react'
+import { useNavigate } from "react-router-dom"
 import useGlobal from '../hooks/useGlobal'
 import { $user, logout } from '../states/user'
-import { useNavigate } from "react-router-dom"
 import { fullUrl } from "../config"
 // Import Chakra UI components
 import { Center, Flex, VStack, Menu, MenuButton, MenuList, MenuItem, Avatar, IconButton, Heading } from '@chakra-ui/react'
