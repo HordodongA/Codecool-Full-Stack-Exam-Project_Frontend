@@ -8,6 +8,7 @@ import Assets from '../pages/Assets'
 import Callback from '../pages/Callback'
 import Login from '../pages/Login'
 import Profile from '../pages/Profile'
+import TestModal from '../pages/TestModal'
 // Import Components
 import NotFound from './NotFound'
 import Protected from './Route'
@@ -42,6 +43,7 @@ const Main: FC = () => {
                 />
                 <Route path="/callback" element={<Callback />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/test" element={<TestModal />} />
                 <Route path="/" element={user ? <Assets /> : <Login />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
