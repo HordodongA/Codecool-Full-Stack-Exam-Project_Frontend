@@ -63,12 +63,20 @@ const testDataForPUT = {
 // ! /testing area
 
 
-export const updateUserData = async (): Promise<void> => {
-    // const payload = $userData.getValue()
+// User data handling
+type CallbackType = {
+    onSuccess: () => any
+    onError?: () => any
+}
+
+export const updateUserData = async (callback: CallbackType): Promise<void> => {
+    // const payload = $userData.getValue()     // * while prod
     const payload = testDataForPUT          // ! while testing
     const response = await dataRequest("put", "/api/user", payload)
-    if (response.status !== 200) return
+    if (response.status !== 200)
+        return callback.onError!()
     $userData.next(response.data)
+    callback.onSuccess()
 }
 
 export const deleteUserData = async (): Promise<void> => {

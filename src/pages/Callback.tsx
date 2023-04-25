@@ -56,16 +56,6 @@ const Callback: FC = () => {
             />
         </Flex>
 
-
-
-
-
-
-
-
-
-
-
     )
 }
 

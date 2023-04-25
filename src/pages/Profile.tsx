@@ -46,7 +46,6 @@ const Profile: FC = () => {
             <Center marginTop='3rem'>
 
                 <ConfirmDelete
-                    buttonText="user profile"
                     docType="user profile"
                     docName={user!.name}
                     onConfirm={() => deleteUser({

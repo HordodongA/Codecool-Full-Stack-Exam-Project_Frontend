@@ -5,14 +5,13 @@ import {
 } from '@chakra-ui/react'
 
 type PropsType = {
-    buttonText: string,
     docType: string,
     docName: string,
     onConfirm: () => void
 }
 
 
-const ConfirmDelete: FC<PropsType> = ({ buttonText, docType, docName, onConfirm }) => {
+const ConfirmDelete: FC<PropsType> = ({ docType, docName, onConfirm }) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -20,7 +19,7 @@ const ConfirmDelete: FC<PropsType> = ({ buttonText, docType, docName, onConfirm 
     return (
 
         <>
-            <Button colorScheme='red' onClick={onOpen}>Delete {buttonText}</Button>
+            <Button colorScheme='red' onClick={onOpen}>Delete {docType}</Button>
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
