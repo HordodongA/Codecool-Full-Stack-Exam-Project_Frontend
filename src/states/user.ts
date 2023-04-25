@@ -14,7 +14,6 @@ const UserSchema = z.object({
 export type UserType = z.infer<typeof UserSchema>
 
 
-// kiolvassa a payloadot
 const decodeUser = (token: string | null): UserType | null => {
     if (!token) return null
     const decodedToken = jwt_decode(token)
@@ -23,9 +22,7 @@ const decodeUser = (token: string | null): UserType | null => {
     return result.data
 }
 
-// ha van token, akkor az az init user
 export const $user = new BehaviorSubject<UserType | null>(decodeUser($token.getValue()))
-// feliratkozunk a $token változásaira: frissítjük a usert
 $token.subscribe(token => $user.next(decodeUser(token)))
 
 
@@ -50,6 +47,7 @@ export const logout = (callback: CallbackType) => {
 }
 
 
+// Delete user handling
 export const deleteUser = async (callback: CallbackType): Promise<void> => {
     const response = await dataRequest("delete", "/api/user", null)
     if (response.status !== 204)

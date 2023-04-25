@@ -20,7 +20,7 @@ const Login: FC = () => {
                 landlord
             </Heading>
             <Heading as='h4' size='md'>
-                maintenance assist
+                maintenance assistant
             </Heading>
 
             <Link href={fullUrl} fontSize='2rem' fontWeight='semibold' color='blue.500' marginTop='2rem'>

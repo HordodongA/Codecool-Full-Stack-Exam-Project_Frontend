@@ -1,6 +1,6 @@
 import { FC } from 'react'
 // import ConfirmDelete from '../components/Modals/ConfirmDelete'
-import CreateDocument from '../components/Modals/CreateDocument'
+// import CreateDocument from '../components/Modals/CreateDocument'
 import InfoPanel from '../components/Modals/InfoPanel'
 import ToastExample from '../components/Toasts/SuccessToast'
 
@@ -22,7 +22,7 @@ const TestModal: FC = () => {
                 PUSH THE BUTTON TO OPEN **CREATE** MODAL:
             </div>
             <div>
-                <CreateDocument />
+                {/* <CreateDocument /> */}
             </div>
             <hr />
             <hr />

@@ -18,7 +18,7 @@ const About: FC = () => {
             <Box minW='350' marginTop='1rem'>
                 <Container maxW='4xl' marginTop='1rem'>
                     <Text textAlign='center' fontSize='2xl' >
-                        Landlord is a maintenance assist. It helps you to note todos
+                        Landlord is a maintenance assistant. It helps you to note todos
                         and other informations of your properties (called assets).
                         It's made in a programming school exam project
                         in Codecool Hungary Full Stack API developer bootcamp.
