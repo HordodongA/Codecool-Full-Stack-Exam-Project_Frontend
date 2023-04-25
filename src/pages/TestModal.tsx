@@ -1,7 +1,8 @@
 import { FC } from 'react'
-import ConfirmDelete from '../Modals/ConfirmDelete'
-import CreateDocument from '../Modals/CreateDocument'
-import InfoPanel from '../Modals/InfoPanel'
+// import ConfirmDelete from '../components/Modals/ConfirmDelete'
+import CreateDocument from '../components/Modals/CreateDocument'
+import InfoPanel from '../components/Modals/InfoPanel'
+import ToastExample from '../components/Toasts/SuccessToast'
 
 
 const TestModal: FC = () => {
@@ -11,7 +12,8 @@ const TestModal: FC = () => {
                 PUSH THE BUTTON TO OPEN **CONFIRM DELETE** MODAL:
             </div>
             <div>
-                <ConfirmDelete />
+                {/* <ConfirmDelete /> */}
+                <ToastExample />
             </div>
             <hr />
             <hr />

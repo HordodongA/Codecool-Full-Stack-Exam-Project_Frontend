@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import {
     Modal,
     ModalOverlay,
@@ -8,17 +8,13 @@ import {
     ModalBody,
     ModalCloseButton,
     useDisclosure,
-    FormControl, FormLabel,
-    Input,
     Button, Text
 } from '@chakra-ui/react'
 
 
-const CreateDocument: FC = () => {
+const InfoPanel: FC = () => {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const initialRef = React.useRef(null)
-
     return (
         <>
             <Button onClick={onOpen}>Open Modal</Button>
@@ -27,21 +23,11 @@ const CreateDocument: FC = () => {
                 <ModalOverlay />
                 <ModalContent>
                     <ModalHeader>Modal Title</ModalHeader>
-                    <ModalCloseButton />
+                    <ModalCloseButton borderRadius='100' />
                     <ModalBody>
                         <Text >
                             osdrfcéslekfjchséldfksjv
                         </Text >
-                        <FormControl>
-                            <FormLabel>First name</FormLabel>
-                            <Input ref={initialRef} placeholder='First name' />
-                        </FormControl>
-
-                        <FormControl mt={4}>
-                            <FormLabel>Last name</FormLabel>
-                            <Input placeholder='Last name' />
-                        </FormControl>
-
                     </ModalBody>
 
                     <ModalFooter>
@@ -56,4 +42,4 @@ const CreateDocument: FC = () => {
     )
 }
 
-export default CreateDocument
+export default InfoPanel

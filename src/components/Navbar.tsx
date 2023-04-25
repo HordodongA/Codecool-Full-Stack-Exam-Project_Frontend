@@ -46,13 +46,13 @@ const Navbar: FC = () => {
 
 
                 <VStack direction="column" justify='center'>
-                    <Heading as='h6' size='xs'>  landlord  </Heading>
-                    {user && <Heading as='h4' size='md' marginTop='0rem !important'> {user.name}</Heading>}
+                    <Heading as='h6' size='xs' _hover={{ cursor: 'pointer' }} onClick={() => navigate("/assets")}>  landlord  </Heading>
+                    {user && <Heading as='h4' size='md' marginTop='0rem !important' > {user.name}</Heading>}
                 </VStack>
 
                 <Flex minW='50px' justifyContent='flex-end'>
-                    <Center>
-                        <Avatar size='md' name={user?.name} src={user?.picture} />
+                    <Center _hover={{ cursor: 'pointer' }}>
+                        <Avatar onClick={() => navigate("/profile")} size='md' name={user?.name} src={user?.picture} />
                     </Center>
                 </Flex>
 

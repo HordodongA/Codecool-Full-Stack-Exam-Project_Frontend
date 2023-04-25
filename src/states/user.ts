@@ -30,12 +30,12 @@ $token.subscribe(token => $user.next(decodeUser(token)))
 
 
 // Login & Logout handling
-type Callback = {
+type CallbackType = {
     onSuccess: () => any
     onError?: () => any
 }
 
-export const login = async (code: string, callback: Callback): Promise<void> => {
+export const login = async (code: string, callback: CallbackType): Promise<void> => {
     const token = await sendAuthCode(code)
     const user = decodeUser(token)
     if (!user)
@@ -44,16 +44,18 @@ export const login = async (code: string, callback: Callback): Promise<void> => 
     callback.onSuccess()
 }
 
-export const logout = (callback: Callback) => {
+export const logout = (callback: CallbackType) => {
     endSession()
     callback.onSuccess()
 }
 
 
-export const deleteUser = async (): Promise<void> => {
+export const deleteUser = async (callback: CallbackType): Promise<void> => {
     const response = await dataRequest("delete", "/api/user", null)
-    if (response.status !== 204) return
+    if (response.status !== 204)
+        return callback.onError!()
     deleteUserData()
     $user.next(null)
     endSession()
+    callback.onSuccess()
 }

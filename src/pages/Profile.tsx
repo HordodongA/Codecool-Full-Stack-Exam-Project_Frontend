@@ -3,16 +3,19 @@ import { FC } from 'react'
 import useGlobal from '../hooks/useGlobal'
 import { $user, deleteUser } from '../states/user'
 // import { $userData } from '../states/userData'
+// Import Components
+import ConfirmDelete from '../components/Modals/ConfirmDelete'
 // Import Chakra UI components
-import { Box, Center, Avatar, Button, Heading, Text } from '@chakra-ui/react'
+import { Box, Center, Avatar, Heading, Text, useToast } from '@chakra-ui/react'
 
 
 const Profile: FC = () => {
 
     const user = useGlobal($user)
     // const userData = useGlobal($userData)
+    const toast = useToast()
 
-    
+
     return (
 
         <Box >
@@ -34,16 +37,35 @@ const Profile: FC = () => {
                     <Text textAlign='right' fontSize='2xl' >{user?.email}</Text>
                 </Box>
                 {/* Első rálépéskor látszik a választ, frissítéskor eltűnik */}
-{/*                 <Box marginTop='1rem'>
+                {/*                 <Box marginTop='1rem'>
                     <Text fontSize='m' >number of assets</Text>
                     <Text textAlign='right' fontSize='2xl' >{userData?.assets?.length}</Text>
                 </Box> */}
             </Box>
 
             <Center marginTop='3rem'>
-                <Button colorScheme='red' onClick={deleteUser}>
-                    Terminate my profile
-                </Button>
+
+                <ConfirmDelete
+                    buttonText="user profile"
+                    docType="user profile"
+                    docName={user!.name}
+                    onConfirm={() => deleteUser({
+                        onSuccess: () => toast({
+                            title: 'Operation successful',
+                            description: "Data successfully deleted from our system.",
+                            status: 'success',
+                            duration: 5000,
+                            isClosable: true,
+                        }),
+                        onError: () => toast({
+                            title: 'Operation failed',
+                            description: "Something went wrong, please try again later.",
+                            status: 'error',
+                            duration: 5000,
+                            isClosable: true,
+                        })
+                    })}
+                />
             </Center>
         </Box>
 
