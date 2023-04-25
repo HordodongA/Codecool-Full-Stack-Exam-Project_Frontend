@@ -30,11 +30,11 @@ const Profile: FC = () => {
             <Box minW='350' marginTop='2.5rem'>
                 <Box marginTop='1rem'>
                     <Text fontSize='m' >name</Text>
-                    <Text textAlign='right' fontSize='2xl' >{user?.name}</Text>
+                    <Text textAlign='right' fontSize='2xl' borderBottomWidth='medium'>{user?.name}</Text>
                 </Box>
                 <Box marginTop='1rem'>
                     <Text fontSize='m' >email</Text>
-                    <Text textAlign='right' fontSize='2xl' >{user?.email}</Text>
+                    <Text textAlign='right' fontSize='2xl' borderBottomWidth='medium'>{user?.email}</Text>
                 </Box>
                 {/* Első rálépéskor látszik a választ, frissítéskor eltűnik */}
                 {/*                 <Box marginTop='1rem'>

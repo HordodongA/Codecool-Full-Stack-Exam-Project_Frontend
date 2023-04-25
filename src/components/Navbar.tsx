@@ -58,7 +58,7 @@ const Navbar: FC = () => {
 
             </Flex>
 
-            <Flex minH='25px' p='0.5% 1%' width='100%' justify='space-between' alignItems='center' bg='gray.400'>
+            <Flex minH='30px' p='0.5% 1%' width='100%' justify='space-between' alignItems='center' bg='gray.400'>
 
                 <IconButton
                     aria-label='Search database'

@@ -4,16 +4,18 @@ import {
     useDisclosure, Button, Text
 } from '@chakra-ui/react'
 
-type Props = {
+type PropsType = {
     buttonText: string,
     docType: string,
     docName: string,
     onConfirm: () => void
 }
 
-const ConfirmDelete: FC<Props> = ({ buttonText, docType, docName, onConfirm }) => {
+
+const ConfirmDelete: FC<PropsType> = ({ buttonText, docType, docName, onConfirm }) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
+
 
     return (
 
@@ -38,10 +40,9 @@ const ConfirmDelete: FC<Props> = ({ buttonText, docType, docName, onConfirm }) =
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button colorScheme='blue' mr={3} onClick={onClose}>
+                        <Button variant='ghost' mr={3} onClick={onClose}>
                             Cancel
                         </Button>
-                        {/* <Button colorScheme='red'  onClick={onConfirm}>Confirm</Button> */}
                         <Button colorScheme='red' onClick={() => onConfirm()} >
                             Confirm
                         </Button>

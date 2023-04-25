@@ -22,11 +22,11 @@ const InfoPanel: FC = () => {
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader>Modal Title</ModalHeader>
+                    <ModalHeader>Informaiton about this page</ModalHeader>
                     <ModalCloseButton borderRadius='100' />
                     <ModalBody>
                         <Text >
-                            osdrfcéslekfjchséldfksjv
+                            This is an asset's Machines section. You can collect data of a machine here like credentials or service contact. You can make todo lists here e.g. what to buy for it or what needs to be fixed on it. You can chose an existing machine to see it's details. Or you can create a new one.
                         </Text >
                     </ModalBody>
 
@@ -34,7 +34,7 @@ const InfoPanel: FC = () => {
                         <Button colorScheme='blue' mr={3} onClick={onClose}>
                             Close
                         </Button>
-                        <Button variant='ghost'>Secondary Action</Button>
+                        {/* <Button variant='ghost'>Secondary Action</Button> */}
                     </ModalFooter>
                 </ModalContent>
             </Modal>
