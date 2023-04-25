@@ -25,7 +25,9 @@ const Main: FC = () => {
 
         <Container as='main' maxW='95%' p='1rem' centerContent>
             <Routes>
+                <Route index path="/*" element={user ? <Assets /> : <Login />} />
                 <Route
+                    // index
                     path="/assets/*"
                     element={
                         <Protected hasAccess={!!user}>
@@ -43,8 +45,20 @@ const Main: FC = () => {
                 />
                 <Route path="/callback" element={<Callback />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/test" element={<TestModal />} />
-                <Route path="/" element={user ? <Assets /> : <Login />} />
+                <Route path="/modals/" element={<TestModal />}/>
+
+
+                <Route path="/test/" >
+                    <Route path="/test/" element={<div>TEST</div>} />
+                    <Route path="/test/alma" element={<div>ALMA</div>} />
+                    <Route path="/test/korte/">
+                        <Route path="/test/korte/" element={<div>KORTE</div>} />
+                        <Route path="/test/korte/barack" element={<div>BARACK</div>} />
+                    </Route>
+                </Route>
+
+
+
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </Container>

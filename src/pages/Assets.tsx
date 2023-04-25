@@ -10,7 +10,6 @@ import { Flex, } from '@chakra-ui/react'
 
 const Assets: FC = () => {
 
-
     useEffect(() => {
         downloadUserData()
     }, [])
@@ -21,6 +20,7 @@ const Assets: FC = () => {
         <Flex p='2% 2%' >
             <Routes>
                 <Route path="/" element={<MyAssets />} />
+                <Route path="/alma" element={<div>ALMA</div>} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </Flex>

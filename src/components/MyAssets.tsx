@@ -42,7 +42,7 @@ const MyAssets: FC = () => {
 
                 </Flex>
 
-                <Center height='4rem' bg='gray.400' minWidth='300px' borderRadius='10px'>
+                <Center height='3rem' bg='gray.400' minWidth='260px' borderRadius='10px'>
                     <Heading as='h4' size='md' textAlign='center'>
                         + Add new asset
                     </Heading>
