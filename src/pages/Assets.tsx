@@ -2,6 +2,7 @@ import { FC, useEffect } from 'react'
 import useGlobal from '../hooks/useGlobal'
 import { $userData, downloadUserData, updateUserData, UserDataType } from '../states/userData'
 // Import components
+import NavigateAndInfo from '../components/NavigateAndInfo'
 import CreateDocument from '../components/Modals/CreateDocument'
 // Import Chakra UI components
 import { Flex, Center, VStack, Heading, useToast } from '@chakra-ui/react'
@@ -20,9 +21,10 @@ const Assets: FC = () => {
     const pushNew = (data: { name: string }) => userData?.assets?.push(data)
 
     return (
+        <VStack width='100%' >
+            <NavigateAndInfo help="assets" />
 
-        <Flex >
-            <VStack spacing='5%'>
+            <VStack maxWidth='95%' spacing='2rem'>
                 <Heading as='h3' size='lg'>
                     My Assets
                 </Heading>
@@ -71,7 +73,7 @@ const Assets: FC = () => {
                 </Center>
 
             </VStack>
-        </Flex>
+        </VStack>
 
     )
 }

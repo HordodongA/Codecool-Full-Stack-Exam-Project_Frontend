@@ -6,9 +6,9 @@ import { $user } from '../states/user'
 import About from '../pages/About'
 import Assets from '../pages/Assets'
 import Callback from '../pages/Callback'
+import Asset from '../pages/Asset'
 import Login from '../pages/Login'
 import Profile from '../pages/Profile'
-import TestModal from '../pages/TestModal'
 import NotFound from './NotFound'
 // Import Components
 import Protected from './Route'
@@ -23,8 +23,8 @@ const Main: FC = () => {
 
     return (
 
-        <Container as='main' maxW='95%' p='1rem' centerContent>
-            <Routes>
+        <Container as='main' maxW='100%' p='0 0 1rem 0'  >
+            <Routes >
                 <Route index path="/*" element={!user && <Login />} />
                 <Route
                     path="/assets/*"
@@ -32,9 +32,9 @@ const Main: FC = () => {
                         <Protected hasAccess={!!user}>
                             <Routes>
                                 <Route path="/" >
-                                    <Route path="/" element={<Assets />} />
+                                    <Route path="/" index element={<Assets />} />
                                     <Route path="/asset/" >
-                                        <Route path="/asset/" element={<div>ASSET HAS TO BE DINAMiC</div>} />
+                                        <Route path="/asset/" element={<Asset />} />
                                         <Route path="/asset/activities/" >
                                             <Route path="/asset/activities/" element={<div>ACTIVITIES</div>} />
                                             <Route path="/asset/activities/activity" element={<div>ACTIVITY, DINAMIC</div>} />
@@ -64,10 +64,6 @@ const Main: FC = () => {
                 <Route path="/callback" element={<Callback />} />
                 <Route path="/about" element={<About />} />
                 <Route path="*" element={<NotFound />} />
-
-                {/* ! TEST PAGE */}
-                <Route path="/modals/" element={<TestModal />} />
-
             </Routes>
         </Container>
 

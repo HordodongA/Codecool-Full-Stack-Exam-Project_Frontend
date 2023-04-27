@@ -1,23 +1,35 @@
 import { FC } from 'react'
+import infoPanelTexts from './infoPanelTexts'
+// Import Chakra UI components
 import {
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
-    useDisclosure,
-    Button, Text
+    Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton,
+    useDisclosure, Button, Text, IconButton
 } from '@chakra-ui/react'
+import { InfoOutlineIcon } from '@chakra-ui/icons'
+
+type ProprsType = {
+    help: string
+}
 
 
-const InfoPanel: FC = () => {
+const InfoPanel: FC<ProprsType> = ({ help }) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
+    let message = ""
+    for (const entry of infoPanelTexts) {
+        if (entry.page === help) message = entry.text
+    }
+
+
     return (
         <>
-            <Button onClick={onOpen}>Open Modal</Button>
+            <IconButton
+                aria-label='Search database'
+                icon={<InfoOutlineIcon boxSize={6} />}
+                size=''
+                borderRadius='100'
+                onClick={onOpen}
+            />
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
@@ -26,7 +38,7 @@ const InfoPanel: FC = () => {
                     <ModalCloseButton borderRadius='100' />
                     <ModalBody>
                         <Text >
-                            This is an asset's Machines section. You can collect data of a machine here like credentials or service contact. You can make todo lists here e.g. what to buy for it or what needs to be fixed on it. You can chose an existing machine to see it's details. Or you can create a new one.
+                            {message}
                         </Text >
                     </ModalBody>
 
@@ -34,7 +46,6 @@ const InfoPanel: FC = () => {
                         <Button colorScheme='blue' mr={3} onClick={onClose}>
                             Close
                         </Button>
-                        {/* <Button variant='ghost'>Secondary Action</Button> */}
                     </ModalFooter>
                 </ModalContent>
             </Modal>
