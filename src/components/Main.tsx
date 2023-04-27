@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, Navigate } from "react-router-dom"
 import useGlobal from '../hooks/useGlobal'
 import { $user } from '../states/user'
 // Import Pages
@@ -25,7 +25,7 @@ const Main: FC = () => {
 
         <Container as='main' maxW='100%' p='0 0 1rem 0'  >
             <Routes >
-                <Route index path="/*" element={!user && <Login />} />
+                <Route path="/*" element={!user ? <Login /> : <Navigate to="/assets" />} />
                 <Route
                     path="/assets/*"
                     element={
