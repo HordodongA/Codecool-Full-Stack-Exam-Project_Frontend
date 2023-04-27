@@ -1,10 +1,10 @@
 import { FC, useEffect } from 'react'
 import useGlobal from '../hooks/useGlobal'
-import { $userData, downloadUserData, updateUserData } from '../states/userData'
+import { $userData, downloadUserData, updateUserData, UserDataType } from '../states/userData'
 // Import components
 import CreateDocument from '../components/Modals/CreateDocument'
 // Import Chakra UI components
-import { Flex, Center, VStack, Wrap, WrapItem, Heading, useToast } from '@chakra-ui/react'
+import { Flex, Center, VStack, Heading, useToast } from '@chakra-ui/react'
 
 
 const Assets: FC = () => {
@@ -15,7 +15,9 @@ const Assets: FC = () => {
 
     const userData = useGlobal($userData)
     const toast = useToast()
-
+    // console.log(userData)    // ! KONZULTÁCIÓ 3/3
+    // ! KONZULTÁCIÓ 3/2 - túl bonyolult?
+    const pushNew = (data: { name: string }) => userData?.assets?.push(data)
 
     return (
 
@@ -38,24 +40,33 @@ const Assets: FC = () => {
                 </Flex>
 
                 <Center paddingTop='1rem' >
+                    {/* // ! KONZULTÁCIÓ 3/2 - túl bonyolult? */}
                     <CreateDocument
+                        // ! KONZULTÁCIÓ 3/1 (egyik se jó: userData={...userData}, userData=userData, {...userData})
+                        userData={userData}
                         docType="asset"
-                        onConfirm={() => updateUserData({
-                            onSuccess: () => toast({
-                                title: 'Operation successful',
-                                description: "Asset created",
-                                status: 'success',
-                                duration: 5000,
-                                isClosable: true,
-                            }),
-                            onError: () => toast({
-                                title: 'Operation failed',
-                                description: "Something went wrong, please try again later.",
-                                status: 'error',
-                                duration: 5000,
-                                isClosable: true,
+                        pushNew={pushNew}
+                        onConfirm={(data: UserDataType) => {
+                            updateUserData(data, {
+                                onSuccess: () => toast({
+                                    title: 'Operation successful',
+                                    description: "Asset created",
+                                    status: 'success',
+                                    duration: 5000,
+                                    position: 'bottom-left',
+                                    isClosable: true,
+                                }),
+                                onError: () => toast({
+                                    title: 'Operation failed',
+                                    description: "Something went wrong, please try again later.",
+                                    status: 'error',
+                                    duration: 5000,
+                                    position: 'bottom-left',
+                                    isClosable: true,
+                                })
                             })
-                        })}
+                        }
+                        }
                     />
                 </Center>
 

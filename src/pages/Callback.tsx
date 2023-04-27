@@ -21,6 +21,7 @@ const Callback: FC = () => {
                     description: "Enjoy using our maintenance assistant",
                     status: 'success',
                     duration: 5000,
+                    position: 'bottom-left',
                     isClosable: true,
                 })
                 navigate("/assets")

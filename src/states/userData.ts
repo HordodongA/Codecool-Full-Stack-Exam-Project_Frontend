@@ -37,44 +37,49 @@ export const downloadUserData = async (): Promise<void> => {
 
 
 // ! testing area: user object for update data
-const testDataForPUT = {
-    sub: '106261926372593079723', assets:
-        [
-            {
-                "name": "Grove street",
-                "location": "San Andreas",
-                "notes": "My granny's house",
-                "activities": [
-                    {
-                        "name": "activity one",
-                        "todos": "nem szarni a szoba közepére",
-                        "_id": "6444d531675b77a94c51b94d"
-                    },
-                    {
-                        "name": "activity two",
-                        "_id": "6444d531675b77a94c51b94e"
-                    }
-                ],
-                "_id": "6444d531675b77a94c51b94c",
-                "machines": []
-            }
-        ]
-}
+// const testDataForPUT = {
+//     sub: '106261926372593079723', assets:
+//         [
+//             {
+//                 "name": "Grove street",
+//                 "location": "San Andreas",
+//                 "notes": "My granny's house",
+//                 "activities": [
+//                     {
+//                         "name": "activity one",
+//                         "todos": "kikergetni a varjakat a nappaliból",
+//                         "_id": "6444d531675b77a94c51b94d"
+//                     },
+//                     {
+//                         "name": "activity two",
+//                         "todos": "várni a postást",
+//                         "_id": "6444d531675b77a94c51b94e"
+//                     }
+//                 ],
+//                 "_id": "6444d531675b77a94c51b94c",
+//                 "machines": []
+//             }
+//         ]
+// }
 // ! /testing area
 
 
 // User data handling
 type CallbackType = {
     onSuccess: () => any
-    onError?: () => any
+    onError: () => any
 }
 
-export const updateUserData = async (callback: CallbackType): Promise<void> => {
-    // const payload = $userData.getValue()     // * while prod
-    const payload = testDataForPUT          // ! while testing
+export const updateUserData = async (data: UserDataType, callback: CallbackType): Promise<void> => {
+    const result = UserDataShema.safeParse(data)
+    if (result.success === false)
+        return callback.onError()
+    $userData.next(result.data)
+    const payload = $userData.getValue()     // * while prod
+    // const payload = testDataForPUT          // ! while testing
     const response = await dataRequest("put", "/api/user", payload)
     if (response.status !== 200)
-        return callback.onError!()
+        return callback.onError()
     $userData.next(response.data)
     callback.onSuccess()
 }

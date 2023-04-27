@@ -1,27 +1,39 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
+import { UserDataType } from '../../states/userData'
+// Import Chakra UI components
 import {
     Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure,
-    FormControl, FormLabel, Input, Button, Text
+    FormControl, FormLabel, FormErrorMessage, FormHelperText, Input, Button, Text
 } from '@chakra-ui/react'
 
 type PropsType = {
+    // ! KONZULTÁCIÓ 3/1
+    userData: any,      // ! TS capital sin
     docType: string,
-    onConfirm: () => void
+    pushNew: (data: { name: string }) => number | undefined,
+    onConfirm: (data: UserDataType) => void
 }
 
-// ! Minden jól működik, de testdatával írja felül a $userDatát. 
-// ! Kellene egy logika, ami ezt az input mezőt belepusholja az assetsbe.
 
-const CreateDocument: FC<PropsType> = ({ docType, onConfirm }) => {
+const CreateDocument: FC<PropsType> = ({ userData, docType, pushNew, onConfirm }) => {
 
+    // ! KONZULTÁCIÓ 3/3
+    // console.log(userData)
+    // console.log(docType)
+    // console.log(pushNew)
+    // console.log(onConfirm)
+
+    const [input, setInput] = useState("")
     const { isOpen, onOpen, onClose } = useDisclosure()
     const initialRef = React.useRef(null)
+    const finalRef = React.useRef(null)
+
 
     return (
         <>
-            <Button colorScheme='green' onClick={onOpen}>Create {docType}</Button>
+            <Button colorScheme='green' onClick={onOpen} ref={finalRef}>Create {docType}</Button>
 
-            <Modal isOpen={isOpen} onClose={onClose}>
+            <Modal isOpen={isOpen} onClose={onClose} initialFocusRef={initialRef} finalFocusRef={finalRef}>
                 <ModalOverlay />
                 <ModalContent>
                     <ModalHeader >Create {docType}</ModalHeader>
@@ -30,10 +42,19 @@ const CreateDocument: FC<PropsType> = ({ docType, onConfirm }) => {
                         <Text >
                             Please enter a nem for the new {docType}.
                         </Text >
-                        <FormControl>
+
+                        <FormControl m='1rem 0' isRequired isInvalid={input === ""}>
                             <FormLabel>New {docType}'s name</FormLabel>
-                            <Input ref={initialRef} placeholder='First name' />
+                            <Input value={input} onChange={(e) => setInput(e.target.value)} placeholder='Name' maxLength={30} ref={initialRef} />
+                            {!(input === "") ? (
+                                <FormHelperText>
+                                    Maximum 30 characters.
+                                </FormHelperText>
+                            ) : (
+                                <FormErrorMessage>Name is required.</FormErrorMessage>
+                            )}
                         </FormControl>
+
                         <Text >
                             After {docType} is created, you can fill it's data table via editing the {docType}.
                         </Text >
@@ -43,8 +64,10 @@ const CreateDocument: FC<PropsType> = ({ docType, onConfirm }) => {
                         <Button variant='ghost' mr={3} onClick={onClose}>
                             Cancel
                         </Button>
+                        {/* // ! KONZULTÁCIÓ 3/2 - túl bonyolult? */}
                         <Button colorScheme='blue' onClick={() => {
-                            onConfirm()
+                            pushNew({ name: input })
+                            onConfirm(userData)
                             onClose()
                         }}>
                             Create {docType}
