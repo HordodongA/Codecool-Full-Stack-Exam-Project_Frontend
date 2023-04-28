@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import useGlobal from '../hooks/useGlobal'
 import { $user, deleteUser } from '../states/user'
-import { assetCounter, activityCounter, machineCounter } from '../states/userData'    // ! KONZULTÁCIÓ 2
+import { assetCounter, activityCounter, machineCounter } from '../states/userData'
 // Import Components
 import NavigateAndInfo from '../components/NavigateAndInfo'
 import ConfirmDelete from '../components/Modals/ConfirmDelete'
@@ -23,43 +23,38 @@ const Profile: FC = () => {
                 <Center >
                     <Avatar size='xl' name={user?.name} src={user?.picture} />
                 </Center>
-
-                <Heading as='h3' size='lg' textAlign='center' margin='1.5rem 0 2rem'>
-                    My Profile
-                </Heading>
-
-                <Box minW='350' marginTop='2.5rem'>
+                <Box minW='300' marginTop='2rem'>
+                    <Heading as='h3' size='lg' textAlign='center' >
+                        My Profile
+                    </Heading>
                     <Box marginTop='1rem'>
                         <Text fontSize='m' >name</Text>
-                        <Text textAlign='right' fontSize='2xl' borderBottomWidth='medium'>{user?.name}</Text>
+                        <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'>{user?.name}</Text>
                     </Box>
                     <Box marginTop='1rem'>
                         <Text fontSize='m' >email</Text>
-                        <Text textAlign='right' fontSize='2xl' borderBottomWidth='medium'>{user?.email}</Text>
+                        <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'>{user?.email}</Text>
                     </Box>
-
-
-
-
+                </Box>
+                <Box minW='300' marginTop='2rem'>
+                    <Heading as='h3' size='lg' textAlign='center' >
+                        My Statistics
+                    </Heading>
                     <Box marginTop='1rem'>
                         <Text fontSize='m' >number of assets</Text>
-                        <Text textAlign='right' fontSize='2xl' >{assetCounter()}</Text>
+                        <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'>{assetCounter()}</Text>
                     </Box>
                     <Box marginTop='1rem'>
                         <Text fontSize='m' >number of activities</Text>
-                        <Text textAlign='right' fontSize='2xl' >{activityCounter()}</Text>
+                        <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'>{activityCounter()}</Text>
                     </Box>
                     <Box marginTop='1rem'>
                         <Text fontSize='m' >number of machines</Text>
-                        <Text textAlign='right' fontSize='2xl' >{machineCounter()}</Text>
+                        <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'>{machineCounter()}</Text>
                     </Box>
-
-
-
                 </Box>
 
                 <Center marginTop='3rem'>
-
                     <ConfirmDelete
                         docType="user profile"
                         docName={user!.name}
@@ -82,8 +77,7 @@ const Profile: FC = () => {
                     />
                 </Center>
             </Box>
-        </VStack>
-
+        </VStack >
     )
 }
 
