@@ -3,28 +3,32 @@ import { z } from "zod"
 import { dataRequest } from "../api/landlordBackend"
 // import { getUserData } from "../api/landlordBackend"
 
+const ActivitySchema = z.object({
+    name: z.string(),
+    todos: z.string().optional(),
+})
+const MachineSchema = z.object({
+    name: z.string(),
+    type: z.string().optional(),
+    unique_id: z.string().optional(),
+    service: z.string().optional(),
+    todos: z.string().optional(),
+})
+const AssetSchema = z.object({
+    name: z.string(),
+    address: z.string().optional(),
+    details: z.string().optional(),
+    credentials: z.string().optional(),
+    notes: z.string().optional(),
+    activities: ActivitySchema.array().optional(),
+    machines: MachineSchema.array().optional(),
+})
 export const UserDataShema = z.object({
     sub: z.string(),
-    assets: z.object({
-        name: z.string(),
-        address: z.string().optional(),
-        details: z.string().optional(),
-        credentials: z.string().optional(),
-        notes: z.string().optional(),
-        activities: z.object({
-            name: z.string(),
-            todos: z.string().optional(),
-        }).array().optional(),
-        machines: z.object({
-            name: z.string(),
-            type: z.string().optional(),
-            unique_id: z.string().optional(),
-            service: z.string().optional(),
-            todos: z.string().optional(),
-        }).array().optional(),
-    }).array().optional(),
+    assets: AssetSchema.array().optional(),
 })
 export type UserDataType = z.infer<typeof UserDataShema>
+
 
 export const $userData = new BehaviorSubject<UserDataType | null>(null)
 
@@ -65,6 +69,7 @@ export const downloadUserData = async (): Promise<void> => {
 
 
 // User data handling
+
 type CallbackType = {
     onSuccess: () => any
     onError: () => any

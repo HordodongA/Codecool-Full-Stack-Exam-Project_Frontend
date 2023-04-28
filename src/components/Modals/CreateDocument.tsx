@@ -7,8 +7,7 @@ import {
 } from '@chakra-ui/react'
 
 type PropsType = {
-    // ! KONZULTÁCIÓ 3/1
-    userData: any,      // ! TS capital sin
+    userData: UserDataType,
     docType: string,
     pushNew: (data: { name: string }) => number | undefined,
     onConfirm: (data: UserDataType) => void
@@ -16,12 +15,6 @@ type PropsType = {
 
 
 const CreateDocument: FC<PropsType> = ({ userData, docType, pushNew, onConfirm }) => {
-
-    // ! KONZULTÁCIÓ 3/3
-    // console.log(userData)
-    // console.log(docType)
-    // console.log(pushNew)
-    // console.log(onConfirm)
 
     const [input, setInput] = useState("")
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -64,7 +57,6 @@ const CreateDocument: FC<PropsType> = ({ userData, docType, pushNew, onConfirm }
                         <Button variant='ghost' mr={3} onClick={onClose}>
                             Cancel
                         </Button>
-                        {/* // ! KONZULTÁCIÓ 3/2 - túl bonyolult? */}
                         <Button colorScheme='blue' onClick={() => {
                             pushNew({ name: input })
                             onConfirm(userData)

@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { useNavigate, Link } from "react-router-dom"
+import { useNavigate, Link/* , useLocation */ } from "react-router-dom"
 // Import components
 import InfoPanel from './Modals/InfoPanel'
 // Import Chakra UI components
@@ -14,6 +14,12 @@ type ProprsType = {
 const NavigateAndInfo: FC<ProprsType> = ({ help }) => {
 
     const navigate = useNavigate()
+
+    // Get path segments for breadcrumbs
+    // const location = useLocation()
+    // console.log(location.pathname)
+    // console.log(location.pathname.split("/"))
+    // console.log(location.pathname.split("/").filter(string => string !== ""))
 
 
     return (

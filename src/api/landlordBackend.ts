@@ -26,6 +26,7 @@ $token.subscribe(token => {
     const expiresIn = decoded.exp * 1000 - new Date().getTime()
     tokenTimeout = setTimeout(endSession, expiresIn)
 })
+// ha van token, letölti a usert
 
 
 // Handling login process

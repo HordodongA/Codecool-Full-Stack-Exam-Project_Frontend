@@ -4,9 +4,10 @@ import useGlobal from '../hooks/useGlobal'
 import { $user } from '../states/user'
 // Import Pages
 import About from '../pages/About'
+import Activities from '../pages/Activities'
+import Asset from '../pages/Asset'
 import Assets from '../pages/Assets'
 import Callback from '../pages/Callback'
-import Asset from '../pages/Asset'
 import Login from '../pages/Login'
 import Profile from '../pages/Profile'
 import NotFound from './NotFound'
@@ -14,7 +15,6 @@ import NotFound from './NotFound'
 import Protected from './Route'
 // Import Chakra UI components
 import { Container } from '@chakra-ui/react'
-
 
 const Main: FC = () => {
 
@@ -33,15 +33,15 @@ const Main: FC = () => {
                             <Routes>
                                 <Route path="/" >
                                     <Route path="/" index element={<Assets />} />
-                                    <Route path="/asset/" >
-                                        <Route path="/asset/" element={<Asset />} />
-                                        <Route path="/asset/activities/" >
-                                            <Route path="/asset/activities/" element={<div>ACTIVITIES</div>} />
-                                            <Route path="/asset/activities/activity" element={<div>ACTIVITY, DINAMIC</div>} />
+                                    <Route path="/:asset/" >
+                                        <Route path="/:asset/" element={<Asset />} />
+                                        <Route path="/:asset/activities/" >
+                                            <Route path="/:asset/activities/" element={<Activities />} />
+                                            <Route path="/:asset/activities/:activity" element={<div>ACTIVITY, DINAMIC</div>} />
                                         </Route>
-                                        <Route path="/asset/machines/">
-                                            <Route path="/asset/machines/" element={<div>MACHINES</div>} />
-                                            <Route path="/asset/machines/machine" element={<div>MACHINE, DINAMIC</div>} />
+                                        <Route path="/:asset/machines/">
+                                            <Route path="/:asset/machines/" element={<div>MACHINES</div>} />
+                                            <Route path="/:asset/machines/:machine" element={<div>MACHINE, DINAMIC</div>} />
                                         </Route>
                                     </Route>
                                 </Route>
