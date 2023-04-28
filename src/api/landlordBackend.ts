@@ -3,21 +3,25 @@ import { z } from "zod"
 import { BehaviorSubject } from "rxjs"
 import jwt_decode from "jwt-decode"
 import { landlordBackendUrl } from "../config"
-import { UserDataShema } from "../states/userData"
+import { UserDataShema, downloadUserData } from "../states/userData"
+
 
 // Configure Axios
 const client = axios.create({ baseURL: landlordBackendUrl })
 
-const LoginResponseSchema = z.object({ sessionToken: z.string() })
 
+// token rective state
 export const $token = new BehaviorSubject<string | null>(localStorage.getItem("token"))
 
+
+// Handling stored token when logout or server responds 401
 export const endSession = () => {
-    localStorage.removeItem("token")
     $token.next(null)
+    localStorage.removeItem("token")
 }
 
-// Token expiration handler
+
+// Handling token expiration
 let tokenTimeout: number | null = null
 $token.subscribe(token => {
     if (tokenTimeout) { clearTimeout(tokenTimeout) }
@@ -26,10 +30,11 @@ $token.subscribe(token => {
     const expiresIn = decoded.exp * 1000 - new Date().getTime()
     tokenTimeout = setTimeout(endSession, expiresIn)
 })
-// ha van token, letölti a usert
 
 
-// Handling login process
+// Handling login process (send authcode, get session token)
+const LoginResponseSchema = z.object({ sessionToken: z.string() })
+
 export const sendAuthCode = async (code: string): Promise<string | null> => {
     try {
         const response = await client.post("/api/login", { code })
@@ -39,8 +44,8 @@ export const sendAuthCode = async (code: string): Promise<string | null> => {
             return null
         }
         const token = response.data.sessionToken
-        $token.next(token)
         localStorage.setItem("token", token)
+        $token.next(token)
         return token
     }
     catch (error) {
@@ -50,8 +55,8 @@ export const sendAuthCode = async (code: string): Promise<string | null> => {
 }
 
 
-// Handling user data management
-type dataResponseType = { // generic type + zod
+// Handling user data management (GET, PUT, DELETE requests to Landlord Server)
+type dataResponseType = {
     data: any,
     status: number
 }
@@ -98,3 +103,9 @@ export const dataRequest = async <T>(method: string, path: string, payload: T | 
         }
     }
 }
+
+
+// Handling user data downloading when $token value changes (e.g. reload page or navigate)
+$token.subscribe(_token => {
+    if ($token.getValue() !== null) downloadUserData()
+})

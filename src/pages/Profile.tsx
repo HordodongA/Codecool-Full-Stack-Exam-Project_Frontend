@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import useGlobal from '../hooks/useGlobal'
 import { $user, deleteUser } from '../states/user'
-// import { $userData } from '../states/userData'    // ! KONZULTÁCIÓ 2
+import { assetCounter, activityCounter, machineCounter } from '../states/userData'    // ! KONZULTÁCIÓ 2
 // Import Components
 import NavigateAndInfo from '../components/NavigateAndInfo'
 import ConfirmDelete from '../components/Modals/ConfirmDelete'
@@ -12,7 +12,6 @@ import { Box, Center, Avatar, Heading, Text, useToast, VStack } from '@chakra-ui
 const Profile: FC = () => {
 
     const user = useGlobal($user)
-    // const userData = useGlobal($userData)    // ! KONZULTÁCIÓ 2
     const toast = useToast()
 
 
@@ -38,12 +37,25 @@ const Profile: FC = () => {
                         <Text fontSize='m' >email</Text>
                         <Text textAlign='right' fontSize='2xl' borderBottomWidth='medium'>{user?.email}</Text>
                     </Box>
-                    {/* // ! KONZULTÁCIÓ 2 */}
-                    {/* Első rálépéskor látszik a választ, frissítéskor eltűnik */}
-                    {/*                 <Box marginTop='1rem'>
-                    <Text fontSize='m' >number of assets</Text>
-                    <Text textAlign='right' fontSize='2xl' >{userData?.assets?.length}</Text>
-                </Box> */}
+
+
+
+
+                    <Box marginTop='1rem'>
+                        <Text fontSize='m' >number of assets</Text>
+                        <Text textAlign='right' fontSize='2xl' >{assetCounter()}</Text>
+                    </Box>
+                    <Box marginTop='1rem'>
+                        <Text fontSize='m' >number of activities</Text>
+                        <Text textAlign='right' fontSize='2xl' >{activityCounter()}</Text>
+                    </Box>
+                    <Box marginTop='1rem'>
+                        <Text fontSize='m' >number of machines</Text>
+                        <Text textAlign='right' fontSize='2xl' >{machineCounter()}</Text>
+                    </Box>
+
+
+
                 </Box>
 
                 <Center marginTop='3rem'>

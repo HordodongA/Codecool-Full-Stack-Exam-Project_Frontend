@@ -1,6 +1,6 @@
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 import useGlobal from '../hooks/useGlobal'
-import { $userData, downloadUserData, updateUserData, UserDataType } from '../states/userData'
+import { $userData, updateUserData, UserDataType } from '../states/userData'
 // Import components
 import NavigateAndInfo from '../components/NavigateAndInfo'
 import CreateDocument from '../components/Modals/CreateDocument'
@@ -9,10 +9,6 @@ import { Flex, Center, VStack, Heading, useToast } from '@chakra-ui/react'
 
 
 const Assets: FC = () => {
-
-    useEffect(() => {
-        downloadUserData()
-    }, [])
 
     const userData = useGlobal($userData)
     const toast = useToast()

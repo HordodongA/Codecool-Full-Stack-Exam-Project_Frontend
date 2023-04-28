@@ -1,7 +1,7 @@
 import { BehaviorSubject } from "rxjs"
 import { z } from "zod"
 import { dataRequest } from "../api/landlordBackend"
-// import { getUserData } from "../api/landlordBackend"
+
 
 const ActivitySchema = z.object({
     name: z.string(),
@@ -30,9 +30,10 @@ export const UserDataShema = z.object({
 export type UserDataType = z.infer<typeof UserDataShema>
 
 
+// userData reactive state
 export const $userData = new BehaviorSubject<UserDataType | null>(null)
 
-
+// Handling user Data: GET (automatically triggered by $token value change)
 export const downloadUserData = async (): Promise<void> => {
     const response = await dataRequest("get", "/api/user", null)
     if (response.status !== 200) return
@@ -40,36 +41,7 @@ export const downloadUserData = async (): Promise<void> => {
 }
 
 
-// ! testing area: user object for update data
-// const testDataForPUT = {
-//     sub: '106261926372593079723', assets:
-//         [
-//             {
-//                 "name": "Grove street",
-//                 "location": "San Andreas",
-//                 "notes": "My granny's house",
-//                 "activities": [
-//                     {
-//                         "name": "activity one",
-//                         "todos": "kikergetni a varjakat a nappaliból",
-//                         "_id": "6444d531675b77a94c51b94d"
-//                     },
-//                     {
-//                         "name": "activity two",
-//                         "todos": "várni a postást",
-//                         "_id": "6444d531675b77a94c51b94e"
-//                     }
-//                 ],
-//                 "_id": "6444d531675b77a94c51b94c",
-//                 "machines": []
-//             }
-//         ]
-// }
-// ! /testing area
-
-
-// User data handling
-
+// Handling user Data: PUT (triggered by user action)
 type CallbackType = {
     onSuccess: () => any
     onError: () => any
@@ -81,7 +53,6 @@ export const updateUserData = async (data: UserDataType, callback: CallbackType)
         return callback.onError()
     $userData.next(result.data)
     const payload = $userData.getValue()     // * while prod
-    // const payload = testDataForPUT          // ! while testing
     const response = await dataRequest("put", "/api/user", payload)
     if (response.status !== 200)
         return callback.onError()
@@ -89,15 +60,21 @@ export const updateUserData = async (data: UserDataType, callback: CallbackType)
     callback.onSuccess()
 }
 
+
+// Handling user Data: DELETE (boundled to deletion of $user value - triggered by user action: delete profile)
 export const deleteUserData = async (): Promise<void> => {
     $userData.next(null)
 }
 
-// ! Statistics -- NOT WORKING @&#˘!
-/* export const numberOfAssets: number | undefined = $userData!.getValue()!.assets!.length
+// Handling user statistics
+export const assetCounter = (): number => {
+    if ($userData.getValue() === null) return 0
+    return $userData.getValue()!.assets!.length
+}
 
-export const activityCounter = (): number | null => {
+export const activityCounter = (): number => {
     let allActivities = 0
+    if ($userData.getValue() === null) return allActivities
     if ($userData!.getValue()!.assets) {
         let userAssets = $userData!.getValue()!.assets!
         for (let asset of userAssets) {
@@ -108,8 +85,9 @@ export const activityCounter = (): number | null => {
     return allActivities
 }
 
-export const machineCounter = (): number | null => {
+export const machineCounter = (): number => {
     let allMachines = 0
+    if ($userData.getValue() === null) return allMachines
     if ($userData!.getValue()!.assets) {
         let userAssets = $userData!.getValue()!.assets!
         for (let asset of userAssets) {
@@ -118,4 +96,4 @@ export const machineCounter = (): number | null => {
         }
     }
     return allMachines
-} */
+}

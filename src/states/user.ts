@@ -5,6 +5,7 @@ import jwt_decode from "jwt-decode"
 import { z } from "zod"
 
 
+// Handling session token payload decoding
 const UserSchema = z.object({
     name: z.string(),
     sub: z.string(),
@@ -12,7 +13,6 @@ const UserSchema = z.object({
     picture: z.string(),
 })
 export type UserType = z.infer<typeof UserSchema>
-
 
 const decodeUser = (token: string | null): UserType | null => {
     if (!token) return null
@@ -22,11 +22,13 @@ const decodeUser = (token: string | null): UserType | null => {
     return result.data
 }
 
+
+// user reactive state
 export const $user = new BehaviorSubject<UserType | null>(decodeUser($token.getValue()))
 $token.subscribe(token => $user.next(decodeUser(token)))
 
 
-// Login & Logout handling
+// Handling login and logout process
 type CallbackType = {
     onSuccess: () => any
     onError?: () => any
@@ -47,7 +49,7 @@ export const logout = (callback: CallbackType) => {
 }
 
 
-// Delete user handling
+// Handling user account deletion
 export const deleteUser = async (callback: CallbackType): Promise<void> => {
     const response = await dataRequest("delete", "/api/user", null)
     if (response.status !== 204)
