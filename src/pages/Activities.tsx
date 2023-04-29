@@ -1,6 +1,6 @@
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 import useGlobal from '../hooks/useGlobal'
-import { $userData, downloadUserData, /*  updateUserData, UserDataType */ } from '../states/userData'
+import { $userData/*, updateUserData, UserDataType */ } from '../states/userData'
 // Import components
 import NavigateAndInfo from '../components/NavigateAndInfo'
 // import CreateDocument from '../components/Modals/CreateDocument'
@@ -10,19 +10,11 @@ import { Flex, Center, VStack, Heading/* , useToast */ } from '@chakra-ui/react'
 
 const Activities: FC = () => {
 
-    // useEffect(() => {
-    //     downloadUserData()
-    // }, [])
-
     const userData = useGlobal($userData)
-    console.log(userData)
 
     // ? CREATE NEW DOCUMENT
         // const toast = useToast()
-        // console.log(userData)    // ! KONZULTÁCIÓ 3/3
-        // ! KONZULTÁCIÓ 3/2 - túl bonyolult?
         // const pushNew = (data: { name: string }) => userData?.assets?.push(data)
-
     // ? RENDERING PAGE
         // get asset id from url
         // get asset object[]
@@ -81,10 +73,8 @@ const Activities: FC = () => {
                         }
                     /> */}
                 </Center>
-
             </VStack>
         </VStack>
-
     )
 }
 
