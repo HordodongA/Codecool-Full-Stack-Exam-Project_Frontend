@@ -1,11 +1,11 @@
 import { FC } from 'react'
 import useGlobal from '../hooks/useGlobal'
-import { $userData/*, updateUserData, UserDataType */ } from '../states/userData'      // ? CREATE NEW DOCUMENT
+import { $userData, updateUserData, UserDataType } from '../states/userData'      // ? CREATE NEW DOCUMENT
 // Import components
 import NavigateAndInfo from '../components/NavigateAndInfo'
-// import CreateDocument from '../components/Modals/CreateDocument'                    // ? CREATE NEW DOCUMENT
+import CreateDocument from '../components/Modals/CreateDocument'                    // ? CREATE NEW DOCUMENT
 // Import Chakra UI components
-import { Flex, Center, VStack, Heading/* , useToast */ } from '@chakra-ui/react'
+import { Flex, Center, VStack, Heading, useToast } from '@chakra-ui/react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 
@@ -17,19 +17,22 @@ const Activities: FC = () => {
     let thisAsset
     if (userData && userData.assets) {
         thisAsset = userData.assets.filter(asset => asset._id === params.asset)[0]
-        // console.log(thisAsset)
     }
 
     // ? CREATE NEW DOCUMENT
-    // const toast = useToast()
-    // const pushNew = (data: { name: string }) => userData?.assets?.push(data)
+    const toast = useToast()
+    const pushNew = (data: { name: string }) => {
+        if (userData && userData.assets) {
+            userData.assets[userData.assets.findIndex(asset => asset._id === params.asset)].activities?.push(data)
+        }
+    }
 
 
     return (
         <VStack width='100%' >
             <NavigateAndInfo help="activities" />
 
-            <VStack maxWidth='95%' spacing='2rem'>
+            <VStack maxWidth='95%' spacing='1.5rem'>
                 <Heading as='h3' size='lg'>
                     Activities ({thisAsset?.name} asset)
                 </Heading>
@@ -47,35 +50,32 @@ const Activities: FC = () => {
                 </Flex>
 
                 <Center paddingTop='1rem' >
-                    <Heading>
-                        CREATE DOCUMENT
-                    </Heading>                 // ? CREATE NEW DOCUMENT
-                    {/* <CreateDocument
-                        userData={userData}
-                        docType="asset"
-                        pushNew={pushNew}
-                        onConfirm={(data: UserDataType) => {
-                            updateUserData(data, {
-                                onSuccess: () => toast({
-                                    title: 'Operation successful',
-                                    description: "Asset created",
-                                    status: 'success',
-                                    duration: 5000,
-                                    position: 'bottom-left',
-                                    isClosable: true,
-                                }),
-                                onError: () => toast({
-                                    title: 'Operation failed',
-                                    description: "Something went wrong, please try again later.",
-                                    status: 'error',
-                                    duration: 5000,
-                                    position: 'bottom-left',
-                                    isClosable: true,
+                    {userData &&
+                        <CreateDocument
+                            userData={userData}
+                            docType="activity"
+                            pushNew={pushNew}
+                            onConfirm={(data: UserDataType) => {
+                                updateUserData(data, {
+                                    onSuccess: () => toast({
+                                        title: 'Operation successful',
+                                        description: "Activity created",
+                                        status: 'success',
+                                        duration: 5000,
+                                        position: 'bottom-left',
+                                        isClosable: true,
+                                    }),
+                                    onError: () => toast({
+                                        title: 'Operation failed',
+                                        description: "Something went wrong, please try again later.",
+                                        status: 'error',
+                                        duration: 5000,
+                                        position: 'bottom-left',
+                                        isClosable: true,
+                                    })
                                 })
-                            })
-                        }
-                        }
-                    /> */}
+                            }}
+                        />}
                 </Center>
             </VStack>
         </VStack>

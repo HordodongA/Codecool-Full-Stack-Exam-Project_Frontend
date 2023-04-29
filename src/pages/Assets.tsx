@@ -14,14 +14,14 @@ const Assets: FC = () => {
     const navigate = useNavigate()
     const userData = useGlobal($userData)
     const toast = useToast()
-    const pushNew = (data: { name: string }) => userData?.assets?.push(data)
+    const pushNew = (data: { name: string }) => { if (userData && userData.assets) { userData.assets.push(data) } }
 
 
     return (
         <VStack width='100%' >
             <NavigateAndInfo help="assets" />
 
-            <VStack maxWidth='95%' spacing='2rem'>
+            <VStack maxWidth='95%' spacing='1.5rem'>
                 <Heading as='h3' size='lg'>
                     My Assets
                 </Heading>
@@ -63,10 +63,8 @@ const Assets: FC = () => {
                                         isClosable: true,
                                     })
                                 })
-                            }
-                            }
-                        />
-                    }
+                            }}
+                        />}
                 </Center>
             </VStack>
         </VStack>

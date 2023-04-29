@@ -10,7 +10,7 @@ import {
 type PropsType = {
     userData: UserDataType,
     docType: string,
-    pushNew: (data: { name: string }) => number | undefined,
+    pushNew: (data: { name: string }) => void,
     onConfirm: (data: UserDataType) => void
 }
 

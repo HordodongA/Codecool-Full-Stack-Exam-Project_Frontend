@@ -16,7 +16,7 @@ const Asset: FC = () => {
     let thisAsset
     if (userData && userData.assets) {
         thisAsset = userData.assets.filter(asset => asset._id === params.asset)[0]
-        console.log(thisAsset)
+        // console.log(thisAsset)
     }
 
 
