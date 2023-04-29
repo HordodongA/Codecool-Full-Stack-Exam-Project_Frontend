@@ -6,13 +6,15 @@ import { dataRequest } from "../api/landlordBackend"
 const ActivitySchema = z.object({
     name: z.string(),
     todos: z.string().optional(),
+    _id: z.string().optional()
 })
 const MachineSchema = z.object({
     name: z.string(),
     type: z.string().optional(),
-    unique_id: z.string().optional(),
+    unique_id: z.string().optional().optional(),
     service: z.string().optional(),
     todos: z.string().optional(),
+    _id: z.string().optional()
 })
 const AssetSchema = z.object({
     name: z.string(),
@@ -22,10 +24,12 @@ const AssetSchema = z.object({
     notes: z.string().optional(),
     activities: ActivitySchema.array().optional(),
     machines: MachineSchema.array().optional(),
+    _id: z.string().optional()
 })
 export const UserDataShema = z.object({
     sub: z.string(),
     assets: AssetSchema.array().optional(),
+    _id: z.string().optional()
 })
 export type UserDataType = z.infer<typeof UserDataShema>
 

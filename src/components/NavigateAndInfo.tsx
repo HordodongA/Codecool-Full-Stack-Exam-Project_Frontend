@@ -7,6 +7,7 @@ import { Flex, IconButton } from '@chakra-ui/react'
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, } from '@chakra-ui/react'
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
 
+
 type ProprsType = {
     help: string
 }
@@ -23,8 +24,7 @@ const NavigateAndInfo: FC<ProprsType> = ({ help }) => {
 
 
     return (
-
-        <Flex minH='30px' p='0.5% 1%' mb='2rem' width='100%' justify='space-between' alignItems='center' bg='gray.400'>
+        <Flex minH='30px' p='0.5% 1%' mb='1rem' width='100%' justify='space-between' alignItems='center' bg='gray.400'>
             <IconButton
                 aria-label='Search database'
                 icon={<ChevronLeftIcon boxSize={6} />}
@@ -49,7 +49,6 @@ const NavigateAndInfo: FC<ProprsType> = ({ help }) => {
 
             <InfoPanel help={help} />
         </Flex>
-
     )
 }
 

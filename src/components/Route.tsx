@@ -1,11 +1,11 @@
 import { FC, ReactNode } from "react"
 import { Navigate } from "react-router-dom"
 
+
 type Props = {
     hasAccess: boolean,
     children: ReactNode
 }
-
 
 const Protected: FC<Props> = ({ children, hasAccess }) => {
 

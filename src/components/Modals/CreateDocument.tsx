@@ -6,13 +6,13 @@ import {
     FormControl, FormLabel, FormErrorMessage, FormHelperText, Input, Button, Text
 } from '@chakra-ui/react'
 
+
 type PropsType = {
     userData: UserDataType,
     docType: string,
     pushNew: (data: { name: string }) => number | undefined,
     onConfirm: (data: UserDataType) => void
 }
-
 
 const CreateDocument: FC<PropsType> = ({ userData, docType, pushNew, onConfirm }) => {
 

@@ -1,25 +1,29 @@
 import { FC } from 'react'
 import useGlobal from '../hooks/useGlobal'
-import { $userData/*, updateUserData, UserDataType */ } from '../states/userData'
+import { $userData/*, updateUserData, UserDataType */ } from '../states/userData'      // ? CREATE NEW DOCUMENT
 // Import components
 import NavigateAndInfo from '../components/NavigateAndInfo'
-// import CreateDocument from '../components/Modals/CreateDocument'
+// import CreateDocument from '../components/Modals/CreateDocument'                    // ? CREATE NEW DOCUMENT
 // Import Chakra UI components
 import { Flex, Center, VStack, Heading/* , useToast */ } from '@chakra-ui/react'
+import { useNavigate, useParams } from 'react-router-dom'
 
 
 const Activities: FC = () => {
 
+    const navigate = useNavigate()
     const userData = useGlobal($userData)
+    const params = useParams()
+    let thisAsset
+    if (userData && userData.assets) {
+        thisAsset = userData.assets.filter(asset => asset._id === params.asset)[0]
+        // console.log(thisAsset)
+    }
 
     // ? CREATE NEW DOCUMENT
-        // const toast = useToast()
-        // const pushNew = (data: { name: string }) => userData?.assets?.push(data)
-    // ? RENDERING PAGE
-        // get asset id from url
-        // get asset object[]
-        // const asset = userData?.assets.filter(asset => asset.id === assetId)  // visszaad egy arrayt
-        // vagy ebből a változóból dolgozok, vagy kinyerem az indexetés azt mappelem
+    // const toast = useToast()
+    // const pushNew = (data: { name: string }) => userData?.assets?.push(data)
+
 
     return (
         <VStack width='100%' >
@@ -27,13 +31,13 @@ const Activities: FC = () => {
 
             <VStack maxWidth='95%' spacing='2rem'>
                 <Heading as='h3' size='lg'>
-                    nameOfAsset + 's activities'
+                    Activities ({thisAsset?.name} asset)
                 </Heading>
 
                 <Flex direction='row' justifyContent='center' alignItems='center' wrap='wrap' gap='20px'>
-                    {userData && userData.assets && userData.assets[0].activities && userData.assets[0].activities.map((activity, i) => {
+                    {thisAsset && thisAsset.activities && thisAsset.activities.map((activity, i) => {
                         return (
-                            <Center key={i} height='5rem' bg='gray.400' minWidth='260px' borderRadius='10px'>
+                            <Center key={i} height='5rem' bg='gray.400' minWidth='260px' borderRadius='10px' onClick={() => navigate(activity._id!)}>
                                 <Heading as='h4' size='md' textAlign='center'>
                                     {activity.name}
                                 </Heading>
@@ -45,7 +49,7 @@ const Activities: FC = () => {
                 <Center paddingTop='1rem' >
                     <Heading>
                         CREATE DOCUMENT
-                    </Heading>
+                    </Heading>                 // ? CREATE NEW DOCUMENT
                     {/* <CreateDocument
                         userData={userData}
                         docType="asset"

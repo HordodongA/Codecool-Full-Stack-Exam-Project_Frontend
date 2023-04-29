@@ -16,13 +16,13 @@ import Protected from './Route'
 // Import Chakra UI components
 import { Container } from '@chakra-ui/react'
 
+
 const Main: FC = () => {
 
     const user = useGlobal($user)
 
 
     return (
-
         <Container as='main' maxW='100%' p='0 0 1rem 0'  >
             <Routes >
                 <Route path="/*" element={!user ? <Login /> : <Navigate to="/assets" />} />
@@ -31,20 +31,21 @@ const Main: FC = () => {
                     element={
                         <Protected hasAccess={!!user}>
                             <Routes>
-                                <Route path="/" >
-                                    <Route path="/" index element={<Assets />} />
-                                    <Route path="/:asset/" >
-                                        <Route path="/:asset/" element={<Asset />} />
-                                        <Route path="/:asset/activities/" >
-                                            <Route path="/:asset/activities/" element={<Activities />} />
-                                            <Route path="/:asset/activities/:activity" element={<div>ACTIVITY, DINAMIC</div>} />
-                                        </Route>
-                                        <Route path="/:asset/machines/">
-                                            <Route path="/:asset/machines/" element={<div>MACHINES</div>} />
-                                            <Route path="/:asset/machines/:machine" element={<div>MACHINE, DINAMIC</div>} />
-                                        </Route>
+                                {/* <Route path="/" > */}
+                                <Route path="/" index element={<Assets />} />
+                                <Route path="/:asset/" >
+                                    <Route path="/:asset/" element={<Asset />} />
+                                    <Route path="/:asset/activities/" >
+                                        <Route path="/:asset/activities/" element={<Activities />} />
+                                        <Route path="/:asset/activities/:activity" element={<div>ACTIVITY, DINAMIC</div>} />
                                     </Route>
+                                    <Route path="/:asset/machines/">
+                                        <Route path="/:asset/machines/" element={<div>MACHINES</div>} />
+                                        <Route path="/:asset/machines/:machine" element={<div>MACHINE, DINAMIC</div>} />
+                                    </Route>
+                                    <Route path="/:asset/asset-data" element={<div>ASSET DATA SHEET</div>} />
                                 </Route>
+                                {/* </Route> */}
                                 <Route path="*" element={<NotFound />} />
                             </Routes>
                         </Protected>
@@ -66,7 +67,6 @@ const Main: FC = () => {
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </Container>
-
     )
 }
 

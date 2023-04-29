@@ -11,7 +11,6 @@ const NotFound: FC = () => {
 
 
     return (
-
         <Stack minH='60vh' w='80vw' direction='column' spacing='6' align='center' justify='center'>
             <Heading as='h6' size='xs' color='gray.600'>Error 404</Heading>
             <Heading as='h2' marginTop='0' size='xl' color='gray.900'>Page not found</Heading>
@@ -26,7 +25,6 @@ const NotFound: FC = () => {
                 </Button>
             </Flex>
         </Stack>
-
     )
 }
 

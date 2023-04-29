@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { useNavigate } from 'react-router-dom'
 import useGlobal from '../hooks/useGlobal'
 import { $userData, updateUserData, UserDataType } from '../states/userData'
 // Import components
@@ -10,6 +11,7 @@ import { Flex, Center, VStack, Heading, useToast } from '@chakra-ui/react'
 
 const Assets: FC = () => {
 
+    const navigate = useNavigate()
     const userData = useGlobal($userData)
     const toast = useToast()
     const pushNew = (data: { name: string }) => userData?.assets?.push(data)
@@ -27,7 +29,7 @@ const Assets: FC = () => {
                 <Flex direction='row' justifyContent='center' alignItems='center' wrap='wrap' gap='20px'>
                     {userData && userData.assets && userData.assets.map((asset, i) => {
                         return (
-                            <Center key={i} height='5rem' bg='gray.400' minWidth='260px' borderRadius='10px'>
+                            <Center key={i} height='5rem' bg='gray.400' minWidth='260px' borderRadius='10px' onClick={() => navigate(asset._id!)}>
                                 <Heading as='h4' size='md' textAlign='center'>
                                     {asset.name}
                                 </Heading>
@@ -68,7 +70,6 @@ const Assets: FC = () => {
                 </Center>
             </VStack>
         </VStack>
-
     )
 }
 

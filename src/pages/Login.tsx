@@ -7,7 +7,6 @@ import { Flex, Circle, Image, Heading, Link } from '@chakra-ui/react'
 const Login: FC = () => {
 
     return (
-
         <Flex direction='column' paddingTop='5%' alignItems='center'>
             <Circle marginBottom='3rem' boxShadow='dark-lg' size='300px' bg='gray.400' color='white'>
                 <Image boxSize='300px' src='../../public/favicon.png' alt='../../public/favicon.png' />
@@ -27,7 +26,6 @@ const Login: FC = () => {
                 Login with Google
             </Link>
         </Flex>
-
     )
 }
 

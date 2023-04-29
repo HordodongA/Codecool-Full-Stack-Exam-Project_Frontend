@@ -4,12 +4,12 @@ import {
     useDisclosure, Button, Text
 } from '@chakra-ui/react'
 
+
 type PropsType = {
     docType: string,
     docName: string,
     onConfirm: () => void
 }
-
 
 const ConfirmDelete: FC<PropsType> = ({ docType, docName, onConfirm }) => {
 
@@ -17,7 +17,6 @@ const ConfirmDelete: FC<PropsType> = ({ docType, docName, onConfirm }) => {
 
 
     return (
-
         <>
             <Button colorScheme='red' onClick={onOpen}>Delete {docType}</Button>
 
@@ -49,7 +48,6 @@ const ConfirmDelete: FC<PropsType> = ({ docType, docName, onConfirm }) => {
                 </ModalContent>
             </Modal>
         </>
-
     )
 }
 

@@ -32,7 +32,6 @@ const Callback: FC = () => {
 
 
     return (
-
         <Flex direction='column' paddingTop='2%' alignItems='center'>
             <Circle marginBottom='1rem' boxShadow='dark-lg' size='200px' bg='gray.400' color='white'>
                 <Image boxSize='200px' src='../../public/favicon.png' alt='../../public/favicon.png' />
@@ -56,7 +55,6 @@ const Callback: FC = () => {
                 size='xl'
             />
         </Flex>
-
     )
 }
 

@@ -7,10 +7,10 @@ import {
 } from '@chakra-ui/react'
 import { InfoOutlineIcon } from '@chakra-ui/icons'
 
+
 type ProprsType = {
     help: string
 }
-
 
 const InfoPanel: FC<ProprsType> = ({ help }) => {
 

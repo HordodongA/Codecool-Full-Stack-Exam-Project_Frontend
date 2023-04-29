@@ -15,11 +15,10 @@ const Navbar: FC = () => {
 
 
     return (
-
         <Flex p='1% 1%' width='100%' justify='space-between' bg='gray.300'>
             <Center minW='50px'>
                 <Menu>
-                    {(/* { isOpen } */) => (
+                    {() => (
                         <>
                             <MenuButton
                                 as={IconButton}
@@ -41,7 +40,6 @@ const Navbar: FC = () => {
                 </Menu>
             </Center>
 
-
             <VStack direction="column" justify='center'>
                 <Heading as='h6' size='xs' _hover={{ cursor: 'pointer' }} onClick={() => navigate("/assets")}>  landlord  </Heading>
                 {user && <Heading as='h4' size='md' marginTop='0rem !important' > {user.name}</Heading>}
@@ -53,7 +51,6 @@ const Navbar: FC = () => {
                 </Center>
             </Flex>
         </Flex>
-
     )
 }
 

@@ -5,7 +5,6 @@ import { Box, Container, Center, Image, Heading, Text } from '@chakra-ui/react'
 
 const About: FC = () => {
     return (
-
         <Box >
             <Center>
                 <Image boxSize='100px' src='../../public/favicon.png' alt='../../public/favicon.png' />
@@ -39,9 +38,7 @@ const About: FC = () => {
                     </Text>
                 </Container>
             </Box>
-
         </Box>
-
     )
 }
 

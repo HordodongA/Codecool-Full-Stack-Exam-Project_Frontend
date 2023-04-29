@@ -1,57 +1,79 @@
 import { FC } from 'react'
-// import useGlobal from '../hooks/useGlobal'
-// import { $userData } from '../states/userData'
+import { useNavigate, useParams } from 'react-router-dom'
+import useGlobal from '../hooks/useGlobal'
+import { $userData } from '../states/userData'
 // Import components
 import NavigateAndInfo from '../components/NavigateAndInfo'
 // Import Chakra UI components
 import { Flex, Center, VStack, Heading } from '@chakra-ui/react'
 
-// type PropsType = {
-//     assetName: string
-// }
 
-
-// const Asset: FC<PropsType> = ({ assetName }) => {
 const Asset: FC = () => {
 
-    // const userData = useGlobal($userData)
-    // ! tudni kellene: melyik assetben vagyunk?
-    // if userdata / assets[].filter(asset.name === assetName).activities.length
+    const navigate = useNavigate()
+    const userData = useGlobal($userData)
+    const params = useParams()
+    let thisAsset
+    if (userData && userData.assets) {
+        thisAsset = userData.assets.filter(asset => asset._id === params.asset)[0]
+        console.log(thisAsset)
+    }
 
-    
+
     return (
-
         <VStack width='100%' >
             <NavigateAndInfo help="asset" />
 
-            <VStack maxWidth='95%' spacing='2rem'>
+            <VStack maxWidth='95%' spacing='1.5rem'>
                 <Heading as='h3' size='lg'>
-                    {/* {assetName} */}
-                    ASSET displayed by name
+                    {thisAsset?.name} asset
                 </Heading>
 
-                <Flex direction='row' justifyContent='center' alignItems='center' wrap='wrap' gap='20px'>
+                <Center height='2.5rem' bg='gray.400' minWidth='260px' borderRadius='10px'>
+                    <Heading as='h4' size='md' textAlign='center' onClick={() => navigate("asset-data")}>
+                        show assets data
+                    </Heading>
+                </Center>
 
-                    <Center height='5rem' bg='gray.400' minWidth='260px' borderRadius='10px'>
+                <Flex direction='row' justifyContent='center' alignItems='center' wrap='wrap' gap='20px'>
+                    <Center height='5rem' bg='gray.400' minWidth='260px' borderRadius='10px' onClick={() => navigate("activities")}>
                         <Heading as='h4' size='md' textAlign='center'>
                             Activities
                         </Heading>
                     </Center>
-                    <Center height='5rem' bg='gray.400' minWidth='260px' borderRadius='10px'>
+                    <Center height='5rem' bg='gray.400' minWidth='260px' borderRadius='10px' onClick={() => navigate("machines")}>
                         <Heading as='h4' size='md' textAlign='center'>
                             Machines
                         </Heading>
                     </Center>
+                    <Center height='5rem' bg='gray.300' color='gray.400' minWidth='260px' borderRadius='10px'>
+                        <Heading as='h4' size='md' textAlign='center'>
+                            Inspections
+                        </Heading>
+                    </Center>
+                    <Center height='5rem' bg='gray.300' color='gray.400' minWidth='260px' borderRadius='10px'>
+                        <Heading as='h4' size='md' textAlign='center'>
+                            Cleaning
+                        </Heading>
+                    </Center>
+                    <Center height='5rem' bg='gray.300' color='gray.400' minWidth='260px' borderRadius='10px'>
+                        <Heading as='h4' size='md' textAlign='center'>
+                            Care
+                        </Heading>
+                    </Center>
+                    <Center height='5rem' bg='gray.300' color='gray.400' minWidth='260px' borderRadius='10px'>
+                        <Heading as='h4' size='md' textAlign='center'>
+                            Inventory
+                        </Heading>
+                    </Center>
+                    <Center height='5rem' bg='gray.300' color='gray.400' minWidth='260px' borderRadius='10px'>
+                        <Heading as='h4' size='md' textAlign='center'>
+                            Administration
+                        </Heading>
+                    </Center>
                 </Flex>
-
-                <Center height='3rem' bg='gray.400' minWidth='260px' borderRadius='10px'>
-                    <Heading as='h4' size='md' textAlign='center'>
-                        show assets data
-                    </Heading>
-                </Center>
             </VStack>
         </VStack>
-
     )
 }
 
