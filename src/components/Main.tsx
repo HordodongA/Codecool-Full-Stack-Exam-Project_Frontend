@@ -9,6 +9,7 @@ import Asset from '../pages/Asset'
 import Assets from '../pages/Assets'
 import Callback from '../pages/Callback'
 import Login from '../pages/Login'
+import Machines from '../pages/Machines'
 import Profile from '../pages/Profile'
 import NotFound from './NotFound'
 // Import Components
@@ -40,7 +41,7 @@ const Main: FC = () => {
                                         <Route path="/:asset/activities/:activity" element={<div>ACTIVITY, DINAMIC</div>} />
                                     </Route>
                                     <Route path="/:asset/machines/">
-                                        <Route path="/:asset/machines/" element={<div>MACHINES</div>} />
+                                        <Route path="/:asset/machines/" element={<Machines />} />
                                         <Route path="/:asset/machines/:machine" element={<div>MACHINE, DINAMIC</div>} />
                                     </Route>
                                     <Route path="/:asset/asset-data" element={<div>ASSET DATA SHEET</div>} />
