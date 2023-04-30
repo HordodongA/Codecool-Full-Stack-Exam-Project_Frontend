@@ -5,23 +5,21 @@ import useGlobal from '../hooks/useGlobal'
 import { $userData, AsseType, MachineType } from '../states/userData'
 // Import Components
 import NavigateAndInfo from '../components/NavigateAndInfo'
-import ConfirmDelete from '../components/Modals/ConfirmDelete'
 // Import Chakra UI components
-import { Box, Flex, Center, Heading, Text, useToast, VStack } from '@chakra-ui/react'
+import { Box, Flex, Heading, Text, VStack } from '@chakra-ui/react'
 
 
 const Machine: FC = () => {
 
     const userData = useGlobal($userData)
-    const toast = useToast()
     const params = useParams()
-    console.log("params", params)
     let thisAsset: AsseType | undefined
     let thisMachine: MachineType | undefined
     if (userData && userData.assets) {
         thisAsset = userData.assets.filter(asset => asset._id === params.asset)[0]
         thisMachine = thisAsset.machines?.filter(machine => machine._id === params.machine)[0]
     }
+
 
     return (
         <VStack width='100%' >
@@ -68,38 +66,10 @@ const Machine: FC = () => {
                     }
                 </Flex>
 
-                {/* EDIT MACHINE */}
+                <Heading>
+                    EDIT MACHINE
+                </Heading>
 
-                {/* DELETE MACHINE: EDIT LOGIKA KELL MAJD */}
-                <Center paddingTop='2rem'>
-                    <ConfirmDelete
-                        docType="machine"
-                        docName={thisMachine!.name}
-                        // onConfirm={() => deleteUser({
-                        //     onSuccess: () => toast({
-                        //         title: 'Operation successful',
-                        //         description: "Data successfully deleted from our system.",
-                        //         status: 'success',
-                        //         duration: 5000,
-                        //         isClosable: true,
-                        //     }),
-                        //     onError: () => toast({
-                        //         title: 'Operation failed',
-                        //         description: "Something went wrong, please try again later.",
-                        //         status: 'error',
-                        //         duration: 5000,
-                        //         isClosable: true,
-                        //     })
-                        // })}
-                        onConfirm={() => toast({
-                            title: 'Operation successful',
-                            description: `${thisMachine?.name} successfully removed from ${thisAsset?.name} asset.`,
-                            status: 'success',
-                            duration: 5000,
-                            isClosable: true,
-                        })}
-                    />
-                </Center>
             </VStack>
         </VStack >
     )

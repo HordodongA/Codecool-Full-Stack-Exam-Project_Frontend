@@ -5,23 +5,21 @@ import useGlobal from '../hooks/useGlobal'
 import { $userData, AsseType, ActivityType } from '../states/userData'
 // Import Components
 import NavigateAndInfo from '../components/NavigateAndInfo'
-import ConfirmDelete from '../components/Modals/ConfirmDelete'
 // Import Chakra UI components
-import { Box, Flex, Center, Heading, Text, useToast, VStack } from '@chakra-ui/react'
+import { Box, Flex, Heading, Text, VStack } from '@chakra-ui/react'
 
 
 const Machine: FC = () => {
 
     const userData = useGlobal($userData)
-    const toast = useToast()
     const params = useParams()
-    console.log("params", params)
     let thisAsset: AsseType | undefined
     let thisActivity: ActivityType | undefined
     if (userData && userData.assets) {
         thisAsset = userData.assets.filter(asset => asset._id === params.asset)[0]
         thisActivity = thisAsset.activities?.filter(activity => activity._id === params.activity)[0]
     }
+
 
     return (
         <VStack width='100%' >
@@ -50,38 +48,10 @@ const Machine: FC = () => {
                     }
                 </Flex>
 
-                {/* EDIT MACHINE */}
+                <Heading>
+                    EDIT ACTIVITY
+                </Heading>
 
-                {/* DELETE MACHINE: EDIT LOGIKA KELL MAJD */}
-                <Center paddingTop='2rem'>
-                    <ConfirmDelete
-                        docType="activity"
-                        docName={thisActivity!.name}
-                        // onConfirm={() => deleteUser({
-                        //     onSuccess: () => toast({
-                        //         title: 'Operation successful',
-                        //         description: "Data successfully deleted from our system.",
-                        //         status: 'success',
-                        //         duration: 5000,
-                        //         isClosable: true,
-                        //     }),
-                        //     onError: () => toast({
-                        //         title: 'Operation failed',
-                        //         description: "Something went wrong, please try again later.",
-                        //         status: 'error',
-                        //         duration: 5000,
-                        //         isClosable: true,
-                        //     })
-                        // })}
-                        onConfirm={() => toast({
-                            title: 'Operation successful',
-                            description: `${thisActivity?.name} successfully removed from ${thisAsset?.name} asset.`,
-                            status: 'success',
-                            duration: 5000,
-                            isClosable: true,
-                        })}
-                    />
-                </Center>
             </VStack>
         </VStack >
     )
