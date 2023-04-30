@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import { Routes, Route, Navigate } from "react-router-dom"
+// Import own hooks and states
 import useGlobal from '../hooks/useGlobal'
 import { $user } from '../states/user'
 // Import Pages
@@ -10,8 +11,9 @@ import Assets from '../pages/Assets'
 import Callback from '../pages/Callback'
 import Login from '../pages/Login'
 import Machines from '../pages/Machines'
+import Machine from '../pages/Machine'
 import Profile from '../pages/Profile'
-import NotFound from './NotFound'
+import NotFound from '../pages/NotFound'
 // Import Components
 import Protected from './Route'
 // Import Chakra UI components
@@ -42,7 +44,7 @@ const Main: FC = () => {
                                     </Route>
                                     <Route path="/:asset/machines/">
                                         <Route path="/:asset/machines/" element={<Machines />} />
-                                        <Route path="/:asset/machines/:machine" element={<div>MACHINE, DINAMIC</div>} />
+                                        <Route path="/:asset/machines/:machine" element={<Machine />} />
                                     </Route>
                                     <Route path="/:asset/asset-data" element={<div>ASSET DATA SHEET</div>} />
                                 </Route>

@@ -1,9 +1,10 @@
 import { FC } from 'react'
+// Import own hooks and states
 import useGlobal from '../hooks/useGlobal'
-import { $userData, updateUserData, UserDataType } from '../states/userData'      // ? CREATE NEW DOCUMENT
+import { $userData, updateUserData, UserDataType } from '../states/userData'
 // Import components
 import NavigateAndInfo from '../components/NavigateAndInfo'
-import CreateDocument from '../components/Modals/CreateDocument'                    // ? CREATE NEW DOCUMENT
+import CreateDocument from '../components/Modals/CreateDocument'
 // Import Chakra UI components
 import { Flex, Center, VStack, Heading, useToast } from '@chakra-ui/react'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -19,7 +20,6 @@ const Machines: FC = () => {
         thisAsset = userData.assets.filter(asset => asset._id === params.asset)[0]
     }
 
-    // ? CREATE NEW DOCUMENT
     const toast = useToast()
     const pushNew = (data: { name: string }) => {
         if (userData && userData.assets) {

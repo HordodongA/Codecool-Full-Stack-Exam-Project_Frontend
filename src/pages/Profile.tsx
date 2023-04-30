@@ -1,4 +1,5 @@
 import { FC } from 'react'
+// Import hooks and states
 import useGlobal from '../hooks/useGlobal'
 import { $user, deleteUser } from '../states/user'
 import { $userData, assetCounter, activityCounter, machineCounter } from '../states/userData'

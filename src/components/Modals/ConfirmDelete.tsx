@@ -41,7 +41,10 @@ const ConfirmDelete: FC<PropsType> = ({ docType, docName, onConfirm }) => {
                         <Button variant='ghost' mr={3} onClick={onClose}>
                             Cancel
                         </Button>
-                        <Button colorScheme='red' onClick={() => onConfirm()} >
+                        <Button colorScheme='red' onClick={() => {
+                            onClose()
+                            onConfirm()
+                        }} >
                             Confirm
                         </Button>
                     </ModalFooter>
