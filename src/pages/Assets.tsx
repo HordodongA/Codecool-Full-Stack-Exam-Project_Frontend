@@ -37,7 +37,6 @@ const Assets: FC = () => {
 
                 <Flex direction='row' justifyContent='center' alignItems='center' wrap='wrap' gap='20px'>
                     {userData && userData.assets && userData.assets.map((asset, i) => {
-                        console.log("index: ", i)
                         return (
                             <Center key={i} height='5rem' bg='gray.400' minWidth='260px' borderRadius='10px' >
                                 <Heading as='h4' size='md' textAlign='center' onClick={() => navigate(asset._id!)}>

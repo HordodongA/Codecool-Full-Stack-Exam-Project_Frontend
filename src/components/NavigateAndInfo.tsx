@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { useNavigate, Link/* , useLocation */ } from "react-router-dom"
+import { useNavigate, Link, useLocation, useParams, useSearchParams } from "react-router-dom"
 // Import components
 import InfoPanel from './Modals/InfoPanel'
 // Import Chakra UI components
@@ -17,10 +17,18 @@ const NavigateAndInfo: FC<ProprsType> = ({ help }) => {
     const navigate = useNavigate()
 
     // Get path segments for breadcrumbs
-    // const location = useLocation()
+    const location = useLocation()
+    console.log(location)
     // console.log(location.pathname)
     // console.log(location.pathname.split("/"))
     // console.log(location.pathname.split("/").filter(string => string !== ""))
+    const breadcrumbSegments = location.pathname.split("/").filter(string => string !== "")
+    console.log(breadcrumbSegments)
+    // ? ['assets', '644bc8d58ebf76cbbbb9c4b7', 'activities', '644bc8d58ebf76cbbbb9c4b8']
+    // const params = useParams()
+    // console.log(params)
+    // ! Az autogenerálós breadcrumb jól működik
+    // ! Most az kellene bele, hogy az id-kat kicserélje a resource nevére
 
 
     return (
@@ -33,7 +41,27 @@ const NavigateAndInfo: FC<ProprsType> = ({ help }) => {
                 onClick={() => navigate(-1)}
             />
 
+
             <Breadcrumb fontWeight='medium' fontSize='sm' separator={<ChevronRightIcon color='gray.900' />}>
+                // ? ['assets', '644bc8d58ebf76cbbbb9c4b7', 'activities', '644bc8d58ebf76cbbbb9c4b8']
+
+                {breadcrumbSegments && breadcrumbSegments.map((segment, i) => {
+                    let linkTo = ""
+                    for (let j = 0; j < i + 1; j++) {
+                        linkTo += "/" + breadcrumbSegments[j]
+                        console.log(linkTo)
+                    }
+                    return (
+                        <BreadcrumbItem key={i}>
+                            <BreadcrumbLink as={Link} to={linkTo}>{segment}</BreadcrumbLink>
+                        </BreadcrumbItem>
+                    )
+                })}
+            </Breadcrumb>
+
+
+
+            {/* <Breadcrumb fontWeight='medium' fontSize='sm' separator={<ChevronRightIcon color='gray.900' />}>
                 <BreadcrumbItem>
                     <BreadcrumbLink as={Link} to='/assets'>Assets</BreadcrumbLink>
                 </BreadcrumbItem>
@@ -45,7 +73,7 @@ const NavigateAndInfo: FC<ProprsType> = ({ help }) => {
                 <BreadcrumbItem isCurrentPage>
                     <BreadcrumbLink href='#'>Current</BreadcrumbLink>
                 </BreadcrumbItem>
-            </Breadcrumb>
+            </Breadcrumb> */}
 
             <InfoPanel help={help} />
         </Flex>
