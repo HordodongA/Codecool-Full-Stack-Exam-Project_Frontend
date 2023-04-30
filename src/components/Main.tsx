@@ -7,8 +7,9 @@ import { $user } from '../states/user'
 import About from '../pages/About'
 import Activities from '../pages/Activities'
 import Activity from '../pages/Activity'
-import Asset from '../pages/Asset'
 import Assets from '../pages/Assets'
+import Asset from '../pages/Asset'
+import AssetData from '../pages/AssetData'
 import Callback from '../pages/Callback'
 import Login from '../pages/Login'
 import Machines from '../pages/Machines'
@@ -47,7 +48,7 @@ const Main: FC = () => {
                                         <Route path="/:asset/machines/" element={<Machines />} />
                                         <Route path="/:asset/machines/:machine" element={<Machine />} />
                                     </Route>
-                                    <Route path="/:asset/asset-data" element={<div>ASSET DATA SHEET</div>} />
+                                    <Route path="/:asset/asset-data" element={<AssetData />} />
                                 </Route>
                                 {/* </Route> */}
                                 <Route path="*" element={<NotFound />} />
