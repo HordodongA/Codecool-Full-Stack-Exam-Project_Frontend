@@ -69,7 +69,6 @@ const Machine: FC = () => {
                 <Heading>
                     EDIT MACHINE
                 </Heading>
-
             </VStack>
         </VStack >
     )

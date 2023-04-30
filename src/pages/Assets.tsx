@@ -12,9 +12,10 @@ import { Flex, Center, VStack, Heading, useToast } from '@chakra-ui/react'
 
 const Assets: FC = () => {
 
-    const navigate = useNavigate()
     const userData = useGlobal($userData)
+    const navigate = useNavigate()
     const toast = useToast()
+    
     const pushNew = (data: { name: string }) => { if (userData && userData.assets) { userData.assets.push(data) } }
 
     const removeAsset = (i: number) => {
