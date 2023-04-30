@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { useParams } from 'react-router-dom'
 // Import own hooks and states
 import useGlobal from '../hooks/useGlobal'
-import { $userData, AsseType, MachineType } from '../states/userData'
+import { $userData, AsseType, ActivityType } from '../states/userData'
 // Import Components
 import NavigateAndInfo from '../components/NavigateAndInfo'
 import ConfirmDelete from '../components/Modals/ConfirmDelete'
@@ -17,24 +17,24 @@ const Machine: FC = () => {
     const params = useParams()
     console.log("params", params)
     let thisAsset: AsseType | undefined
-    let thisMachine: MachineType | undefined
+    let thisActivity: ActivityType | undefined
     if (userData && userData.assets) {
         thisAsset = userData.assets.filter(asset => asset._id === params.asset)[0]
-        thisMachine = thisAsset.machines?.filter(machine => machine._id === params.machine)[0]
+        thisActivity = thisAsset.activities?.filter(activity => activity._id === params.activity)[0]
     }
 
     return (
         <VStack width='100%' >
-            <NavigateAndInfo help="machine" />
+            <NavigateAndInfo help="activity" />
 
             <VStack minW='200' maxW='400' spacing='1.5rem'>
                 <Heading as='h3' size='lg' textAlign='center' >
-                    {thisMachine?.name} machine
+                    {thisActivity?.name} activity
                 </Heading>
                 <Flex marginTop='0.5rem' w='100%' direction='row' justifyContent='center' alignItems='center' wrap='wrap' columnGap='3rem' rowGap='0.5rem'>
                     <Box marginTop='0.5rem' w='100%'>
                         <Text fontSize='m' >name</Text>
-                        <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'> {thisMachine?.name}</Text>
+                        <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'> {thisActivity?.name}</Text>
                     </Box>
                     {thisAsset?.name &&
                         <Box marginTop='0.5rem' w='100%'>
@@ -42,28 +42,10 @@ const Machine: FC = () => {
                             <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'> {thisAsset?.name}</Text>
                         </Box>
                     }
-                    {thisMachine?.type &&
+                    {thisActivity?.todos &&
                         <Box marginTop='0.5rem' w='100%'>
-                            <Text fontSize='m' >type</Text>
-                            <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'> {thisMachine?.type}</Text>
-                        </Box>
-                    }
-                    {thisMachine?.unique_id &&
-                        <Box marginTop='0.5rem' w='100%'>
-                            <Text fontSize='m' >unique identifier</Text>
-                            <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'> {thisMachine?.unique_id}</Text>
-                        </Box>
-                    }
-                    {thisMachine?.service &&
-                        <Box marginTop='0.5rem' w='100%'>
-                            <Text fontSize='m' >service / mechanic</Text>
-                            <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'> {thisMachine?.service}</Text>
-                        </Box>
-                    }
-                    {thisMachine?.todos &&
-                        <Box marginTop='0.5rem' w='100%'>
-                            <Text fontSize='m' >Inspection list</Text>
-                            <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'> {thisMachine?.todos}</Text>
+                            <Text fontSize='m' >Todos</Text>
+                            <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'> {thisActivity?.todos}</Text>
                         </Box>
                     }
                 </Flex>
@@ -73,8 +55,8 @@ const Machine: FC = () => {
                 {/* DELETE MACHINE: EDIT LOGIKA KELL MAJD */}
                 <Center paddingTop='2rem'>
                     <ConfirmDelete
-                        docType="machine"
-                        docName={thisMachine!.name}
+                        docType="activity"
+                        docName={thisActivity!.name}
                         // onConfirm={() => deleteUser({
                         //     onSuccess: () => toast({
                         //         title: 'Operation successful',
@@ -93,7 +75,7 @@ const Machine: FC = () => {
                         // })}
                         onConfirm={() => toast({
                             title: 'Operation successful',
-                            description: `${thisMachine?.name} successfully removed from ${thisAsset?.name} asset.`,
+                            description: `${thisActivity?.name} successfully removed from ${thisAsset?.name} asset.`,
                             status: 'success',
                             duration: 5000,
                             isClosable: true,

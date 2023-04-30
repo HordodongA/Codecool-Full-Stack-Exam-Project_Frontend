@@ -6,6 +6,7 @@ import { $user } from '../states/user'
 // Import Pages
 import About from '../pages/About'
 import Activities from '../pages/Activities'
+import Activity from '../pages/Activity'
 import Asset from '../pages/Asset'
 import Assets from '../pages/Assets'
 import Callback from '../pages/Callback'
@@ -40,7 +41,7 @@ const Main: FC = () => {
                                     <Route path="/:asset/" element={<Asset />} />
                                     <Route path="/:asset/activities/" >
                                         <Route path="/:asset/activities/" element={<Activities />} />
-                                        <Route path="/:asset/activities/:activity" element={<div>ACTIVITY, DINAMIC</div>} />
+                                        <Route path="/:asset/activities/:activity" element={<Activity />} />
                                     </Route>
                                     <Route path="/:asset/machines/">
                                         <Route path="/:asset/machines/" element={<Machines />} />
