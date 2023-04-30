@@ -11,7 +11,7 @@ type PropsType = {
     onConfirm: () => void
 }
 
-const ConfirmDelete: FC<PropsType> = ({ docType, docName, onConfirm }) => {
+const ConfirmDeleteDocument: FC<PropsType> = ({ docType, docName, onConfirm }) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -19,7 +19,6 @@ const ConfirmDelete: FC<PropsType> = ({ docType, docName, onConfirm }) => {
     return (
         <>
             <Button colorScheme='red' onClick={onOpen}>Delete {docType}</Button>
-
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
@@ -41,7 +40,10 @@ const ConfirmDelete: FC<PropsType> = ({ docType, docName, onConfirm }) => {
                         <Button variant='ghost' mr={3} onClick={onClose}>
                             Cancel
                         </Button>
-                        <Button colorScheme='red' onClick={() => onConfirm()} >
+                        <Button colorScheme='red' onClick={() => {
+                            onConfirm()
+                            onClose()
+                        }} >
                             Confirm
                         </Button>
                     </ModalFooter>
@@ -51,4 +53,4 @@ const ConfirmDelete: FC<PropsType> = ({ docType, docName, onConfirm }) => {
     )
 }
 
-export default ConfirmDelete
+export default ConfirmDeleteDocument

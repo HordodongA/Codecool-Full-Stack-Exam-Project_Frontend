@@ -3,19 +3,15 @@ import {
     Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton,
     useDisclosure, Button, Text
 } from '@chakra-ui/react'
-import { UserDataType } from '../../states/userData'
 
 
 type PropsType = {
     docType: string,
     docName: string,
-    index: number,
-    userData: UserDataType,
-    removeResource: (i: number) => void
-    onConfirm: (data: UserDataType) => void
+    onConfirm: () => void
 }
 
-const DeleteDocument: FC<PropsType> = ({ docType, docName, index, userData, removeResource, onConfirm }) => {
+const ConfirmDeleteProfile: FC<PropsType> = ({ docType, docName, onConfirm }) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -45,11 +41,7 @@ const DeleteDocument: FC<PropsType> = ({ docType, docName, index, userData, remo
                         <Button variant='ghost' mr={3} onClick={onClose}>
                             Cancel
                         </Button>
-                        <Button colorScheme='red' onClick={() => {
-                            removeResource(index)
-                            onConfirm(userData)
-                            onClose()
-                        }} >
+                        <Button colorScheme='red' onClick={() => onConfirm()} >
                             Confirm
                         </Button>
                     </ModalFooter>
@@ -59,4 +51,4 @@ const DeleteDocument: FC<PropsType> = ({ docType, docName, index, userData, remo
     )
 }
 
-export default DeleteDocument
+export default ConfirmDeleteProfile

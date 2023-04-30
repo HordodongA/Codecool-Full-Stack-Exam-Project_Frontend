@@ -5,7 +5,7 @@ import { $user, deleteUser } from '../states/user'
 import { $userData, assetCounter, activityCounter, machineCounter } from '../states/userData'
 // Import Components
 import NavigateAndInfo from '../components/NavigateAndInfo'
-import ConfirmDelete from '../components/Modals/ConfirmDelete'
+import ConfirmDeleteProfile from '../components/Modals/ConfirmDeleteProfile'
 // Import Chakra UI components
 import { Box, Flex, Center, Avatar, Heading, Text, useToast, VStack } from '@chakra-ui/react'
 
@@ -63,7 +63,7 @@ const Profile: FC = () => {
             </Box>
 
             <Center paddingTop='2rem'>
-                <ConfirmDelete
+                <ConfirmDeleteProfile
                     docType="user profile"
                     docName={user!.name}
                     onConfirm={() => deleteUser({

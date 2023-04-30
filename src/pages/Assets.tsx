@@ -5,7 +5,7 @@ import { $userData, updateUserData, UserDataType } from '../states/userData'
 // Import components
 import NavigateAndInfo from '../components/NavigateAndInfo'
 import CreateDocument from '../components/Modals/CreateDocument'
-import DeleteDocument from '../components/Modals/DeleteDocument'
+import ConfirmDeleteDocument from '../components/Modals/ConfirmDeleteDocument'
 // Import Chakra UI components
 import { Flex, Center, VStack, Heading, useToast } from '@chakra-ui/react'
 
@@ -24,6 +24,7 @@ const Assets: FC = () => {
         }
     }
 
+
     return (
         <VStack width='100%' >
             <NavigateAndInfo help="assets" />
@@ -41,23 +42,19 @@ const Assets: FC = () => {
                                 <Heading as='h4' size='md' textAlign='center' onClick={() => navigate(asset._id!)}>
                                     {asset.name}
                                 </Heading>
-                                <DeleteDocument
+                                <ConfirmDeleteDocument
                                     docType="asset"
                                     docName={asset.name}
-                                    index={i}
-                                    userData={userData}
-                                    removeResource={removeAsset}
-                                    onConfirm={(data: UserDataType) => {
-                                        updateUserData(data, {
-                                            onSuccess: () => {
-                                                toast({
-                                                    title: 'Operation successful',
-                                                    description: `${asset.name} asset successfully deleted.`,
-                                                    status: 'success',
-                                                    duration: 5000,
-                                                    isClosable: true,
-                                                })
-                                            },
+                                    onConfirm={() => {
+                                        removeAsset(i)
+                                        updateUserData(userData, {
+                                            onSuccess: () => toast({
+                                                title: 'Operation successful',
+                                                description: `${asset.name} asset successfully deleted.`,
+                                                status: 'success',
+                                                duration: 5000,
+                                                isClosable: true,
+                                            }),
                                             onError: () => toast({
                                                 title: 'Operation failed',
                                                 description: "Something went wrong, please try again later.",
@@ -66,9 +63,7 @@ const Assets: FC = () => {
                                                 isClosable: true,
                                             })
                                         })
-                                    }
-
-                                    }
+                                    }}
                                 />
                             </Center>
                         )
