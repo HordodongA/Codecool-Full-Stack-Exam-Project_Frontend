@@ -41,9 +41,7 @@ const CreateDocument: FC<PropsType> = ({ userData, docType, pushNew, onConfirm }
                             <FormLabel>New {docType}'s name</FormLabel>
                             <Input value={input} onChange={(e) => setInput(e.target.value)} placeholder='Name' maxLength={30} ref={initialRef} />
                             {!(input === "") ? (
-                                <FormHelperText>
-                                    Maximum 30 characters.
-                                </FormHelperText>
+                                <FormHelperText>Maximum 30 characters.</FormHelperText>
                             ) : (
                                 <FormErrorMessage>Name is required.</FormErrorMessage>
                             )}
