@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 // Import own hooks and states
 import useGlobal from '../hooks/useGlobal'
 import { $userData, AssetType, ActivityType } from '../states/userData'
-// Import Components
+// Import own components
 import NavigateAndInfo from '../components/NavigateAndInfo'
 // Import Chakra UI components
 import { Box, Flex, Heading, Text, VStack } from '@chakra-ui/react'
@@ -13,6 +13,7 @@ const Machine: FC = () => {
 
     const userData = useGlobal($userData)
     const params = useParams()
+    
     let thisAsset: AssetType | undefined
     let thisActivity: ActivityType | undefined
     if (userData && userData.assets) {

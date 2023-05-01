@@ -1,13 +1,13 @@
 import { FC } from 'react'
-// Import hooks and states
+// Import own hooks and states
 import useGlobal from '../hooks/useGlobal'
 import { $user, deleteUser } from '../states/user'
 import { $userData, assetCounter, activityCounter, machineCounter } from '../states/userData'
-// Import Components
+// Import own components
 import NavigateAndInfo from '../components/NavigateAndInfo'
 import ConfirmDeleteProfile from '../components/Modals/ConfirmDeleteProfile'
 // Import Chakra UI components
-import { Box, Flex, Center, Avatar, Heading, Text, useToast, VStack } from '@chakra-ui/react'
+import { Box, Flex, VStack, Center, Avatar, Heading, Text, useToast } from '@chakra-ui/react'
 
 
 const Profile: FC = () => {

@@ -1,8 +1,9 @@
 import { FC } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+// Import own hooks and states
 import useGlobal from '../hooks/useGlobal'
 import { $userData, AssetType } from '../states/userData'
-// Import components
+// Import own components
 import NavigateAndInfo from '../components/NavigateAndInfo'
 // Import Chakra UI components
 import { Flex, Center, VStack, Heading } from '@chakra-ui/react'
@@ -10,13 +11,13 @@ import { Flex, Center, VStack, Heading } from '@chakra-ui/react'
 
 const Asset: FC = () => {
 
-    const navigate = useNavigate()
     const userData = useGlobal($userData)
+    const navigate = useNavigate()
     const params = useParams()
+
     let thisAsset: AssetType | undefined
     if (userData && userData.assets) {
         thisAsset = userData.assets.filter(asset => asset._id === params.asset)[0]
-        // console.log(thisAsset)
     }
 
 

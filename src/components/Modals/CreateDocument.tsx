@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react'
+// Import own hooks and states
 import { UserDataType } from '../../states/userData'
 // Import Chakra UI components
 import {

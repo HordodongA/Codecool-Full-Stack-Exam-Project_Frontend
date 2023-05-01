@@ -1,4 +1,5 @@
 import { FC } from 'react'
+// Import data fro render
 import { fullUrl } from "../config"
 // Import Chakra UI components
 import { Flex, Circle, Image, Heading, Link } from '@chakra-ui/react'

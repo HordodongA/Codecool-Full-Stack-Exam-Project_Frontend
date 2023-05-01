@@ -4,6 +4,7 @@ import { Box, Container, Center, Image, Heading, Text } from '@chakra-ui/react'
 
 
 const About: FC = () => {
+    
     return (
         <Box >
             <Center>

@@ -16,7 +16,7 @@ import Machines from '../pages/Machines'
 import Machine from '../pages/Machine'
 import Profile from '../pages/Profile'
 import NotFound from '../pages/NotFound'
-// Import Components
+// Import own Components
 import Protected from './Route'
 // Import Chakra UI components
 import { Container } from '@chakra-ui/react'

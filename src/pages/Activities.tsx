@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 // Import own hooks and states
 import useGlobal from '../hooks/useGlobal'
 import { $userData, AssetType, updateUserData, UserDataType } from '../states/userData'
-// Import components
+// Import own components
 import NavigateAndInfo from '../components/NavigateAndInfo'
 import CreateDocument from '../components/Modals/CreateDocument'
 import ConfirmDeleteDocument from '../components/Modals/ConfirmDeleteDocument'

@@ -1,7 +1,9 @@
 import { FC } from 'react'
 import { useNavigate } from "react-router-dom"
+// Import own hooks and states
 import useGlobal from '../hooks/useGlobal'
 import { $user, logout } from '../states/user'
+// Import data for render
 import { fullUrl } from "../config"
 // Import Chakra UI components
 import { Center, Flex, VStack, Menu, MenuButton, MenuList, MenuItem, Avatar, IconButton, Heading } from '@chakra-ui/react'
@@ -10,8 +12,8 @@ import { HamburgerIcon } from '@chakra-ui/icons'
 
 const Navbar: FC = () => {
 
-    const navigate = useNavigate()
     const user = useGlobal($user)
+    const navigate = useNavigate()
 
 
     return (

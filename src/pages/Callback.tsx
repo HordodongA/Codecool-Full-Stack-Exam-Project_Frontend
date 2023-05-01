@@ -1,6 +1,7 @@
 import { FC, useEffect } from "react"
-import { login } from "../states/user"
 import { useNavigate } from "react-router-dom"
+// Import own hooks and states
+import { login } from "../states/user"
 // Import Chakra UI components
 import { Flex, Circle, Image, Heading, Spinner, useToast } from '@chakra-ui/react'
 

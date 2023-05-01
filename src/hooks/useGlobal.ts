@@ -11,6 +11,7 @@ const useGlobal = <T>(data: BehaviorSubject<T>): T => {
         return () => { subscription.unsubscribe }
     }, [])
 
+    
     return val
 }
 

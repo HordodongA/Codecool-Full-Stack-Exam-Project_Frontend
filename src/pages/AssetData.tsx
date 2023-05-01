@@ -3,16 +3,17 @@ import { useParams } from 'react-router-dom'
 // Import own hooks and states
 import useGlobal from '../hooks/useGlobal'
 import { $userData, AssetType } from '../states/userData'
-// Import Components
+// Import own components
 import NavigateAndInfo from '../components/NavigateAndInfo'
 // Import Chakra UI components
-import { Box, Flex, Heading, Text, VStack } from '@chakra-ui/react'
+import { Box, Flex, VStack, Heading, Text } from '@chakra-ui/react'
 
 
 const AssetData: FC = () => {
 
     const userData = useGlobal($userData)
     const params = useParams()
+    
     let thisAsset: AssetType | undefined
     if (userData && userData.assets) {
         thisAsset = userData.assets.filter(asset => asset._id === params.asset)[0]
