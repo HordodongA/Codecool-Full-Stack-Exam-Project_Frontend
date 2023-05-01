@@ -30,7 +30,7 @@ const AssetSchema = z.object({
     machines: MachineSchema.array().optional(),
     _id: z.string().optional()
 })
-export type AsseType = z.infer<typeof AssetSchema>
+export type AssetType = z.infer<typeof AssetSchema>
 
 export const UserDataShema = z.object({
     sub: z.string(),

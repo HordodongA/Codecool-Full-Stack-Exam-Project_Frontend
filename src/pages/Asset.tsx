@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import useGlobal from '../hooks/useGlobal'
-import { $userData, AsseType } from '../states/userData'
+import { $userData, AssetType } from '../states/userData'
 // Import components
 import NavigateAndInfo from '../components/NavigateAndInfo'
 // Import Chakra UI components
@@ -13,7 +13,7 @@ const Asset: FC = () => {
     const navigate = useNavigate()
     const userData = useGlobal($userData)
     const params = useParams()
-    let thisAsset: AsseType | undefined
+    let thisAsset: AssetType | undefined
     if (userData && userData.assets) {
         thisAsset = userData.assets.filter(asset => asset._id === params.asset)[0]
         // console.log(thisAsset)

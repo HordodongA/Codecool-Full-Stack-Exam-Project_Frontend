@@ -1,4 +1,5 @@
 import { FC } from 'react'
+// Import Chakra UI components
 import {
     Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton,
     useDisclosure, Button, Text

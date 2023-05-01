@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 // Import own hooks and states
 import useGlobal from '../hooks/useGlobal'
-import { $userData, AsseType, updateUserData, UserDataType } from '../states/userData'
+import { $userData, AssetType, updateUserData, UserDataType } from '../states/userData'
 // Import components
 import NavigateAndInfo from '../components/NavigateAndInfo'
 import CreateDocument from '../components/Modals/CreateDocument'
@@ -18,7 +18,7 @@ const Activities: FC = () => {
     const params = useParams()
     const toast = useToast()
 
-    let thisAsset: AsseType | undefined
+    let thisAsset: AssetType | undefined
     let indexOfThisAsset: number
     if (userData && userData.assets) {
         thisAsset = userData.assets.filter(asset => asset._id === params.asset)[0]
