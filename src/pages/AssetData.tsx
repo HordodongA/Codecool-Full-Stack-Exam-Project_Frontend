@@ -5,6 +5,7 @@ import useGlobal from '../hooks/useGlobal'
 import { $userData, AssetType } from '../states/userData'
 // Import own components
 import NavigateAndInfo from '../components/NavigateAndInfo'
+import EditDocument from '../components/Modals/EditDocument'
 // Import Chakra UI components
 import { Box, Flex, VStack, Heading, Text } from '@chakra-ui/react'
 
@@ -13,7 +14,7 @@ const AssetData: FC = () => {
 
     const userData = useGlobal($userData)
     const params = useParams()
-    
+
     let thisAsset: AssetType | undefined
     if (userData && userData.assets) {
         thisAsset = userData.assets.filter(asset => asset._id === params.asset)[0]
@@ -59,10 +60,9 @@ const AssetData: FC = () => {
                     }
                 </Flex>
 
-                <Heading>
-                    EDIT ASSET
-                </Heading>
-
+                <EditDocument
+                    docType="asset"
+                />
             </VStack>
         </VStack >
     )

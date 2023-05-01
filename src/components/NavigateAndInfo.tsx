@@ -45,7 +45,6 @@ const NavigateAndInfo: FC<ProprsType> = ({ help }) => {
             }
             if (linkText === undefined) linkText = segment
             breadcrumbData.push({ linkTo, linkText })
-            console.log(breadcrumbData)
         })
         return breadcrumbData
     }
