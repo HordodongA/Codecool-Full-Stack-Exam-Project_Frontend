@@ -1,13 +1,13 @@
 import { FC } from 'react'
-import { useNavigate, Link, useLocation, useParams } from "react-router-dom"
-// Import components
+import { useNavigate, Link, useLocation } from "react-router-dom"
+// Import own hooks and states
+import useGlobal from '../hooks/useGlobal'
+import { $userData, AssetType } from '../states/userData'
+// Import own components
 import InfoPanel from './Modals/InfoPanel'
 // Import Chakra UI components
-import { Flex, IconButton } from '@chakra-ui/react'
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, } from '@chakra-ui/react'
+import { Flex, IconButton, Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@chakra-ui/react'
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
-import { $userData, AssetType } from '../states/userData'
-import useGlobal from '../hooks/useGlobal'
 
 
 type ProprsType = {
@@ -16,22 +16,43 @@ type ProprsType = {
 
 const NavigateAndInfo: FC<ProprsType> = ({ help }) => {
 
-    const navigate = useNavigate()
     const userData = useGlobal($userData)
-    let assetIndex: number | undefined
-    let asset: AssetType | undefined
+    const navigate = useNavigate()
 
-    // Get path segments for breadcrumbs
+    // Generating data for breadcrumbs
+    const breadcrumbDataComposer = (segmentArray: string[]): { linkTo: string, linkText: string }[] => {
+        // @ts-ignore
+        let assetIndex: number | undefined
+        let asset: AssetType | undefined
+        let breadcrumbData: { linkTo: string, linkText: string }[] = []
+
+        segmentArray.map((segment, i) => {
+            let linkTo: string = ""
+            for (let j = 0; j < i + 1; j++) {
+                linkTo += "/" + segmentArray[j]
+            }
+            let linkText: string | undefined = segment
+            if (segmentArray[i - 1] === "assets") {
+                assetIndex = userData?.assets?.findIndex(asset => asset._id === segment)
+                asset = userData?.assets?.find(asset => asset._id === segment)
+                linkText = asset?.name
+            }
+            if (segmentArray[i - 1] === "activities") {
+                linkText = asset?.activities?.find(activity => activity._id === segment)?.name
+            }
+            if (segmentArray[i - 1] === "machines") {
+                linkText = asset?.machines?.find(machine => machine._id === segment)?.name
+            }
+            if (linkText === undefined) linkText = segment
+            breadcrumbData.push({ linkTo, linkText })
+            console.log(breadcrumbData)
+        })
+        return breadcrumbData
+    }
+
     const location = useLocation()
-    // console.log(location)
-    // console.log(location.pathname)
-    // console.log(location.pathname.split("/"))
-    // console.log(location.pathname.split("/").filter(string => string !== ""))
-    const breadcrumbSegments = location.pathname.split("/").filter(string => string !== "")
-    // console.log(breadcrumbSegments)
-    // ? ['assets', '644bc8d58ebf76cbbbb9c4b7', 'activities', '644bc8d58ebf76cbbbb9c4b8']
-    // const params = useParams()
-    // console.log(params)
+    const breadcrumbSegments: string[] = location.pathname.split("/").filter(string => string !== "")
+    const breadcrumbData = breadcrumbDataComposer(breadcrumbSegments)
 
 
     return (
@@ -45,30 +66,10 @@ const NavigateAndInfo: FC<ProprsType> = ({ help }) => {
             />
 
             <Breadcrumb fontWeight='medium' fontSize='sm' separator={<ChevronRightIcon color='gray.900' />}>
-                // ? ['assets', '644bc8d58ebf76cbbbb9c4b7', 'activities', '644bc8d58ebf76cbbbb9c4b8']
-
-                {userData && breadcrumbSegments && breadcrumbSegments.map((segment, i) => {
-                    let linkTo: string = ""
-                    for (let j = 0; j < i + 1; j++) {
-                        linkTo += "/" + breadcrumbSegments[j]
-                    }
-                    let linkText: string | undefined = ""
-                    linkText = segment
-                    if (breadcrumbSegments[i - 1] === "assets") {
-                        assetIndex = userData.assets?.findIndex(asset => asset._id === segment)
-                        asset = userData.assets?.find(asset => asset._id === segment)
-                        linkText = asset?.name
-                    }
-                    if (breadcrumbSegments[i - 1] === "activities") {
-                        linkText = asset?.activities?.find(activity => activity._id === segment)?.name
-                    }
-                    if (breadcrumbSegments[i - 1] === "machines") {
-                        linkText = asset?.machines?.find(machine => machine._id === segment)?.name
-                    }
-
+                {breadcrumbData && breadcrumbData.map((entry, i) => {
                     return (
                         <BreadcrumbItem key={i}>
-                            <BreadcrumbLink as={Link} to={linkTo}>{linkText}</BreadcrumbLink>
+                            <BreadcrumbLink as={Link} to={entry.linkTo}>{entry.linkText}</BreadcrumbLink>
                         </BreadcrumbItem>
                     )
                 })}
