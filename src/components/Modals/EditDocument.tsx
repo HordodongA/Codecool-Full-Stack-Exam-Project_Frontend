@@ -1,6 +1,8 @@
 import React, { FC } from 'react'
 // Import own hooks and states
 import { useFormFields } from '../../hooks/useFormFields'
+// Import data for edit
+import { AssetForEditType } from '../../pages/AssetData'
 // Import Chakra UI components
 import {
     Box, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure,
@@ -10,17 +12,18 @@ import {
 
 type PropsType = {
     docType: string,
+    dataForEdit: { [key: string]: string },
+    updateAsset: (data: AssetForEditType) => void,
+    onConfirm: () => void
 }
 
-const EditDocument: FC<PropsType> = ({ docType }) => {
+const EditDocument: FC<PropsType> = ({ docType, dataForEdit, updateAsset, onConfirm }) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
     const initialRef = React.useRef(null)
     const finalRef = React.useRef(null)
 
-    // ! DUMMY DATA - should get as props
-    const assetForTest = { name: "Pincepalota", address: "Pécs", details: "pécsi menedék", credentials: "18882/855 hrsz", notes: "lorem ipsum dolor" }
-    const [fields, handleFieldChange] = useFormFields(assetForTest);
+    const [fields, handleFieldChange] = useFormFields(dataForEdit)
 
 
     return (
@@ -63,7 +66,8 @@ const EditDocument: FC<PropsType> = ({ docType }) => {
                             Cancel
                         </Button>
                         <Button colorScheme='blue' onClick={() => {
-                            console.log(fields)
+                            updateAsset(fields)
+                            onConfirm()
                             onClose()
                         }}>
                             Save

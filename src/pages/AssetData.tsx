@@ -2,22 +2,48 @@ import { FC } from 'react'
 import { useParams } from 'react-router-dom'
 // Import own hooks and states
 import useGlobal from '../hooks/useGlobal'
-import { $userData, AssetType } from '../states/userData'
+import { $userData, AssetType, updateUserData } from '../states/userData'
 // Import own components
 import NavigateAndInfo from '../components/NavigateAndInfo'
 import EditDocument from '../components/Modals/EditDocument'
 // Import Chakra UI components
-import { Box, Flex, VStack, Heading, Text } from '@chakra-ui/react'
+import { Box, Flex, VStack, Heading, Text, useToast } from '@chakra-ui/react'
 
+
+export type AssetForEditType = {
+    name?: string,
+    address?: string,
+    details?: string,
+    credentials?: string,
+    notes?: string
+}
 
 const AssetData: FC = () => {
 
     const userData = useGlobal($userData)
     const params = useParams()
+    const toast = useToast()
 
+
+    // Compose data for render and edit form
     let thisAsset: AssetType | undefined
+    let indexOfThisAsset: number
+    const thisAssetEmpty: AssetForEditType = { name: "", address: "", details: "", credentials: "", notes: "" }
+    let thisAssetForEdit: AssetForEditType | undefined
     if (userData && userData.assets) {
+        indexOfThisAsset = userData.assets.findIndex(asset => asset._id === params.asset)
         thisAsset = userData.assets.filter(asset => asset._id === params.asset)[0]
+        let thisAssetFiltered = { ...thisAsset }
+            delete thisAssetFiltered?._id
+            delete thisAssetFiltered?.activities
+            delete thisAssetFiltered?.machines
+        thisAssetForEdit = { ...thisAssetEmpty, ...thisAssetFiltered }
+    }
+
+    const updateAsset = (data: AssetForEditType): void => {
+        if (userData && userData.assets) {
+            userData.assets[indexOfThisAsset] = { ...userData.assets[indexOfThisAsset], ...data }
+        }
     }
 
 
@@ -60,9 +86,31 @@ const AssetData: FC = () => {
                     }
                 </Flex>
 
-                <EditDocument
-                    docType="asset"
-                />
+                {userData && thisAssetForEdit &&
+                    <EditDocument
+                        docType="asset"
+                        dataForEdit={thisAssetForEdit}
+                        updateAsset={updateAsset}
+                        onConfirm={() => {
+                            updateUserData(userData, {
+                                onSuccess: () => toast({
+                                    title: 'Operation successful',
+                                    description: `${thisAsset?.name} asset successfully updated.`,
+                                    status: 'success',
+                                    duration: 5000,
+                                    isClosable: true,
+                                }),
+                                onError: () => toast({
+                                    title: 'Operation failed',
+                                    description: "Something went wrong, please try again later.",
+                                    status: 'error',
+                                    duration: 5000,
+                                    isClosable: true,
+                                })
+                            })
+                        }}
+                    />
+                }
             </VStack>
         </VStack >
     )
