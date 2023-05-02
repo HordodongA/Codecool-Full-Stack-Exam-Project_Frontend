@@ -2,22 +2,51 @@ import { FC } from 'react'
 import { useParams } from 'react-router-dom'
 // Import own hooks and states
 import useGlobal from '../hooks/useGlobal'
-import { $userData, AssetType, MachineType } from '../states/userData'
+import { $userData, AssetType, MachineType, updateUserData } from '../states/userData'
 // Import Components
 import NavigateAndInfo from '../components/NavigateAndInfo'
+import EditDocument from '../components/Modals/EditDocument'
 // Import Chakra UI components
-import { Box, Flex, Heading, Text, VStack } from '@chakra-ui/react'
+import { Box, Flex, Heading, Text, useToast, VStack } from '@chakra-ui/react'
 
+
+export type MachineForEditType = {
+    name?: string,
+    type?: string,
+    unique_id?: string,
+    service?: string,
+    todos?: string
+}
 
 const Machine: FC = () => {
 
     const userData = useGlobal($userData)
     const params = useParams()
+    const toast = useToast()
+
+    // Compose data for render and edit form
+    let indexOfThisAsset: number
     let thisAsset: AssetType | undefined
+    let indexOfThisMachine: number
     let thisMachine: MachineType | undefined
+    const thisMachineEmpty: MachineForEditType = { name: "", type: "", unique_id: "", service: "", todos: "" }
+    let thisMachineForEdit: MachineForEditType | undefined
     if (userData && userData.assets) {
+        indexOfThisAsset = userData.assets.findIndex(asset => asset._id === params.asset)
         thisAsset = userData.assets.filter(asset => asset._id === params.asset)[0]
-        thisMachine = thisAsset.machines?.filter(machine => machine._id === params.machine)[0]
+        if (thisAsset.machines && userData.assets[indexOfThisAsset]) {
+            indexOfThisMachine = thisAsset.machines.findIndex(machine => machine._id === params.machine)
+            thisMachine = thisAsset.machines.filter(machine => machine._id === params.machine)[0]
+            let thisMachineFiltered = { ...thisMachine }
+            delete thisMachineFiltered._id
+            thisMachineForEdit = { ...thisMachineEmpty, ...thisMachineFiltered }
+        }
+    }
+
+    const updateMachine = (data: MachineForEditType): void => {
+        if (userData && userData.assets && userData.assets[indexOfThisAsset]) {
+            userData.assets[indexOfThisAsset].machines![indexOfThisMachine] = { ...userData.assets[indexOfThisAsset].machines![indexOfThisMachine], ...data }
+        }
     }
 
 
@@ -66,9 +95,31 @@ const Machine: FC = () => {
                     }
                 </Flex>
 
-                <Heading>
-                    EDIT MACHINE
-                </Heading>
+                {userData && thisMachineForEdit &&
+                    <EditDocument
+                        docType="machine"
+                        dataForEdit={thisMachineForEdit}
+                        updateAsset={updateMachine}
+                        onConfirm={() => {
+                            updateUserData(userData, {
+                                onSuccess: () => toast({
+                                    title: 'Operation successful',
+                                    description: `${thisMachine?.name} machine successfully updated.`,
+                                    status: 'success',
+                                    duration: 5000,
+                                    isClosable: true,
+                                }),
+                                onError: () => toast({
+                                    title: 'Operation failed',
+                                    description: "Something went wrong, please try again later.",
+                                    status: 'error',
+                                    duration: 5000,
+                                    isClosable: true,
+                                })
+                            })
+                        }}
+                    />
+                }
             </VStack>
         </VStack >
     )

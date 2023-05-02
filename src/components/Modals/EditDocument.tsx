@@ -1,8 +1,6 @@
 import React, { FC } from 'react'
 // Import own hooks and states
 import { useFormFields } from '../../hooks/useFormFields'
-// Import data for edit
-import { AssetForEditType } from '../../pages/AssetData'
 // Import Chakra UI components
 import {
     Box, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure,
@@ -13,7 +11,7 @@ import {
 type PropsType = {
     docType: string,
     dataForEdit: { [key: string]: string },
-    updateAsset: (data: AssetForEditType) => void,
+    updateAsset: (data: {[key: string] : string}) => void,
     onConfirm: () => void
 }
 

@@ -24,10 +24,9 @@ const AssetData: FC = () => {
     const params = useParams()
     const toast = useToast()
 
-
     // Compose data for render and edit form
-    let thisAsset: AssetType | undefined
     let indexOfThisAsset: number
+    let thisAsset: AssetType | undefined
     const thisAssetEmpty: AssetForEditType = { name: "", address: "", details: "", credentials: "", notes: "" }
     let thisAssetForEdit: AssetForEditType | undefined
     if (userData && userData.assets) {
