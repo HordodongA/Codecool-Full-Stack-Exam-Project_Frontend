@@ -10,7 +10,7 @@ import EditDocument from '../components/Modals/EditDocument'
 import { Box, Flex, Heading, Text, useToast, VStack } from '@chakra-ui/react'
 
 
-export type MachineForEditType = {
+type MachineForEditType = {
     name?: string,
     type?: string,
     unique_id?: string,
@@ -59,40 +59,21 @@ const Machine: FC = () => {
                     {thisMachine?.name} machine
                 </Heading>
                 <Flex marginTop='0.5rem' w='100%' direction='row' justifyContent='center' alignItems='center' wrap='wrap' columnGap='3rem' rowGap='0.5rem'>
-                    <Box marginTop='0.5rem' w='100%'>
-                        <Text fontSize='m' >name</Text>
-                        <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'> {thisMachine?.name}</Text>
-                    </Box>
                     {thisAsset?.name &&
                         <Box marginTop='0.5rem' w='100%'>
                             <Text fontSize='m' >asset</Text>
                             <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'> {thisAsset?.name}</Text>
                         </Box>
                     }
-                    {thisMachine?.type &&
-                        <Box marginTop='0.5rem' w='100%'>
-                            <Text fontSize='m' >type</Text>
-                            <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'> {thisMachine?.type}</Text>
-                        </Box>
-                    }
-                    {thisMachine?.unique_id &&
-                        <Box marginTop='0.5rem' w='100%'>
-                            <Text fontSize='m' >unique identifier</Text>
-                            <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'> {thisMachine?.unique_id}</Text>
-                        </Box>
-                    }
-                    {thisMachine?.service &&
-                        <Box marginTop='0.5rem' w='100%'>
-                            <Text fontSize='m' >service / mechanic</Text>
-                            <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'> {thisMachine?.service}</Text>
-                        </Box>
-                    }
-                    {thisMachine?.todos &&
-                        <Box marginTop='0.5rem' w='100%'>
-                            <Text fontSize='m' >Inspection list</Text>
-                            <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'> {thisMachine?.todos}</Text>
-                        </Box>
-                    }
+
+                    {thisMachine && Object.keys(thisMachine).filter(key => key !== "_id").map((key, i) => {
+                        return (
+                            <Box key={i} marginTop='0.5rem' w='100%' whiteSpace='pre-wrap'>
+                                <Text fontSize='m'>{key}</Text>
+                                <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'>{(thisMachine as MachineForEditType)[key as keyof typeof thisMachine]}</Text>
+                            </Box>
+                        )
+                    })}
                 </Flex>
 
                 {userData && thisMachineForEdit &&

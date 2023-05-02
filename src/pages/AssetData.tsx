@@ -10,7 +10,7 @@ import EditDocument from '../components/Modals/EditDocument'
 import { Box, Flex, VStack, Heading, Text, useToast } from '@chakra-ui/react'
 
 
-export type AssetForEditType = {
+type AssetForEditType = {
     name?: string,
     address?: string,
     details?: string,
@@ -33,9 +33,9 @@ const AssetData: FC = () => {
         indexOfThisAsset = userData.assets.findIndex(asset => asset._id === params.asset)
         thisAsset = userData.assets.filter(asset => asset._id === params.asset)[0]
         let thisAssetFiltered = { ...thisAsset }
-            delete thisAssetFiltered?._id
-            delete thisAssetFiltered?.activities
-            delete thisAssetFiltered?.machines
+        delete thisAssetFiltered?._id
+        delete thisAssetFiltered?.activities
+        delete thisAssetFiltered?.machines
         thisAssetForEdit = { ...thisAssetEmpty, ...thisAssetFiltered }
     }
 
@@ -55,34 +55,14 @@ const AssetData: FC = () => {
                     {thisAsset?.name} asset
                 </Heading>
                 <Flex marginTop='0.5rem' w='100%' direction='row' justifyContent='center' alignItems='center' wrap='wrap' columnGap='3rem' rowGap='0.5rem'>
-                    <Box marginTop='0.5rem' w='100%'>
-                        <Text fontSize='m' >name</Text>
-                        <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'> {thisAsset?.name}</Text>
-                    </Box>
-                    {thisAsset?.address &&
-                        <Box marginTop='0.5rem' w='100%'>
-                            <Text fontSize='m' >address</Text>
-                            <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'> {thisAsset?.address}</Text>
-                        </Box>
-                    }
-                    {thisAsset?.details &&
-                        <Box marginTop='0.5rem' w='100%'>
-                            <Text fontSize='m' >details</Text>
-                            <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'> {thisAsset?.details}</Text>
-                        </Box>
-                    }
-                    {thisAsset?.credentials &&
-                        <Box marginTop='0.5rem' w='100%'>
-                            <Text fontSize='m' >credentials</Text>
-                            <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'> {thisAsset?.credentials}</Text>
-                        </Box>
-                    }
-                    {thisAsset?.notes &&
-                        <Box marginTop='0.5rem' w='100%'>
-                            <Text fontSize='m' >notes</Text>
-                            <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'> {thisAsset?.notes}</Text>
-                        </Box>
-                    }
+                    {thisAssetForEdit && Object.keys(thisAssetForEdit).map((key, i) => {
+                        return (
+                            <Box key={i} marginTop='0.5rem' w='100%' whiteSpace='pre-wrap'>
+                                <Text fontSize='m'>{key}</Text>
+                                <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'>{(thisAssetForEdit as AssetForEditType)[key as keyof typeof thisAssetForEdit]}</Text>
+                            </Box>
+                        )
+                    })}
                 </Flex>
 
                 {userData && thisAssetForEdit &&

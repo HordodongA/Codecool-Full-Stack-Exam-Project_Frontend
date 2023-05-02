@@ -10,7 +10,7 @@ import EditDocument from '../components/Modals/EditDocument'
 import { Box, Flex, Heading, Text, useToast, VStack } from '@chakra-ui/react'
 
 
-export type ActivityForEditType = {
+type ActivityForEditType = {
     name?: string,
     todos?: string
 }
@@ -56,20 +56,20 @@ const Activity: FC = () => {
                     {thisActivity?.name} activity
                 </Heading>
                 <Flex marginTop='0.5rem' w='100%' direction='row' justifyContent='center' alignItems='center' wrap='wrap' columnGap='3rem' rowGap='0.5rem'>
-                    <Box marginTop='0.5rem' w='100%'>
-                        <Text fontSize='m' >name</Text>
-                        <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'> {thisActivity?.name}</Text>
-                    </Box>
                     {thisAsset?.name &&
                         <Box marginTop='0.5rem' w='100%'>
                             <Text fontSize='m' >asset</Text>
                             <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'> {thisAsset?.name}</Text>
                         </Box>
                     }
+                    <Box marginTop='0.5rem' w='100%'>
+                        <Text fontSize='m' >name</Text>
+                        <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'> {thisActivity?.name}</Text>
+                    </Box>
                     {thisActivity?.todos &&
                         <Box marginTop='0.5rem' w='100%'>
                             <Text fontSize='m' >Todos</Text>
-                            <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'> {thisActivity?.todos}</Text>
+                            <Text textAlign='right' fontSize='xl' borderBottomWidth='medium' whiteSpace='pre-wrap'> {thisActivity?.todos}</Text>
                         </Box>
                     }
                 </Flex>
