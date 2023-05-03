@@ -12,7 +12,7 @@ import { Box, Flex, VStack, Heading, Text, useToast } from '@chakra-ui/react'
 
 type AssetForEditType = {
     name?: string,
-    address?: string,
+    location?: string,
     details?: string,
     credentials?: string,
     notes?: string
@@ -27,7 +27,7 @@ const AssetData: FC = () => {
     // Compose data for render and edit form
     let indexOfThisAsset: number
     let thisAsset: AssetType | undefined
-    const thisAssetEmpty: AssetForEditType = { name: "", address: "", details: "", credentials: "", notes: "" }
+    const thisAssetEmpty: AssetForEditType = { name: "", location: "", details: "", credentials: "", notes: "" }
     let thisAssetForEdit: AssetForEditType | undefined
     if (userData && userData.assets) {
         indexOfThisAsset = userData.assets.findIndex(asset => asset._id === params.asset)
@@ -56,12 +56,14 @@ const AssetData: FC = () => {
                 </Heading>
                 <Flex marginTop='0.5rem' w='100%' direction='row' justifyContent='center' alignItems='center' wrap='wrap' columnGap='3rem' rowGap='0.5rem'>
                     {thisAssetForEdit && Object.keys(thisAssetForEdit).map((key, i) => {
-                        return (
-                            <Box key={i} marginTop='0.5rem' w='100%' whiteSpace='pre-wrap'>
-                                <Text fontSize='m'>{key}</Text>
-                                <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'>{(thisAssetForEdit as AssetForEditType)[key as keyof typeof thisAssetForEdit]}</Text>
-                            </Box>
-                        )
+                        if ((thisAssetForEdit as AssetForEditType)[key as keyof typeof thisAssetForEdit]) {
+                            return (
+                                <Box key={i} marginTop='0.5rem' w='100%' whiteSpace='pre-wrap'>
+                                    <Text fontSize='m'>{key}</Text>
+                                    <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'>{(thisAssetForEdit as AssetForEditType)[key as keyof typeof thisAssetForEdit]}</Text>
+                                </Box>
+                            )
+                        }
                     })}
                 </Flex>
 

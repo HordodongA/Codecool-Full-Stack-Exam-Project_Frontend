@@ -22,7 +22,7 @@ export type MachineType = z.infer<typeof MachineSchema>
 
 const AssetSchema = z.object({
     name: z.string(),
-    address: z.string().optional(),
+    location: z.string().optional(),
     details: z.string().optional(),
     credentials: z.string().optional(),
     notes: z.string().optional(),
