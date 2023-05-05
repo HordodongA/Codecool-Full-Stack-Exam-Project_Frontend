@@ -11,9 +11,14 @@ const Callback: FC = () => {
     const navigate = useNavigate()
     const toast = useToast()
 
+
     useEffect(() => {
         const urlSearchParams = new URLSearchParams(window.location.search)
         const code = urlSearchParams.get("code")
+
+        if (document.referrer === "") {
+            navigate("/", { replace: true });
+        }
 
         if (code) login(code, {
             onSuccess: () => {
@@ -25,9 +30,9 @@ const Callback: FC = () => {
                     position: 'bottom-left',
                     isClosable: true,
                 })
-                navigate("/assets")
+                navigate("/assets", { replace: true })
             },
-            onError: () => navigate("/")
+            onError: () => navigate("/", { replace: true })
         })
     }, [])
 

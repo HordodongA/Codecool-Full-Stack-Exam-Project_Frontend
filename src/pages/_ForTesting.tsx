@@ -48,7 +48,7 @@ const _ForTesting: FC = () => {
             <Box minW='350' >
                 <Container maxW='4xl' >
                     <Text textAlign='center' fontSize='2xl' >
-                        When you use this application for rating and assessment proposal,
+                        When you use this application for rating and assessment purpose,
                         you don't need to spend time with upload data via the user interface.
                     </Text>
                     <Text textAlign='center' fontSize='2xl' >
