@@ -31,8 +31,8 @@ const Navbar: FC = () => {
                                 borderRadius='100'
                             />
                             <MenuList>
-                                {user && <MenuItem onClick={() => navigate("/profile")}>My Profile</MenuItem>}
                                 {user && <MenuItem onClick={() => navigate("/assets")}>Home</MenuItem>}
+                                {user && <MenuItem onClick={() => navigate("/profile")}>My Profile</MenuItem>}
                                 <MenuItem onClick={() => navigate("/about")}>About</MenuItem>
                                 {!user && <MenuItem as='a' href={fullUrl} >Login with Google</MenuItem>}
                                 {user && <MenuItem onClick={() => logout({ onSuccess: () => navigate("/") })}>Logout</MenuItem>}

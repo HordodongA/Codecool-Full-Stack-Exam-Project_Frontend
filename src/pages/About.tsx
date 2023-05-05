@@ -1,10 +1,12 @@
 import { FC } from 'react'
+// Import data for render
+import { landlordApiDocsUrl, landlordBackendReadmeUrl } from '../config'
 // Import Chakra UI components
-import { Box, Container, Center, Image, Heading, Text } from '@chakra-ui/react'
+import { Box, Container, Center, Image, Heading, Text, Link } from '@chakra-ui/react'
 
 
 const About: FC = () => {
-    
+
     return (
         <Box >
             <Center>
@@ -29,7 +31,19 @@ const About: FC = () => {
                     <Text textAlign='center' fontSize='2xl' >
                         Backend: Node JS, TypeScript, Express, MongoDB,
                         Google Oauth2 authenticaton and stateless session management.
-                        Frontend: React, TypeScript, Chakra UI.
+                    </Text>
+                    <Text textAlign='center' fontSize='2xl' >
+                        To see additional information see {' '}
+                        <Link href={landlordApiDocsUrl} isExternal color='teal.500'>
+                            OpenAPI 3.0 documentation
+                        </Link>
+                        {' '} or {' '}
+                        <Link href={landlordBackendReadmeUrl} isExternal color='teal.500'>
+                            Landlord backend readme.
+                        </Link> {' '}
+                    </Text>
+                    <Text textAlign='center' fontSize='2xl' >
+                        Frontend: Vite React, TypeScript, Chakra UI.
                     </Text>
                     <Text textAlign='center' fontSize='2xl' fontWeight='bold' marginTop='1rem'>
                         Contact developer:
