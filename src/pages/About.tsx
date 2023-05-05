@@ -10,7 +10,7 @@ const About: FC = () => {
     return (
         <Box >
             <Center>
-                <Image boxSize='100px' src='../../public/favicon.png' alt='../../public/favicon.png' />
+                <Image boxSize='100px' src='../../public/favicon.png' alt='landlord logo' />
             </Center>
 
             <Heading as='h3' size='lg' textAlign='center' margin='1.5rem 0 1rem'>

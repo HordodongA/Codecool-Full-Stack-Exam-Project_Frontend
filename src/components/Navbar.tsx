@@ -36,6 +36,7 @@ const Navbar: FC = () => {
                                 <MenuItem onClick={() => navigate("/about")}>About</MenuItem>
                                 {!user && <MenuItem as='a' href={fullUrl} >Login with Google</MenuItem>}
                                 {user && <MenuItem onClick={() => logout({ onSuccess: () => navigate("/") })}>Logout</MenuItem>}
+                                {user && <MenuItem onClick={() => navigate("/testing")}>Mentor Area</MenuItem>}
                             </MenuList>
                         </>
                     )}

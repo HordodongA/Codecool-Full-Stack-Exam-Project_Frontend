@@ -15,3 +15,66 @@ export const landlordApiDocsUrl = "http://localhost:3003/api/docs"
 
 // Backend readme.md GitHub URL
 export const landlordBackendReadmeUrl = "https://github.com/HordodongA/Codecool-Full-Stack-Exam-Project_Backend/blob/main/readme.md"
+
+// Test data for assessment process
+export const testData = {
+    assets: [
+        {
+            name: "Grove street",
+            location: "San Andreas",
+            notes: "My granny's house",
+            activities: [
+                {
+                    name: "activity one",
+                    todos: "kikergetni a varjakat a nappaliból"
+                },
+                {
+                    name: "várni a postást"
+                }
+            ],
+            machines: []
+        },
+        {
+            name: "Kertvárosi lakás",
+            location: "Kertváros",
+            notes: "Home sweet home",
+            machines: [
+                {
+                    name: "machine one",
+                    todos: "befújni WD40-nel"
+                },
+                {
+                    name: "machine two",
+                    todos: "duct tape!"
+                },
+                {
+                    name: "machine three"
+                }
+            ],
+            activities: []
+        },
+        {
+            name: "Kertvárosi garázs",
+            activities: [],
+            machines: []
+        },
+        {
+            name: "Belvárosi lakás",
+            activities: [],
+            machines: []
+        },
+        {
+            name: "Rózsadombi lakás",
+            activities: [
+                {
+                    name: "activity three"
+                }
+            ],
+            machines: [
+                {
+                    name: "machine four"
+                }
+            ]
+        }
+    ]
+}

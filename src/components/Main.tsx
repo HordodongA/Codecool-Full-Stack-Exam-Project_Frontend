@@ -4,6 +4,7 @@ import { Routes, Route, Navigate } from "react-router-dom"
 import useGlobal from '../hooks/useGlobal'
 import { $user } from '../states/user'
 // Import Pages
+import _ForTesting from '../pages/_ForTesting'
 import About from '../pages/About'
 import Activities from '../pages/Activities'
 import Activity from '../pages/Activity'
@@ -62,6 +63,17 @@ const Main: FC = () => {
                         <Protected hasAccess={!!user}>
                             <Routes>
                                 <Route path="/" element={<Profile />} />
+                                <Route path="*" element={<NotFound />} />
+                            </Routes>
+                        </Protected>
+                    }
+                />
+                <Route
+                    path="/testing/*"
+                    element={
+                        <Protected hasAccess={!!user}>
+                            <Routes>
+                                <Route path="/" element={<_ForTesting />} />
                                 <Route path="*" element={<NotFound />} />
                             </Routes>
                         </Protected>
