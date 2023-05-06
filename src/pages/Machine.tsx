@@ -1,5 +1,5 @@
-import { FC } from 'react'
-import { useParams } from 'react-router-dom'
+import { FC, useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 // Import own hooks and states
 import useGlobal from '../hooks/useGlobal'
 import { $userData, AssetType, MachineType, updateUserData } from '../states/userData'
@@ -21,6 +21,7 @@ type MachineForEditType = {
 const Machine: FC = () => {
 
     const userData = useGlobal($userData)
+    const navigate = useNavigate()
     const params = useParams()
     const toast = useToast()
 
@@ -42,6 +43,10 @@ const Machine: FC = () => {
             thisMachineForEdit = { ...thisMachineEmpty, ...thisMachineFiltered }
         }
     }
+
+    useEffect(() => {
+        if (!thisAsset) navigate(-1)
+    }, [params])
 
     const updateMachine = (data: MachineForEditType): void => {
         if (userData && userData.assets && userData.assets[indexOfThisAsset]) {

@@ -37,7 +37,6 @@ const Main: FC = () => {
                     element={
                         <Protected hasAccess={!!user}>
                             <Routes>
-                                {/* <Route path="/" > */}
                                 <Route path="/" index element={<Assets />} />
                                 <Route path="/:asset/" >
                                     <Route path="/:asset/" element={<Asset />} />
@@ -51,7 +50,6 @@ const Main: FC = () => {
                                     </Route>
                                     <Route path="/:asset/asset-data" element={<AssetData />} />
                                 </Route>
-                                {/* </Route> */}
                                 <Route path="*" element={<NotFound />} />
                             </Routes>
                         </Protected>

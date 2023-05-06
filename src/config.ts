@@ -17,7 +17,7 @@ export const landlordApiDocsUrl = "http://localhost:3003/api/docs"
 export const landlordBackendReadmeUrl = "https://github.com/HordodongA/Codecool-Full-Stack-Exam-Project_Backend/blob/main/readme.md"
 
 // Backend readme.md GitHub URL
-export const landlordFrontendReadmeUrl = "https://github.com/HordodongA/Codecool-Full-Stack-Exam-Project_Frontend/main/readme.md"
+export const landlordFrontendReadmeUrl = "https://github.com/HordodongA/Codecool-Full-Stack-Exam-Project_Frontend/blob/main/readme.md"
 
 // Test data for assessment process
 export const testData = {

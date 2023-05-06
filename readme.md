@@ -18,7 +18,7 @@ This application has come to life as a full-stack software developer school's ex
 
 
 ## Getting started (install app)
-**The project's frontend part is runnable by cloning the repository and follow this steps.** Frontend application needs it's own backend application running. [Follow links section.](#links)
+**The project's frontend part is runnable by cloning the repository and follow this steps.** Frontend application needs it's own backend application running. [Follow links section.](#links-and-resources)
 ### Clone repository
 ### Install Node JS and Node Package Manager on your computer if necessary
 ### Install project's dependencies (root directory)
@@ -42,7 +42,7 @@ Starts te application in developer mode.
 ### `npm run build`
 Builds the app for production to the `dist` folder.
 ### `npm run preview`
-Preview project in a production-like environment. Starts a production server, and opens a browser to the server URL. (npm run build command has to be executed before).
+Preview project in a production-like environment. Starts a production server, and opens a browser to the server URL. (The npm run build command has to be executed before.)
 
 
 ## Usage

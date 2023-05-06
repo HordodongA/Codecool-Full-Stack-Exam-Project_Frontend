@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 // Import own hooks and states
 import useGlobal from '../hooks/useGlobal'
@@ -20,6 +20,9 @@ const Asset: FC = () => {
         thisAsset = userData.assets.filter(asset => asset._id === params.asset)[0]
     }
 
+    useEffect(() => {
+        if (!thisAsset) navigate(-1)
+    }, [params])
 
     return (
         <VStack width='100%' >

@@ -1,5 +1,5 @@
-import { FC } from 'react'
-import { useParams } from 'react-router-dom'
+import { FC, useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 // Import own hooks and states
 import useGlobal from '../hooks/useGlobal'
 import { $userData, AssetType, ActivityType, updateUserData } from '../states/userData'
@@ -18,6 +18,7 @@ type ActivityForEditType = {
 const Activity: FC = () => {
 
     const userData = useGlobal($userData)
+    const navigate = useNavigate()
     const params = useParams()
     const toast = useToast()
 
@@ -40,12 +41,15 @@ const Activity: FC = () => {
         }
     }
 
+    useEffect(() => {
+        if (!thisAsset) navigate(-1)
+    }, [params])
+
     const updateActivity = (data: ActivityForEditType): void => {
         if (userData && userData.assets && userData.assets[indexOfThisAsset]) {
             userData.assets[indexOfThisAsset].activities![indexOfThisActivity] = { ...userData.assets[indexOfThisAsset].activities![indexOfThisActivity], ...data }
         }
     }
-
 
     return (
         <VStack width='100%' >

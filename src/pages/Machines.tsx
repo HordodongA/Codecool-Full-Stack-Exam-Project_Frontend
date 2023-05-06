@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 // Import own hooks and states
 import useGlobal from '../hooks/useGlobal'
@@ -24,6 +24,10 @@ const Machines: FC = () => {
         thisAsset = userData.assets.filter(asset => asset._id === params.asset)[0]
         indexOfThisAsset = userData.assets.findIndex(asset => asset._id === params.asset)
     }
+
+    useEffect(() => {
+        if (!thisAsset) navigate(-1)
+    }, [params])
 
     const pushNew = (data: { name: string }) => {
         if (userData && userData.assets) {
