@@ -11,7 +11,7 @@ import {
 type PropsType = {
     docType: string,
     dataForEdit: { [key: string]: string },
-    updateAsset: (data: {[key: string] : string}) => void,
+    updateAsset: (data: { [key: string]: string }) => void,
     onConfirm: () => void
 }
 
@@ -26,11 +26,11 @@ const EditDocument: FC<PropsType> = ({ docType, dataForEdit, updateAsset, onConf
 
     return (
         <>
-            <Button colorScheme='green' onClick={onOpen} ref={finalRef}>Edit {docType}</Button>
+            <Button colorScheme='yellow' onClick={onOpen} ref={finalRef}>edit {docType}</Button>
 
             <Modal isOpen={isOpen} onClose={onClose} initialFocusRef={initialRef} finalFocusRef={finalRef}>
                 <ModalOverlay />
-                <ModalContent>
+                <ModalContent bg='yellow3.100' >
                     <ModalHeader >Edit {docType}</ModalHeader>
                     <ModalCloseButton borderRadius='100' />
                     <ModalBody>
@@ -41,7 +41,7 @@ const EditDocument: FC<PropsType> = ({ docType, dataForEdit, updateAsset, onConf
                         <FormControl m='1rem 0' isRequired isInvalid={fields.name === ""}>
                             <Box>
                                 <FormLabel>name</FormLabel>
-                                <Input id="name" value={fields.name} onChange={(e) => handleFieldChange(e)} placeholder='Name' maxLength={30} ref={initialRef} />
+                                <Input id="name" value={fields.name} onChange={(e) => handleFieldChange(e)} placeholder='Name' maxLength={30} ref={initialRef} focusBorderColor='yellow3.500' />
                                 {!(fields.name === "")
                                     ? (<FormHelperText>Maximum 30 characters.</FormHelperText>)
                                     : (<FormErrorMessage>Name is required.</FormErrorMessage>)}
@@ -52,7 +52,7 @@ const EditDocument: FC<PropsType> = ({ docType, dataForEdit, updateAsset, onConf
                                 return (
                                     <Box key={i}>
                                         <FormLabel>{key}</FormLabel>
-                                        <Textarea id={key} value={fields[key]} onChange={(e) => handleFieldChange(e)} placeholder={key} />
+                                        <Textarea id={key} value={fields[key]} onChange={(e) => handleFieldChange(e)} placeholder={key} focusBorderColor='yellow3.500' />
                                     </Box>
                                 )
                             })}
@@ -63,7 +63,7 @@ const EditDocument: FC<PropsType> = ({ docType, dataForEdit, updateAsset, onConf
                         <Button variant='ghost' mr={3} onClick={onClose}>
                             Cancel
                         </Button>
-                        <Button colorScheme='blue' onClick={() => {
+                        <Button colorScheme='yellow' onClick={() => {
                             updateAsset(fields)
                             onConfirm()
                             onClose()

@@ -64,7 +64,7 @@ const _ForTesting: FC = () => {
                     colorScheme='orange'
                     onClick={setTestData}
                 >
-                    Give me test data
+                    give me test data
                 </Button>
             </Center>
         </VStack >

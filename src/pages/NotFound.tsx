@@ -17,10 +17,10 @@ const NotFound: FC = () => {
             <Text fontSize='md'>Sorry, the page you are looking for doesn't exist or has been moved.</Text>
 
             <Flex direction='row' wrap='wrap' gap='6' align='center' justify='center' paddingTop='1rem'>
-                <Button colorScheme='teal' variant='outline' leftIcon={<ArrowBackIcon />} onClick={() => navigate(-1)}>
+                <Button colorScheme='orange' variant='outline' leftIcon={<ArrowBackIcon />} onClick={() => navigate(-1)}>
                     Go Back
                 </Button>
-                <Button colorScheme='teal' variant='solid' onClick={() => navigate("/assets")}>
+                <Button colorScheme='orange' variant='solid' onClick={() => navigate("/assets")}>
                     Take me Home
                 </Button>
             </Flex>

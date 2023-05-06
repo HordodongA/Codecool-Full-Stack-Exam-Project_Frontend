@@ -29,12 +29,14 @@ const InfoPanel: FC<ProprsType> = ({ help }) => {
                 icon={<InfoOutlineIcon boxSize={6} />}
                 size=''
                 borderRadius='100'
+                bg='yellow1.800'
+                color='yellow1.100'
                 onClick={onOpen}
             />
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
-                <ModalContent>
+                <ModalContent bg='yellow3.100' >
                     <ModalHeader>Informaiton about this page</ModalHeader>
                     <ModalCloseButton borderRadius='100' />
                     <ModalBody>
@@ -44,8 +46,8 @@ const InfoPanel: FC<ProprsType> = ({ help }) => {
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button colorScheme='blue' mr={3} onClick={onClose}>
-                            Close
+                        <Button colorScheme='yellow' mr={3} onClick={onClose}>
+                            close
                         </Button>
                     </ModalFooter>
                 </ModalContent>

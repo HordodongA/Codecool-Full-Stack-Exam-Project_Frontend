@@ -58,8 +58,8 @@ const Activities: FC = () => {
                 <Flex direction='row' justifyContent='center' alignItems='center' wrap='wrap' gap='20px'>
                     {userData && thisAsset && thisAsset.activities && thisAsset.activities.map((activity, i) => {
                         return (
-                            <Center key={i} height='5rem' bg='gray.400' minWidth='260px' borderRadius='10px'>
-                                <Heading as='h4' size='md' textAlign='center' onClick={() => navigate(activity._id!)}>
+                            <Flex key={i} height='5rem' width='260px' alignItems='center' borderRadius='10px' padding='10px 40px 10px 10px' bg='yellow3.800' color='yellow2.200' _hover={{ cursor: 'pointer', boxShadow: 'lg' }}>
+                                <Heading as='h4' size='md' textAlign='left' onClick={() => navigate(activity._id!)}>
                                     {activity.name}
                                 </Heading>
                                 <ConfirmDeleteDocument
@@ -85,7 +85,7 @@ const Activities: FC = () => {
                                         })
                                     }}
                                 />
-                            </Center>
+                            </Flex>
                         )
                     })}
                 </Flex>

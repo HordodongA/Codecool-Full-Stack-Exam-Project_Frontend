@@ -2,8 +2,9 @@ import { FC } from 'react'
 // Import Chakra UI components
 import {
     Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton,
-    useDisclosure, Button, Text
+    useDisclosure, Button, IconButton, Text
 } from '@chakra-ui/react'
+import { DeleteIcon } from '@chakra-ui/icons'
 
 
 type PropsType = {
@@ -19,10 +20,23 @@ const ConfirmDeleteDocument: FC<PropsType> = ({ docType, docName, onConfirm }) =
 
     return (
         <>
-            <Button colorScheme='red' onClick={onOpen}>Delete {docType}</Button>
+                <Button
+                    as={IconButton}
+                    icon={<DeleteIcon boxSize={4} />}
+                    variant='solid'
+                    size='xs'
+                    position='absolute'
+                    transform='translate(900%, -1.5em)'
+                    colorScheme='orange'
+                    width='20px'
+                    paddingLeft='auto'
+                    onClick={onOpen}
+                >
+                    Delete {docType}
+                </Button>
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
-                <ModalContent>
+                <ModalContent bg='yellow3.100' >
                     <ModalHeader>Delete {docType}</ModalHeader>
                     <ModalCloseButton borderRadius='100' />
                     <ModalBody>
@@ -41,7 +55,7 @@ const ConfirmDeleteDocument: FC<PropsType> = ({ docType, docName, onConfirm }) =
                         <Button variant='ghost' mr={3} onClick={onClose}>
                             Cancel
                         </Button>
-                        <Button colorScheme='red' onClick={() => {
+                        <Button colorScheme='orange' onClick={() => {
                             onConfirm()
                             onClose()
                         }} >

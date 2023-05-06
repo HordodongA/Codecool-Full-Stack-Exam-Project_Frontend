@@ -39,7 +39,7 @@ const Callback: FC = () => {
 
     return (
         <Flex direction='column' paddingTop='2%' alignItems='center'>
-            <Circle marginBottom='1rem' boxShadow='dark-lg' size='200px' bg='gray.400' color='white'>
+            <Circle marginBottom='1rem' boxShadow='dark-lg' size='200px' bg='yellow2.500' >
                 <Image boxSize='200px' src='../../public/favicon.png' alt='../../public/favicon.png' />
             </Circle>
 
@@ -56,8 +56,8 @@ const Callback: FC = () => {
             <Spinner
                 thickness='5px'
                 speed='0.5s'
-                emptyColor='gray.300'
-                color='blue.500'
+                emptyColor='gray.400'
+                color='orange.400'
                 size='xl'
             />
         </Flex>

@@ -63,17 +63,17 @@ const Activity: FC = () => {
                     {thisAsset?.name &&
                         <Box marginTop='0.5rem' w='100%'>
                             <Text fontSize='m' >asset</Text>
-                            <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'> {thisAsset?.name}</Text>
+                            <Text textAlign='right' fontSize='xl'  borderBottomWidth='thin' borderBottomColor='yellow1.800' > {thisAsset?.name}</Text>
                         </Box>
                     }
                     <Box marginTop='0.5rem' w='100%'>
                         <Text fontSize='m' >name</Text>
-                        <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'> {thisActivity?.name}</Text>
+                        <Text textAlign='right' fontSize='xl'  borderBottomWidth='thin' borderBottomColor='yellow1.800' > {thisActivity?.name}</Text>
                     </Box>
                     {thisActivity?.todos &&
                         <Box marginTop='0.5rem' w='100%'>
                             <Text fontSize='m' >Todos</Text>
-                            <Text textAlign='right' fontSize='xl' borderBottomWidth='medium' whiteSpace='pre-wrap'> {thisActivity?.todos}</Text>
+                            <Text textAlign='right' fontSize='xl'  borderBottomWidth='thin' borderBottomColor='yellow1.800'  whiteSpace='pre-wrap'> {thisActivity?.todos}</Text>
                         </Box>
                     }
                 </Flex>

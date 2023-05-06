@@ -19,11 +19,11 @@ const ConfirmDeleteProfile: FC<PropsType> = ({ docType, docName, onConfirm }) =>
 
     return (
         <>
-            <Button colorScheme='red' onClick={onOpen}>Delete {docType}</Button>
+            <Button colorScheme='orange' onClick={onOpen}>delete {docType}</Button>
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
-                <ModalContent>
+                <ModalContent bg='yellow3.100' >
                     <ModalHeader>Delete {docType}</ModalHeader>
                     <ModalCloseButton borderRadius='100' />
                     <ModalBody>

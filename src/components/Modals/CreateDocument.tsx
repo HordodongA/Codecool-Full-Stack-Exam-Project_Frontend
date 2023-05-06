@@ -25,11 +25,11 @@ const CreateDocument: FC<PropsType> = ({ userData, docType, pushNew, onConfirm }
 
     return (
         <>
-            <Button colorScheme='green' onClick={onOpen} ref={finalRef}>Create {docType}</Button>
+            <Button colorScheme='yellow' onClick={onOpen} ref={finalRef}>create {docType}</Button>
 
             <Modal isOpen={isOpen} onClose={onClose} initialFocusRef={initialRef} finalFocusRef={finalRef}>
                 <ModalOverlay />
-                <ModalContent>
+                <ModalContent bg='yellow3.100' >
                     <ModalHeader >Create {docType}</ModalHeader>
                     <ModalCloseButton borderRadius='100' />
                     <ModalBody>
@@ -39,7 +39,7 @@ const CreateDocument: FC<PropsType> = ({ userData, docType, pushNew, onConfirm }
 
                         <FormControl m='1rem 0' isRequired isInvalid={input === ""}>
                             <FormLabel>New {docType}'s name</FormLabel>
-                            <Input value={input} onChange={(e) => setInput(e.target.value)} placeholder='Name' maxLength={30} ref={initialRef} />
+                            <Input value={input} onChange={(e) => setInput(e.target.value)} placeholder='Name' maxLength={30} ref={initialRef} focusBorderColor='yellow3.500' />
                             {!(input === "") ? (
                                 <FormHelperText>Maximum 30 characters.</FormHelperText>
                             ) : (
@@ -56,7 +56,7 @@ const CreateDocument: FC<PropsType> = ({ userData, docType, pushNew, onConfirm }
                         <Button variant='ghost' mr={3} onClick={onClose}>
                             Cancel
                         </Button>
-                        <Button colorScheme='blue' onClick={() => {
+                        <Button colorScheme='yellow' onClick={() => {
                             pushNew({ name: input })
                             onConfirm(userData)
                             onClose()

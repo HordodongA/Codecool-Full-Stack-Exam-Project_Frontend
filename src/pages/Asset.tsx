@@ -6,7 +6,7 @@ import { $userData, AssetType } from '../states/userData'
 // Import own components
 import NavigateAndInfo from '../components/NavigateAndInfo'
 // Import Chakra UI components
-import { Flex, Center, VStack, Heading } from '@chakra-ui/react'
+import { Flex, VStack, Heading } from '@chakra-ui/react'
 
 
 const Asset: FC = () => {
@@ -33,48 +33,48 @@ const Asset: FC = () => {
                     {thisAsset?.name} asset
                 </Heading>
 
-                <Center height='2.5rem' bg='gray.400' minWidth='260px' borderRadius='10px'>
+                <Flex height='2.5rem' width='260px' alignItems='center' justifyContent='center' borderRadius='10px' padding='10px' bg='yellow3.900' color='yellow2.200' _hover={{ cursor: 'pointer', boxShadow: 'lg' }}>
                     <Heading as='h4' size='md' textAlign='center' onClick={() => navigate("asset-data")}>
-                        show assets data
+                        show asset's data
                     </Heading>
-                </Center>
+                </Flex>
 
                 <Flex direction='row' justifyContent='center' alignItems='center' wrap='wrap' gap='20px'>
-                    <Center height='5rem' bg='gray.400' minWidth='260px' borderRadius='10px' onClick={() => navigate("activities")}>
+                    <Flex height='5rem' width='260px' alignItems='center' justifyContent='center' borderRadius='10px' padding='10px' bg='yellow3.800' color='yellow2.200' onClick={() => navigate("activities")} _hover={{ cursor: 'pointer', boxShadow: 'lg' }}>
                         <Heading as='h4' size='md' textAlign='center'>
                             Activities
                         </Heading>
-                    </Center>
-                    <Center height='5rem' bg='gray.400' minWidth='260px' borderRadius='10px' onClick={() => navigate("machines")}>
+                    </Flex>
+                    <Flex height='5rem' width='260px' alignItems='center' justifyContent='center' borderRadius='10px' padding='10px' bg='yellow3.800' color='yellow2.200' onClick={() => navigate("machines")} _hover={{ cursor: 'pointer', boxShadow: 'lg' }}>
                         <Heading as='h4' size='md' textAlign='center'>
                             Machines
                         </Heading>
-                    </Center>
-                    <Center height='5rem' bg='gray.300' color='gray.400' minWidth='260px' borderRadius='10px'>
+                    </Flex>
+                    <Flex height='5rem' width='260px' alignItems='center' justifyContent='center' borderRadius='10px' padding='10px' bg='yellow3.400' color='yellow2.200' _hover={{ cursor: 'no-drop', boxShadow: 'lg' }}>
                         <Heading as='h4' size='md' textAlign='center'>
                             Inspections
                         </Heading>
-                    </Center>
-                    <Center height='5rem' bg='gray.300' color='gray.400' minWidth='260px' borderRadius='10px'>
+                    </Flex>
+                    <Flex height='5rem' width='260px' alignItems='center' justifyContent='center' borderRadius='10px' padding='10px' bg='yellow3.400' color='yellow2.200' _hover={{ cursor: 'no-drop', boxShadow: 'lg' }}>
                         <Heading as='h4' size='md' textAlign='center'>
                             Cleaning
                         </Heading>
-                    </Center>
-                    <Center height='5rem' bg='gray.300' color='gray.400' minWidth='260px' borderRadius='10px'>
+                    </Flex>
+                    <Flex height='5rem' width='260px' alignItems='center' justifyContent='center' borderRadius='10px' padding='10px' bg='yellow3.400' color='yellow2.200' _hover={{ cursor: 'no-drop', boxShadow: 'lg' }}>
                         <Heading as='h4' size='md' textAlign='center'>
                             Care
                         </Heading>
-                    </Center>
-                    <Center height='5rem' bg='gray.300' color='gray.400' minWidth='260px' borderRadius='10px'>
+                    </Flex>
+                    <Flex height='5rem' width='260px' alignItems='center' justifyContent='center' borderRadius='10px' padding='10px' bg='yellow3.400' color='yellow2.200' _hover={{ cursor: 'no-drop', boxShadow: 'lg' }}>
                         <Heading as='h4' size='md' textAlign='center'>
                             Inventory
                         </Heading>
-                    </Center>
-                    <Center height='5rem' bg='gray.300' color='gray.400' minWidth='260px' borderRadius='10px'>
+                    </Flex>
+                    <Flex height='5rem' width='260px' alignItems='center' justifyContent='center' borderRadius='10px' padding='10px' bg='yellow3.400' color='yellow2.200' _hover={{ cursor: 'no-drop', boxShadow: 'lg' }}>
                         <Heading as='h4' size='md' textAlign='center'>
                             Administration
                         </Heading>
-                    </Center>
+                    </Flex>
                 </Flex>
             </VStack>
         </VStack>

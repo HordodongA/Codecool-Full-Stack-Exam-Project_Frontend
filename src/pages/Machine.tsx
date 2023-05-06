@@ -67,7 +67,7 @@ const Machine: FC = () => {
                     {thisAsset?.name &&
                         <Box marginTop='0.5rem' w='100%'>
                             <Text fontSize='m' >asset</Text>
-                            <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'> {thisAsset?.name}</Text>
+                            <Text textAlign='right' fontSize='xl' borderBottomWidth='thin' borderBottomColor='yellow1.800' > {thisAsset?.name}</Text>
                         </Box>
                     }
 
@@ -75,7 +75,7 @@ const Machine: FC = () => {
                         return (
                             <Box key={i} marginTop='0.5rem' w='100%' whiteSpace='pre-wrap'>
                                 <Text fontSize='m'>{key}</Text>
-                                <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'>{(thisMachine as MachineForEditType)[key as keyof typeof thisMachine]}</Text>
+                                <Text textAlign='right' fontSize='xl' borderBottomWidth='thin' borderBottomColor='yellow1.800' >{(thisMachine as MachineForEditType)[key as keyof typeof thisMachine]}</Text>
                             </Box>
                         )
                     })}

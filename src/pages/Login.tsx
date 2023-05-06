@@ -9,7 +9,7 @@ const Login: FC = () => {
 
     return (
         <Flex direction='column' paddingTop='5%' alignItems='center'>
-            <Circle marginBottom='3rem' boxShadow='dark-lg' size='300px' bg='gray.400' color='white'>
+            <Circle marginBottom='3rem' boxShadow='dark-lg' size='300px' bg='yellow2.500'>
                 <Image boxSize='300px' src='../../public/favicon.png' alt='Landlord logo' />
             </Circle>
 
@@ -23,7 +23,7 @@ const Login: FC = () => {
                 maintenance assistant
             </Heading>
 
-            <Link href={fullUrl} fontSize='2rem' fontWeight='semibold' color='blue.500' marginTop='2rem'>
+            <Link href={fullUrl} fontSize='2rem' fontWeight='semibold' color='blue.600' marginTop='2rem'>
                 Login with Google
             </Link>
         </Flex>

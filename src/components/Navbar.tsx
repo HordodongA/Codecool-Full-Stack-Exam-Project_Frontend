@@ -17,7 +17,7 @@ const Navbar: FC = () => {
 
 
     return (
-        <Flex p='1% 1%' width='100%' justify='space-between' bg='gray.300'>
+        <Flex p='1% 1%' width='100%' justify='space-between' bg='yellow1.600'>
             <Center minW='50px'>
                 <Menu>
                     {() => (
@@ -29,14 +29,16 @@ const Navbar: FC = () => {
                                 variant='solid'
                                 size='lg'
                                 borderRadius='100'
+                                bg='yellow1.800'
+                                color='yellow1.100'
                             />
-                            <MenuList>
-                                {user && <MenuItem onClick={() => navigate("/assets")}>Home</MenuItem>}
-                                {user && <MenuItem onClick={() => navigate("/profile")}>My Profile</MenuItem>}
-                                <MenuItem onClick={() => navigate("/about")}>About</MenuItem>
-                                {!user && <MenuItem as='a' href={fullUrl} >Login with Google</MenuItem>}
-                                {user && <MenuItem onClick={() => logout({ onSuccess: () => navigate("/") })}>Logout</MenuItem>}
-                                {user && <MenuItem onClick={() => navigate("/testing")}>Mentor Area</MenuItem>}
+                            <MenuList bg='yellow1.800' >
+                                {user && <MenuItem bg='yellow1.400' onClick={() => navigate("/assets")}>Home</MenuItem>}
+                                {user && <MenuItem bg='yellow1.400' onClick={() => navigate("/profile")}>My Profile</MenuItem>}
+                                <MenuItem bg='yellow1.400' onClick={() => navigate("/about")}>About</MenuItem>
+                                {!user && <MenuItem bg='yellow1.400' as='a' href={fullUrl} >Login with Google</MenuItem>}
+                                {user && <MenuItem bg='yellow1.400' onClick={() => logout({ onSuccess: () => navigate("/") })}>Logout</MenuItem>}
+                                {/* {user && <MenuItem bg='yellow1.400'  onClick={() => navigate("/testing")}>Mentor Area</MenuItem>} */}
                             </MenuList>
                         </>
                     )}

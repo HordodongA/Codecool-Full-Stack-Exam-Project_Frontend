@@ -16,7 +16,7 @@ const Assets: FC = () => {
     const userData = useGlobal($userData)
     const navigate = useNavigate()
     const toast = useToast()
-    
+
     const pushNew = (data: { name: string }) => { if (userData && userData.assets) { userData.assets.push(data) } }
 
     const removeAsset = (i: number) => {
@@ -39,8 +39,8 @@ const Assets: FC = () => {
                 <Flex direction='row' justifyContent='center' alignItems='center' wrap='wrap' gap='20px'>
                     {userData && userData.assets && userData.assets.map((asset, i) => {
                         return (
-                            <Center key={i} height='5rem' bg='gray.400' minWidth='260px' borderRadius='10px' >
-                                <Heading as='h4' size='md' textAlign='center' onClick={() => navigate(asset._id!)}>
+                            <Flex key={i} height='5rem' width='260px' alignItems='center' borderRadius='10px' padding='10px 40px 10px 10px' bg='yellow3.800' color='yellow2.200' _hover={{ cursor: 'pointer', boxShadow: 'lg' }}>
+                                <Heading as='h4' size='md' textAlign='left' onClick={() => navigate(asset._id!)}>
                                     {asset.name}
                                 </Heading>
                                 <ConfirmDeleteDocument
@@ -66,7 +66,7 @@ const Assets: FC = () => {
                                         })
                                     }}
                                 />
-                            </Center>
+                            </Flex>
                         )
                     })}
                 </Flex>

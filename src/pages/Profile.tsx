@@ -33,11 +33,11 @@ const Profile: FC = () => {
                 <Flex marginTop='0.5rem' w='100%' direction='row' justifyContent='center' alignItems='center' wrap='wrap' columnGap='3rem' rowGap='0.5rem'>
                     <Box marginTop='0.5rem' w='100%'>
                         <Text fontSize='m' >name</Text>
-                        <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'>{user?.name}</Text>
+                        <Text textAlign='right' fontSize='xl' borderBottomWidth='thin' borderBottomColor='yellow1.800' >{user?.name}</Text>
                     </Box>
                     <Box marginTop='0.5rem' w='100%'>
                         <Text fontSize='m' >email</Text>
-                        <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'>{user?.email}</Text>
+                        <Text textAlign='right' fontSize='xl' borderBottomWidth='thin' borderBottomColor='yellow1.800' >{user?.email}</Text>
                     </Box>
                 </Flex>
             </Box>
@@ -49,15 +49,15 @@ const Profile: FC = () => {
                 <Flex marginTop='0.5rem' w='100%' direction='row' justifyContent='center' alignItems='center' wrap='wrap' columnGap='3rem' rowGap='0.5rem'>
                     <Box marginTop='0.5rem' w='100%'>
                         <Text fontSize='m' >number of assets</Text>
-                        <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'>{assetCounter()}</Text>
+                        <Text textAlign='right' fontSize='xl' borderBottomWidth='thin' borderBottomColor='yellow1.800' >{assetCounter()}</Text>
                     </Box>
                     <Box marginTop='0.5rem' w='100%'>
                         <Text fontSize='m' >number of activities</Text>
-                        <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'>{activityCounter()}</Text>
+                        <Text textAlign='right' fontSize='xl' borderBottomWidth='thin' borderBottomColor='yellow1.800' >{activityCounter()}</Text>
                     </Box>
                     <Box marginTop='0.5rem' w='100%'>
                         <Text fontSize='m' >number of machines</Text>
-                        <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'>{machineCounter()}</Text>
+                        <Text textAlign='right' fontSize='xl' borderBottomWidth='thin' borderBottomColor='yellow1.800' >{machineCounter()}</Text>
                     </Box>
                 </Flex>
             </Box>

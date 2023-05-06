@@ -1,14 +1,18 @@
 import { FC } from 'react'
 // Import data for render
 import { landlordApiDocsUrl, landlordBackendReadmeUrl, landlordFrontendReadmeUrl } from '../config'
+// Import own components
+// import NavigateAndInfo from '../components/NavigateAndInfo'
 // Import Chakra UI components
-import { Box, Container, Center, Image, Heading, Text, Link } from '@chakra-ui/react'
+import { Box, VStack, Container, Center, Image, Heading, Text, Link } from '@chakra-ui/react'
 
 
 const About: FC = () => {
 
     return (
-        <Box >
+        <VStack width='100%' spacing='0.5rem'>
+            {/* <NavigateAndInfo help="profile" /> */}
+
             <Center>
                 <Image boxSize='100px' src='../../public/favicon.png' alt='landlord logo' />
             </Center>
@@ -38,19 +42,19 @@ const About: FC = () => {
                     <Text textAlign='center' fontSize='2xl' >
                         <b>Backend:</b> Node JS, TypeScript, Express, MongoDB,
                         Google OpenId authenticaton and stateless session management.{' '}
-                        <Link href={landlordBackendReadmeUrl} isExternal color='teal.500'>
+                        <Link href={landlordBackendReadmeUrl} isExternal color='blue.600'>
                             Landlord backend readme.
                         </Link> {' '}
                     </Text>
                     <Text textAlign='center' fontSize='2xl' >
                         <b>Frontend:</b> Vite React, TypeScript, Chakra UI.{' '}
-                        <Link href={landlordFrontendReadmeUrl} isExternal color='teal.500'>
+                        <Link href={landlordFrontendReadmeUrl} isExternal color='blue.600'>
                             Landlord frontend readme.
                         </Link> {' '}
                     </Text>
                     <Text textAlign='center' fontSize='2xl' >
                         To see additional information see {' '}
-                        <Link href={landlordApiDocsUrl} isExternal color='teal.500'>
+                        <Link href={landlordApiDocsUrl} isExternal color='blue.600'>
                             OpenAPI 3.0 documentation.
                         </Link>
                     </Text>
@@ -62,7 +66,7 @@ const About: FC = () => {
                     </Text>
                 </Container>
             </Box>
-        </Box>
+        </VStack>
     )
 }
 

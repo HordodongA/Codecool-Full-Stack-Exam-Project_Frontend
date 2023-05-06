@@ -60,7 +60,7 @@ const AssetData: FC = () => {
                             return (
                                 <Box key={i} marginTop='0.5rem' w='100%' whiteSpace='pre-wrap'>
                                     <Text fontSize='m'>{key}</Text>
-                                    <Text textAlign='right' fontSize='xl' borderBottomWidth='medium'>{(thisAssetForEdit as AssetForEditType)[key as keyof typeof thisAssetForEdit]}</Text>
+                                    <Text textAlign='right' fontSize='xl'  borderBottomWidth='thin' borderBottomColor='yellow1.800' >{(thisAssetForEdit as AssetForEditType)[key as keyof typeof thisAssetForEdit]}</Text>
                                 </Box>
                             )
                         }

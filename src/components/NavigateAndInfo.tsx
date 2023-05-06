@@ -55,16 +55,18 @@ const NavigateAndInfo: FC<ProprsType> = ({ help }) => {
 
 
     return (
-        <Flex minH='30px' p='0.5% 1%' mb='1rem' width='100%' justify='space-between' alignItems='center' bg='gray.400'>
+        <Flex minH='30px' p='0.5% 1%' mb='1rem' width='100%' justify='space-between' alignItems='center' bg='yellow1.700'>
             <IconButton
                 aria-label='Search database'
                 icon={<ChevronLeftIcon boxSize={6} />}
                 size=''
                 borderRadius='100'
+                bg='yellow1.800'
+                color='yellow1.100'
                 onClick={() => navigate(-1)}
             />
 
-            <Breadcrumb fontWeight='medium' fontSize='sm' separator={<ChevronRightIcon color='gray.900' />}>
+            <Breadcrumb color='yellow1.200' fontWeight='medium' fontSize='sm' letterSpacing='wider' separator={<ChevronRightIcon color='yellow1.200' />}>
                 {breadcrumbData && breadcrumbData.map((entry, i) => {
                     return (
                         <BreadcrumbItem key={i}>

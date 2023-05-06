@@ -11,7 +11,7 @@ function App() {
 
   return (
 
-    <Container maxW='80%' minH='100vh' bg='gray.100' centerContent p='0'>
+    <Container maxW='80%' minH='100vh' bg='yellow1.300' centerContent p='0'>
 
       <Navbar />
 
