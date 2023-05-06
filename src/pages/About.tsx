@@ -30,7 +30,7 @@ const About: FC = () => {
                     </Text>
                     <Text textAlign='center' fontSize='2xl' >
                         Backend: Node JS, TypeScript, Express, MongoDB,
-                        Google Oauth2 authenticaton and stateless session management.
+                        Google OpenId authenticaton and stateless session management.
                     </Text>
                     <Text textAlign='center' fontSize='2xl' >
                         To see additional information see {' '}

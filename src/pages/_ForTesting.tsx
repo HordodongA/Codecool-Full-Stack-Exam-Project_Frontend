@@ -12,11 +12,11 @@ const _ForTesting: FC = () => {
 
     const userData = useGlobal($userData)
     const toast = useToast()
+    console.log(userData)
 
     const setTestData = (): void => {
         if (userData) {
             userData.assets = testData.assets
-            console.log(userData)
             updateUserData(userData, {
                 onSuccess: () => toast({
                     title: 'Operation successful',
