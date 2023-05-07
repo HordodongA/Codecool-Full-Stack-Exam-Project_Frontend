@@ -61,15 +61,16 @@ const NavigateAndInfo: FC<ProprsType> = ({ help }) => {
                 icon={<ChevronLeftIcon boxSize={6} />}
                 size=''
                 borderRadius='100'
+                marginRight='10px'
                 bg='yellow1.800'
                 color='yellow1.100'
                 onClick={() => navigate(-1)}
             />
 
-            <Breadcrumb color='yellow1.200' fontWeight='medium' fontSize='sm' letterSpacing='wider' separator={<ChevronRightIcon color='yellow1.200' />}>
+            <Breadcrumb color='yellow1.200' fontWeight='medium' fontSize={['xs', 'sm']} overflow='hidden' letterSpacing='wider' separator={<ChevronRightIcon color='yellow1.200' />}>
                 {breadcrumbData && breadcrumbData.map((entry, i) => {
                     return (
-                        <BreadcrumbItem key={i}>
+                        <BreadcrumbItem key={i} lineHeight='90%'>
                             <BreadcrumbLink as={Link} to={entry.linkTo}>{entry.linkText}</BreadcrumbLink>
                         </BreadcrumbItem>
                     )

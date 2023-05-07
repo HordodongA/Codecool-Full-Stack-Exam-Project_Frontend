@@ -59,8 +59,8 @@ const AssetData: FC = () => {
                         if ((thisAssetForEdit as AssetForEditType)[key as keyof typeof thisAssetForEdit]) {
                             return (
                                 <Box key={i} marginTop='0.5rem' w='100%' whiteSpace='pre-wrap'>
-                                    <Text fontSize='m'>{key}</Text>
-                                    <Text textAlign='right' fontSize='xl'  borderBottomWidth='thin' borderBottomColor='yellow1.800' >{(thisAssetForEdit as AssetForEditType)[key as keyof typeof thisAssetForEdit]}</Text>
+                                    <Text fontSize={[ 'sm', 'md']}>{key}</Text>
+                                    <Text textAlign='right' fontSize={[ 'md', 'xl']}  borderBottomWidth='thin' borderBottomColor='yellow1.800' >{(thisAssetForEdit as AssetForEditType)[key as keyof typeof thisAssetForEdit]}</Text>
                                 </Box>
                             )
                         }
@@ -79,6 +79,7 @@ const AssetData: FC = () => {
                                     description: `${thisAsset?.name} asset successfully updated.`,
                                     status: 'success',
                                     duration: 5000,
+                                    position: 'bottom-left',
                                     isClosable: true,
                                 }),
                                 onError: () => toast({
@@ -86,6 +87,7 @@ const AssetData: FC = () => {
                                     description: "Something went wrong, please try again later.",
                                     status: 'error',
                                     duration: 5000,
+                                    position: 'bottom-left',
                                     isClosable: true,
                                 })
                             })

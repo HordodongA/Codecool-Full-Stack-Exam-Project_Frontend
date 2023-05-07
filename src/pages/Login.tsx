@@ -9,21 +9,21 @@ const Login: FC = () => {
 
     return (
         <Flex direction='column' paddingTop='5%' alignItems='center'>
-            <Circle marginBottom='3rem' boxShadow='dark-lg' size='300px' bg='yellow2.500'>
-                <Image boxSize='300px' src='../../public/favicon.png' alt='Landlord logo' />
+            <Circle marginBottom='3rem' boxShadow='dark-lg' size={['100', '200px', '300px']} bg='yellow2.500'>
+                <Image boxSize={['100', '200px', '300px']} src='../../public/favicon.png' alt='Landlord logo' />
             </Circle>
 
-            <Heading as='h3' size='lg'>
+            <Heading as='h3' textAlign='center' size={['md', 'lg']}>
                 Welcome to
             </Heading>
-            <Heading as='h1' size='4xl'>
+            <Heading as='h1' textAlign='center' size={['lg', '4xl']}>
                 landlord
             </Heading>
-            <Heading as='h4' size='md'>
+            <Heading as='h4' textAlign='center' size={['sm', 'md']}>
                 maintenance assistant
             </Heading>
 
-            <Link href={fullUrl} fontSize='2rem' fontWeight='semibold' color='blue.600' marginTop='2rem'>
+            <Link href={fullUrl} textAlign='center' fontSize={['1rem', '2rem']} fontWeight='semibold' color='blue.600' marginTop='2rem'>
                 Login with Google
             </Link>
         </Flex>

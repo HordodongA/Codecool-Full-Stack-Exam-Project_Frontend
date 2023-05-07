@@ -1,12 +1,12 @@
 const infoPanelTexts = [
-    { page: "default", text: "There are no information for this screen." },
-    { page: "profile", text: "These personal data came from Google, we are not storing them except your Google id called 'sub'. Anyway we storing your assets data. You can delete your whole profile here." },
-    { page: "assets", text: "Your assets listed here. Asset is a property or a chattel e.g. a house, a holiday home, a meadow, a car or even a bicycle. You can add new one. You can edit and delete assets inside the them" },
-    { page: "asset", text: "This is an asset summary screen. You can see or edit your asset's data. You can navigate to this asset's machines or inspections section." },
-    { page: "activities", text: "This is an asset's Activities section. Activity is a grouped todo list, e.g. what to drill or what to be repaired by an expert. You can chose an existing activity to see it's details. Or you can create a new one." },
-    { page: "activity", text: "This is an activity. You can store informations here as see on the editation form. You can delete or edit this activity here. While edit, nme field is required others are optional." },
-    { page: "machines", text: "This is an asset's Machines section. You can collect data of a machine here like credentials or service contact. You can make todo lists here e.g. what to buy for it or what needs to be fixed on it. You can chose an existing machine to see it's details. Or you can create a new one." },
-    { page: "machine", text: "This is a machine. You can store informations here as see on the editation form. You can delete or edit this machine here. While edit, nme field is required others are optional." }
+    { page: "default", text: "There is currently no information available for this screen." },
+    { page: "profile", text: "This personal data has been sourced from Google, and we only store your Google id, which is called 'sub', and your assets data. You can delete your entire profile from here." },
+    { page: "assets", text: "Your assets are listed here. Assets can be properties or chattels, such as houses, holiday homes, meadows, cars, or even bicycles. You can add new assets, as well as edit or delete existing ones." },
+    { page: "asset", text: "This is a summary screen for an asset. You can view or edit the asset's data here, and also navigate to its machines or inspections section." },
+    { page: "activities", text: "This is the activities section for an asset. Activities are grouped to-do lists, such as what needs to be drilled or repaired by an expert. You can view the details of an existing activity or create a new one." },
+    { page: "activity", text: "This is an activity. You can store information here, as seen on the editing form. You can delete or edit this activity. The name field is required, while the others are optional." },
+    { page: "machines", text: "This is the machines section for an asset. You can collect data about a machine here, such as credentials or service contacts. You can create to-do lists here, such as what to buy or what needs to be fixed. You can view the details of an existing machine or create a new one." },
+    { page: "machine", text: "This is a machine. You can store information here, as seen on the editing form. You can delete or edit this machine. The name field is required, while the others are optional." }
 ]
 
 export default infoPanelTexts

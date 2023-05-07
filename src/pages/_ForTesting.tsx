@@ -12,7 +12,7 @@ const _ForTesting: FC = () => {
 
     const userData = useGlobal($userData)
     const toast = useToast()
-    console.log(userData)
+    console.log("Your data is:", userData)
 
     const setTestData = (): void => {
         if (userData) {
@@ -23,6 +23,7 @@ const _ForTesting: FC = () => {
                     description: 'Your account successfully updated with test data.',
                     status: 'success',
                     duration: 5000,
+                    position: 'bottom-left',
                     isClosable: true,
                 }),
                 onError: () => toast({
@@ -30,6 +31,7 @@ const _ForTesting: FC = () => {
                     description: "Something went wrong, please try again later.",
                     status: 'error',
                     duration: 5000,
+                    position: 'bottom-left',
                     isClosable: true,
                 })
             })
@@ -45,16 +47,16 @@ const _ForTesting: FC = () => {
             <Heading as='h3' size='lg' textAlign='center' marginTop='1rem'>
                 Test data for assessment process
             </Heading>
-            <Box minW='350' >
+            <Box minW={['100', '150', '300']} >
                 <Container maxW='4xl' >
-                    <Text textAlign='center' fontSize='2xl' >
+                    <Text textAlign='center' fontSize={['md', 'xl', '2xl']} >
                         When you use this application for rating and assessment purpose,
                         you don't need to spend time with upload data via the user interface.
                     </Text>
-                    <Text textAlign='center' fontSize='2xl' >
+                    <Text textAlign='center' fontSize={['md', 'xl', '2xl']} >
                         Just hit the button below and your account will be filled with some data you need to explore application.
                     </Text>
-                    <Text textAlign='center' fontSize='2xl' color='red.500' fontWeight='bold' >
+                    <Text textAlign='center' fontSize={['md', 'xl', '2xl']} color='red.500' fontWeight='bold' >
                         Warning! It overwrites your existing data with the test values.
                     </Text>
                 </Container>

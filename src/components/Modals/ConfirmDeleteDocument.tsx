@@ -26,7 +26,7 @@ const ConfirmDeleteDocument: FC<PropsType> = ({ docType, docName, onConfirm }) =
                     variant='solid'
                     size='xs'
                     position='absolute'
-                    transform='translate(900%, -1.5em)'
+                    transform={['translate(670%, -0.5em)', 'translate(900%, -1.5em)']}
                     colorScheme='orange'
                     width='20px'
                     paddingLeft='auto'

@@ -62,18 +62,18 @@ const Activity: FC = () => {
                 <Flex marginTop='0.5rem' w='100%' direction='row' justifyContent='center' alignItems='center' wrap='wrap' columnGap='3rem' rowGap='0.5rem'>
                     {thisAsset?.name &&
                         <Box marginTop='0.5rem' w='100%'>
-                            <Text fontSize='m' >asset</Text>
-                            <Text textAlign='right' fontSize='xl'  borderBottomWidth='thin' borderBottomColor='yellow1.800' > {thisAsset?.name}</Text>
+                            <Text fontSize={[ 'sm', 'md']} >asset</Text>
+                            <Text textAlign='right' fontSize={[ 'md', 'xl']}  borderBottomWidth='thin' borderBottomColor='yellow1.800' > {thisAsset?.name}</Text>
                         </Box>
                     }
                     <Box marginTop='0.5rem' w='100%'>
-                        <Text fontSize='m' >name</Text>
-                        <Text textAlign='right' fontSize='xl'  borderBottomWidth='thin' borderBottomColor='yellow1.800' > {thisActivity?.name}</Text>
+                        <Text fontSize={[ 'sm', 'md']} >name</Text>
+                        <Text textAlign='right' fontSize={[ 'md', 'xl']}  borderBottomWidth='thin' borderBottomColor='yellow1.800' > {thisActivity?.name}</Text>
                     </Box>
                     {thisActivity?.todos &&
                         <Box marginTop='0.5rem' w='100%'>
-                            <Text fontSize='m' >Todos</Text>
-                            <Text textAlign='right' fontSize='xl'  borderBottomWidth='thin' borderBottomColor='yellow1.800'  whiteSpace='pre-wrap'> {thisActivity?.todos}</Text>
+                            <Text fontSize={[ 'sm', 'md']} >Todos</Text>
+                            <Text textAlign='right' fontSize={[ 'md', 'xl']}  borderBottomWidth='thin' borderBottomColor='yellow1.800'  whiteSpace='pre-wrap'> {thisActivity?.todos}</Text>
                         </Box>
                     }
                 </Flex>
@@ -90,6 +90,7 @@ const Activity: FC = () => {
                                     description: `${thisActivity?.name} activity successfully updated.`,
                                     status: 'success',
                                     duration: 5000,
+                                    position: 'bottom-left',
                                     isClosable: true,
                                 }),
                                 onError: () => toast({
@@ -97,6 +98,7 @@ const Activity: FC = () => {
                                     description: "Something went wrong, please try again later.",
                                     status: 'error',
                                     duration: 5000,
+                                    position: 'bottom-left',
                                     isClosable: true,
                                 })
                             })

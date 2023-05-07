@@ -29,6 +29,7 @@ const InfoPanel: FC<ProprsType> = ({ help }) => {
                 icon={<InfoOutlineIcon boxSize={6} />}
                 size=''
                 borderRadius='100'
+                marginLeft='10px'
                 bg='yellow1.800'
                 color='yellow1.100'
                 onClick={onOpen}

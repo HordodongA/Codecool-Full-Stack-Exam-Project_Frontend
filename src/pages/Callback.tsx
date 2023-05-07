@@ -39,25 +39,25 @@ const Callback: FC = () => {
 
     return (
         <Flex direction='column' paddingTop='2%' alignItems='center'>
-            <Circle marginBottom='1rem' boxShadow='dark-lg' size='200px' bg='yellow2.500' >
-                <Image boxSize='200px' src='../../public/favicon.png' alt='../../public/favicon.png' />
+            <Circle marginBottom='1rem' boxShadow='dark-lg' size={['100', '200px', '300px']} bg='yellow2.500' >
+                <Image boxSize={['100', '200px', '300px']} src='../../public/favicon.png' alt='../../public/favicon.png' />
             </Circle>
 
-            <Heading as='h1' size='4xl'>
+            <Heading as='h1' textAlign='center' size={['lg', '4xl']}>
                 landlord
             </Heading>
-            <Heading as='h4' size='md'>
+            <Heading as='h4' textAlign='center' size={['sm', 'md']}>
                 maintenance assistant
             </Heading>
 
-            <Heading as='h3' size='lg' margin='1rem 0'>
+            <Heading as='h3' textAlign='center' size={['sm', 'md', 'lg']} margin='1rem 0'>
                 Logging you in...
             </Heading>
             <Spinner
                 thickness='5px'
                 speed='0.5s'
-                emptyColor='gray.400'
-                color='orange.400'
+                emptyColor='yellow3.100'
+                color='yellow3.500'
                 size='xl'
             />
         </Flex>

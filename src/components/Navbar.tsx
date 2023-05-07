@@ -17,7 +17,7 @@ const Navbar: FC = () => {
 
 
     return (
-        <Flex p='1% 1%' width='100%' justify='space-between' bg='yellow1.600'>
+        <Flex p='1% 1%' width='100%' maxH='70px' justify='space-between' bg='yellow1.600'>
             <Center minW='50px'>
                 <Menu>
                     {() => (
@@ -38,7 +38,7 @@ const Navbar: FC = () => {
                                 <MenuItem bg='yellow1.400' onClick={() => navigate("/about")}>About</MenuItem>
                                 {!user && <MenuItem bg='yellow1.400' as='a' href={fullUrl} >Login with Google</MenuItem>}
                                 {user && <MenuItem bg='yellow1.400' onClick={() => logout({ onSuccess: () => navigate("/") })}>Logout</MenuItem>}
-                                {/* {user && <MenuItem bg='yellow1.400'  onClick={() => navigate("/testing")}>Mentor Area</MenuItem>} */}
+                                {user && <MenuItem bg='yellow1.400'  onClick={() => navigate("/testing")}>Mentor Area</MenuItem>}
                             </MenuList>
                         </>
                     )}
@@ -47,7 +47,7 @@ const Navbar: FC = () => {
 
             <VStack direction="column" justify='center'>
                 <Heading as='h6' size='xs' _hover={{ cursor: 'pointer' }} onClick={() => navigate("/assets")}>  landlord  </Heading>
-                {user && <Heading as='h4' size='md' marginTop='0rem !important' > {user.name}</Heading>}
+                {user && <Heading as='h4' fontSize={[ 'sm', 'md', 'xl']} marginTop='0rem !important' > {user.name}</Heading>}
             </VStack>
 
             <Flex minW='50px' justifyContent='flex-end'>
