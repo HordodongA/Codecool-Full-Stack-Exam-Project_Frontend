@@ -4,9 +4,10 @@ import infoPanelTexts from './infoPanelTexts'
 // Import Chakra UI components
 import {
     Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton,
-    useDisclosure, Button, Text, IconButton
+    useDisclosure, Button, Text, IconButton, Icon
 } from '@chakra-ui/react'
-import { InfoOutlineIcon } from '@chakra-ui/icons'
+// Import React icons
+import { IoIosHelp } from "react-icons/io"
 
 
 type ProprsType = {
@@ -26,8 +27,9 @@ const InfoPanel: FC<ProprsType> = ({ help }) => {
         <>
             <IconButton
                 aria-label='Search database'
-                icon={<InfoOutlineIcon boxSize={6} />}
-                size=''
+                // icon={<InfoOutlineIcon boxSize={6} />}
+                icon={<Icon as={IoIosHelp} boxSize={6} />}
+                size='xs'
                 borderRadius='100'
                 marginLeft='10px'
                 bg='yellow1.800'

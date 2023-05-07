@@ -6,8 +6,10 @@ import { $user, logout } from '../states/user'
 // Import data for render
 import { fullUrl } from "../config"
 // Import Chakra UI components
-import { Center, Flex, VStack, Menu, MenuButton, MenuList, MenuItem, Avatar, IconButton, Heading } from '@chakra-ui/react'
+import { Center, Flex, VStack, Menu, MenuButton, MenuList, MenuItem, Avatar, IconButton, Heading, Icon } from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
+// Import React icons
+import { FiUser, FiHome, FiLogIn, FiLogOut, FiClipboard, FiBookOpen } from "react-icons/fi"
 
 
 const Navbar: FC = () => {
@@ -33,12 +35,12 @@ const Navbar: FC = () => {
                                 color='yellow1.100'
                             />
                             <MenuList bg='yellow1.800' >
-                                {user && <MenuItem bg='yellow1.400' onClick={() => navigate("/assets")}>Home</MenuItem>}
-                                {user && <MenuItem bg='yellow1.400' onClick={() => navigate("/profile")}>My Profile</MenuItem>}
-                                <MenuItem bg='yellow1.400' onClick={() => navigate("/about")}>About</MenuItem>
-                                {!user && <MenuItem bg='yellow1.400' as='a' href={fullUrl} >Login with Google</MenuItem>}
-                                {user && <MenuItem bg='yellow1.400' onClick={() => logout({ onSuccess: () => navigate("/") })}>Logout</MenuItem>}
-                                {user && <MenuItem bg='yellow1.400'  onClick={() => navigate("/testing")}>Mentor Area</MenuItem>}
+                                {user && <MenuItem bg='yellow1.400' icon={<Icon as={FiHome} mr='5px' />} onClick={() => navigate("/assets")}>Home</MenuItem>}
+                                {user && <MenuItem bg='yellow1.400' icon={<Icon as={FiUser} mr='5px' />} onClick={() => navigate("/profile")}>My Profile</MenuItem>}
+                                <MenuItem bg='yellow1.400' icon={<Icon as={FiClipboard} mr='5px' />} onClick={() => navigate("/about")}>About</MenuItem>
+                                {!user && <MenuItem bg='yellow1.400' icon={<Icon as={FiLogIn} mr='5px' />} as='a' href={fullUrl} >Login with Google</MenuItem>}
+                                {user && <MenuItem bg='yellow1.400' icon={<Icon as={FiLogOut} mr='5px' />} onClick={() => logout({ onSuccess: () => navigate("/") })}>Logout</MenuItem>}
+                                {user && <MenuItem bg='yellow1.400' icon={<Icon as={FiBookOpen} mr='5px' />} onClick={() => navigate("/testing")}>Mentor Area</MenuItem>}
                             </MenuList>
                         </>
                     )}
@@ -47,7 +49,7 @@ const Navbar: FC = () => {
 
             <VStack direction="column" justify='center'>
                 <Heading as='h6' size='xs' _hover={{ cursor: 'pointer' }} onClick={() => navigate("/assets")}>  landlord  </Heading>
-                {user && <Heading as='h4' fontSize={[ 'sm', 'md', 'xl']} marginTop='0rem !important' > {user.name}</Heading>}
+                {user && <Heading as='h4' fontSize={['sm', 'md', 'xl']} marginTop='0rem !important' > {user.name}</Heading>}
             </VStack>
 
             <Flex minW='50px' justifyContent='flex-end'>
