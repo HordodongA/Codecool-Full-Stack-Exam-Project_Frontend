@@ -32,12 +32,12 @@ const Profile: FC = () => {
                 </Heading>
                 <Flex marginTop='0.5rem' w='100%' direction='row' justifyContent='center' alignItems='center' wrap='wrap' columnGap='3rem' rowGap='0.5rem'>
                     <Box marginTop='0.5rem' w='100%'>
-                        <Text fontSize={[ 'sm', 'md']}  >name</Text>
-                        <Text textAlign='right' fontSize={[ 'md', 'xl']} borderBottomWidth='thin' borderBottomColor='yellow1.800' >{user?.name}</Text>
+                        <Text fontSize={['sm', 'md']}  >name</Text>
+                        <Text textAlign='right' fontSize={['md', 'xl']} borderBottomWidth='thin' borderBottomColor='yellow1.800' >{user?.name}</Text>
                     </Box>
                     <Box marginTop='0.5rem' w='100%'>
-                        <Text fontSize={[ 'sm', 'md']}  >email</Text>
-                        <Text textAlign='right' fontSize={[ 'md', 'xl']} borderBottomWidth='thin' borderBottomColor='yellow1.800' >{user?.email}</Text>
+                        <Text fontSize={['sm', 'md']}  >email</Text>
+                        <Text textAlign='right' fontSize={['md', 'xl']} borderBottomWidth='thin' borderBottomColor='yellow1.800' >{user?.email}</Text>
                     </Box>
                 </Flex>
             </Box>
@@ -48,16 +48,16 @@ const Profile: FC = () => {
                 </Heading>
                 <Flex marginTop='0.5rem' w='100%' direction='row' justifyContent='center' alignItems='center' wrap='wrap' columnGap='3rem' rowGap='0.5rem'>
                     <Box marginTop='0.5rem' w='100%'>
-                        <Text fontSize={[ 'sm', 'md']}  >number of assets</Text>
-                        <Text textAlign='right' fontSize={[ 'md', 'xl']} borderBottomWidth='thin' borderBottomColor='yellow1.800' >{assetCounter()}</Text>
+                        <Text fontSize={['sm', 'md']}  >number of assets</Text>
+                        <Text textAlign='right' fontSize={['md', 'xl']} borderBottomWidth='thin' borderBottomColor='yellow1.800' >{assetCounter()}</Text>
                     </Box>
                     <Box marginTop='0.5rem' w='100%'>
-                        <Text fontSize={[ 'sm', 'md']}  >number of activities</Text>
-                        <Text textAlign='right' fontSize={[ 'md', 'xl']} borderBottomWidth='thin' borderBottomColor='yellow1.800' >{activityCounter()}</Text>
+                        <Text fontSize={['sm', 'md']}  >number of activities</Text>
+                        <Text textAlign='right' fontSize={['md', 'xl']} borderBottomWidth='thin' borderBottomColor='yellow1.800' >{activityCounter()}</Text>
                     </Box>
                     <Box marginTop='0.5rem' w='100%'>
-                        <Text fontSize={[ 'sm', 'md']}  >number of machines</Text>
-                        <Text textAlign='right' fontSize={[ 'md', 'xl']} borderBottomWidth='thin' borderBottomColor='yellow1.800' >{machineCounter()}</Text>
+                        <Text fontSize={['sm', 'md']}  >number of machines</Text>
+                        <Text textAlign='right' fontSize={['md', 'xl']} borderBottomWidth='thin' borderBottomColor='yellow1.800' >{machineCounter()}</Text>
                     </Box>
                 </Flex>
             </Box>

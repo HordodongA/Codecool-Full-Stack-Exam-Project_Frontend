@@ -29,7 +29,7 @@ const Main: FC = () => {
 
 
     return (
-        <Container as='main' maxW='100%' p='0 0 1rem 0' >
+        <Container as='main' maxW='100%' minH='100%' p='0 0 1rem 0' >
             <Routes >
                 <Route path="/*" element={!user ? <Login /> : <Navigate to="/assets" />} />
                 <Route

@@ -27,7 +27,6 @@ const InfoPanel: FC<ProprsType> = ({ help }) => {
         <>
             <IconButton
                 aria-label='Search database'
-                // icon={<InfoOutlineIcon boxSize={6} />}
                 icon={<Icon as={IoIosHelp} boxSize={6} />}
                 size='xs'
                 borderRadius='100'

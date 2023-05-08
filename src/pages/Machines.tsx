@@ -59,7 +59,7 @@ const Machines: FC = () => {
                     {userData && thisAsset && thisAsset.machines && thisAsset.machines.map((machine, i) => {
                         return (
                             <Flex key={i} height={['3rem', '5rem']} width={['200px', '260px']} alignItems='center' borderRadius='10px' padding='10px 40px 10px 10px' bg='yellow3.800' color='yellow2.200' _hover={{ cursor: 'pointer', boxShadow: 'lg' }} >
-                                <Heading as='h4' size={['sm', 'md' ]} textAlign='left' onClick={() => navigate(machine._id!)}>
+                                <Heading as='h4' size={['sm', 'md']} textAlign='left' onClick={() => navigate(machine._id!)}>
                                     {machine.name}
                                 </Heading>
                                 <ConfirmDeleteDocument
