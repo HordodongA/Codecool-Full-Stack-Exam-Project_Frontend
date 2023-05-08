@@ -39,8 +39,8 @@ const Assets: FC = () => {
                 <Flex direction='row' justifyContent='center' alignItems='center' wrap='wrap' gap='20px'>
                     {userData && userData.assets && userData.assets.map((asset, i) => {
                         return (
-                            <Flex key={i} height={['3rem', '5rem']} width={['200px', '260px']} alignItems='center' borderRadius='10px' padding='10px 40px 10px 10px' bg='yellow3.800' color='yellow2.200' _hover={{ cursor: 'pointer', boxShadow: 'lg' }} onClick={() => navigate(asset._id!)}>
-                                <Heading as='h4' size={['sm', 'md' ]} textAlign='left' >
+                            <Flex key={i} height={['3rem', '5rem']} width={['200px', '260px']} alignItems='center' borderRadius='10px' padding='10px 40px 10px 10px' bg='yellow3.800' color='yellow2.200' _hover={{ cursor: 'pointer', boxShadow: 'lg' }} >
+                                <Heading as='h4' size={['sm', 'md']} textAlign='left' onClick={() => navigate(asset._id!)}>
                                     {asset.name}
                                 </Heading>
                                 <ConfirmDeleteDocument
