@@ -41,7 +41,7 @@ const EditDocument: FC<PropsType> = ({ docType, dataForEdit, updateAsset, onConf
                         <FormControl m='1rem 0' isRequired isInvalid={fields.name === ""}>
                             <Box>
                                 <FormLabel>name</FormLabel>
-                                <Input id="name" value={fields.name} onChange={(e) => handleFieldChange(e)} placeholder='Name' maxLength={30} ref={initialRef} focusBorderColor='yellow3.500' />
+                                <Input id="name" value={fields.name} onChange={(e) => handleFieldChange(e)} placeholder='Name' maxLength={30} ref={initialRef} focusBorderColor='yellow3.500' spellCheck='false' />
                                 {!(fields.name === "")
                                     ? (<FormHelperText>Maximum 30 characters.</FormHelperText>)
                                     : (<FormErrorMessage>Name is required.</FormErrorMessage>)}
@@ -52,7 +52,7 @@ const EditDocument: FC<PropsType> = ({ docType, dataForEdit, updateAsset, onConf
                                 return (
                                     <Box key={i}>
                                         <FormLabel>{key}</FormLabel>
-                                        <Textarea id={key} value={fields[key]} onChange={(e) => handleFieldChange(e)} placeholder={key} focusBorderColor='yellow3.500' />
+                                        <Textarea id={key} value={fields[key]} onChange={(e) => handleFieldChange(e)} placeholder={key} focusBorderColor='yellow3.500' spellCheck='false' />
                                     </Box>
                                 )
                             })}

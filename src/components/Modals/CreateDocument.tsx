@@ -39,7 +39,7 @@ const CreateDocument: FC<PropsType> = ({ userData, docType, pushNew, onConfirm }
 
                         <FormControl m='1rem 0' isRequired isInvalid={input === ""}>
                             <FormLabel>New {docType}'s name</FormLabel>
-                            <Input value={input} onChange={(e) => setInput(e.target.value)} placeholder='Name' maxLength={30} ref={initialRef} focusBorderColor='yellow3.500' />
+                            <Input value={input} onChange={(e) => setInput(e.target.value)} placeholder='Name' maxLength={30} ref={initialRef} focusBorderColor='yellow3.500' spellCheck='false' />
                             {!(input === "") ? (
                                 <FormHelperText>Maximum 30 characters.</FormHelperText>
                             ) : (

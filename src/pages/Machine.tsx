@@ -66,18 +66,20 @@ const Machine: FC = () => {
                 <Flex marginTop='0.5rem' w='100%' direction='row' justifyContent='center' alignItems='center' wrap='wrap' columnGap='3rem' rowGap='0.5rem'>
                     {thisAsset?.name &&
                         <Box marginTop='0.5rem' w='100%'>
-                            <Text fontSize={[ 'sm', 'md']} >asset</Text>
-                            <Text textAlign='right' fontSize={[ 'md', 'xl']} borderBottomWidth='thin' borderBottomColor='yellow1.800' > {thisAsset?.name}</Text>
+                            <Text fontSize={['sm', 'md']} >asset</Text>
+                            <Text textAlign='right' fontSize={['md', 'xl']} borderBottomWidth='thin' borderBottomColor='yellow1.800' > {thisAsset?.name}</Text>
                         </Box>
                     }
 
-                    {thisMachine && Object.keys(thisMachine).filter(key => key !== "_id").map((key, i) => {
-                        return (
-                            <Box key={i} marginTop='0.5rem' w='100%' whiteSpace='pre-wrap'>
-                                <Text fontSize={[ 'sm', 'md']}>{key}</Text>
-                                <Text textAlign='right' fontSize={[ 'md', 'xl']} borderBottomWidth='thin' borderBottomColor='yellow1.800' >{(thisMachine as MachineForEditType)[key as keyof typeof thisMachine]}</Text>
-                            </Box>
-                        )
+                    {thisMachineForEdit && Object.keys(thisMachineForEdit).map((key, i) => {
+                        if ((thisMachineForEdit as MachineForEditType)[key as keyof typeof thisMachineForEdit]) {
+                            return (
+                                <Box key={i} marginTop='0.5rem' w='100%' whiteSpace='pre-wrap'>
+                                    <Text fontSize={['sm', 'md']}>{key}</Text>
+                                    <Text textAlign='right' fontSize={['md', 'xl']} borderBottomWidth='thin' borderBottomColor='yellow1.800' >{(thisMachine as MachineForEditType)[key as keyof typeof thisMachine]}</Text>
+                                </Box>
+                            )
+                        }
                     })}
                 </Flex>
 

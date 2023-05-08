@@ -59,8 +59,8 @@ const AssetData: FC = () => {
                         if ((thisAssetForEdit as AssetForEditType)[key as keyof typeof thisAssetForEdit]) {
                             return (
                                 <Box key={i} marginTop='0.5rem' w='100%' whiteSpace='pre-wrap'>
-                                    <Text fontSize={[ 'sm', 'md']}>{key}</Text>
-                                    <Text textAlign='right' fontSize={[ 'md', 'xl']}  borderBottomWidth='thin' borderBottomColor='yellow1.800' >{(thisAssetForEdit as AssetForEditType)[key as keyof typeof thisAssetForEdit]}</Text>
+                                    <Text fontSize={['sm', 'md']}>{key}</Text>
+                                    <Text textAlign='right' fontSize={['md', 'xl']} borderBottomWidth='thin' borderBottomColor='yellow1.800' >{(thisAssetForEdit as AssetForEditType)[key as keyof typeof thisAssetForEdit]}</Text>
                                 </Box>
                             )
                         }

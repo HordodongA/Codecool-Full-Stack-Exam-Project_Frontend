@@ -54,7 +54,7 @@ const Navbar: FC = () => {
 
             <Flex minW='50px' justifyContent='flex-end'>
                 <Center _hover={{ cursor: 'pointer' }}>
-                    <Avatar onClick={() => navigate("/profile")} size='md' name={user?.name} src={user?.picture} />
+                    <Avatar onClick={() => navigate("/profile")} size='md' name={user?.name} src={user?.picture} referrerPolicy="no-referrer" />
                 </Center>
             </Flex>
         </Flex>
