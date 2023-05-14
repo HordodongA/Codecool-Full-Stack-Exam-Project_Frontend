@@ -10,7 +10,7 @@ const Login: FC = () => {
     return (
         <Flex direction='column' paddingTop='5%' alignItems='center'>
             <Circle marginBottom='3rem' boxShadow='dark-lg' size={['100', '200px', '300px']} bg='yellow2.500'>
-                <Image boxSize={['100', '200px', '300px']} src='../../public/favicon.png' alt='Landlord logo' />
+                <Image boxSize={['100', '200px', '300px']} src='/favicon.png' alt='Landlord logo' />
             </Circle>
 
             <Heading as='h3' textAlign='center' size={['md', 'lg']}>

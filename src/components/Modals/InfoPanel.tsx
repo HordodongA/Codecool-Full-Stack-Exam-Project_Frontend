@@ -39,7 +39,7 @@ const InfoPanel: FC<ProprsType> = ({ help }) => {
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent bg='yellow3.100' >
-                    <ModalHeader>Informaiton about this page</ModalHeader>
+                    <ModalHeader>Information about this page</ModalHeader>
                     <ModalCloseButton borderRadius='100' />
                     <ModalBody>
                         <Text >

@@ -11,7 +11,7 @@ function App() {
 
   return (
 
-    <Container maxW='80%' minH='100vh' bg='yellow1.300' centerContent p='0' backgroundImage={'public/main-background-pattern-5.png'} backgroundRepeat='no-repeat' backgroundPosition='bottom'>
+    <Container maxW='80%' minH='100vh' bg='yellow1.300' centerContent p='0' backgroundImage={'/main-background-pattern-5.png'} backgroundRepeat='no-repeat' backgroundPosition='bottom'>
 
       <Navbar />
 

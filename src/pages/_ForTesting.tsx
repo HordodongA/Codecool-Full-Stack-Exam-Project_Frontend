@@ -42,7 +42,7 @@ const _ForTesting: FC = () => {
     return (
         <VStack marginTop='2rem' spacing='2rem'>
             <Center>
-                <Image boxSize='100px' src='../../public/test.png' alt='test icon' />
+                <Image boxSize='100px' src='/test.png' alt='test icon' />
             </Center>
             <Heading as='h3' size='lg' textAlign='center' marginTop='1rem'>
                 Test data for assessment process

@@ -14,7 +14,7 @@ const About: FC = () => {
             <NavigateAndInfo help="default" />
 
             <Center>
-                <Image boxSize='100px' src='../../public/favicon.png' alt='landlord logo' />
+                <Image boxSize='100px' src='/favicon.png' alt='landlord logo' />
             </Center>
 
             <Heading as='h3' size='lg' textAlign='center' margin='1.5rem 0 1rem'>
@@ -41,7 +41,7 @@ const About: FC = () => {
                     </Text>
                     <Text textAlign='center' fontSize={['md', 'xl', '2xl']} >
                         <b>Backend:</b> Node JS, TypeScript, Express, MongoDB,
-                        Google OpenId authenticaton and stateless session management.{' '}
+                        Google OpenId authentication and stateless session management.{' '}
                         <Link href={landlordBackendReadmeUrl} isExternal color='blue.600'>
                             Landlord backend readme.
                         </Link> {' '}

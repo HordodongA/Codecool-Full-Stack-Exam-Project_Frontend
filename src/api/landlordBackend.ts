@@ -10,7 +10,7 @@ import { UserDataShema, downloadUserData } from "../states/userData"
 const client = axios.create({ baseURL: landlordBackendUrl })
 
 
-// token rective state
+// token reactive state
 export const $token = new BehaviorSubject<string | null>(localStorage.getItem("token"))
 
 
