@@ -6,6 +6,7 @@ Landlord Maintenance Assistant Web Application is designed to work with "Landlor
 
 ## Table of Contents
 - [About](#about)
+- [Getting Started (use Docker image file)](#getting-started-use-docker-image-file)
 - [Getting Started (install app)](#getting-started-install-app)
 - [Available scripts](#available-scripts)
 - [Usage](#usage)
@@ -17,9 +18,21 @@ Landlord Maintenance Assistant Web Application is designed to work with "Landlor
 This application has come to life as a full-stack software developer school's exam project. It aims to help in the maintenance of various properties, such as flats, houses, premises, vehicles, and so on, by helping to collect information and todo lists in one place. In the first milestone, two modules were built: Activities and Machines. Planned future milestones will contain further modules, such as cleaning, inspections, inventory, administration and billing, animal and plant maintenance. 
 
 
+## Getting started (use Docker image file)
+Use this command to download and run Docker image file mapped to the port 5173. 
+```
+$ docker run -d -p 5173:80 hordodonga/landlord-frontend:1.0
+```
+The frontend application will running here: http://localhost:5173/
+It's important that Google Dev Console credentials (redirect uri), backend's environmental variables and frontend's src/config.ts file all contains the same values. Port 5173 is a default value.
+
+
 ## Getting started (install app)
 **The project's frontend part is runnable by cloning the repository and follow this steps.** Frontend application needs it's own backend application running. [Follow links section.](#links-and-resources)
 ### Clone repository
+```
+$ git clone https://github.com/HordodongA/Codecool-Full-Stack-Exam-Project_Frontend.git
+```
 ### Install Node JS and Node Package Manager on your computer if necessary
 ### Install project's dependencies (root directory)
 Install with [npm.](https://www.npmjs.com/)
