@@ -93,7 +93,7 @@ const Machine: FC = () => {
                                 onSuccess: () => toast({
                                     title: 'Operation successful',
                                     description: `${thisMachine?.name} machine successfully updated.`,
-                                    status: 'success',
+                                    status: 'warning',
                                     duration: 5000,
                                     position: 'bottom-left',
                                     isClosable: true,

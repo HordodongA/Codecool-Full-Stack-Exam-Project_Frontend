@@ -25,7 +25,7 @@ const Callback: FC = () => {
                 toast({
                     title: 'Welcome to Landlord',
                     description: "Enjoy using our maintenance assistant",
-                    status: 'success',
+                    status: 'warning',
                     duration: 5000,
                     position: 'bottom-left',
                     isClosable: true,
@@ -39,7 +39,7 @@ const Callback: FC = () => {
 
     return (
         <Flex direction='column' paddingTop='2%' alignItems='center'>
-            <Circle marginBottom='1rem' boxShadow='dark-lg' size={['100', '200px', '300px']} bg='yellow2.500' >
+            <Circle marginBottom='1rem' boxShadow='dark-lg' size={['100', '200px', '300px']} bgGradient='radial(yellow2.500, yellow2.300)'>
                 <Image boxSize={['100', '200px', '300px']} src='/favicon.png' alt='Landlord logo' />
             </Circle>
 

@@ -77,7 +77,7 @@ const AssetData: FC = () => {
                                 onSuccess: () => toast({
                                     title: 'Operation successful',
                                     description: `${thisAsset?.name} asset successfully updated.`,
-                                    status: 'success',
+                                    status: 'warning',
                                     duration: 5000,
                                     position: 'bottom-left',
                                     isClosable: true,

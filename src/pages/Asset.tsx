@@ -33,44 +33,44 @@ const Asset: FC = () => {
                     {thisAsset?.name} asset
                 </Heading>
 
-                <Flex height={['1,25rem', '2.5rem']} width={['200px', '260px']} alignItems='center' justifyContent='center' borderRadius='10px' padding='10px' bg='yellow3.900' color='yellow2.200' _hover={{ cursor: 'pointer', boxShadow: 'lg' }} onClick={() => navigate("asset-data")}>
+                <Flex height={['1,25rem', '2.5rem']} width={['200px', '260px']} alignItems='center' justifyContent='center' border='4px' borderColor ='yellow3.800' borderRadius='10px' padding='10px' bg='yellow3.900' color='yellow2.200' _hover={{ cursor: 'pointer', boxShadow: 'lg' }} onClick={() => navigate("asset-data")}>
                     <Heading as='h4' size={['sm', 'md']} textAlign='center' >
                         show asset's data
                     </Heading>
                 </Flex>
 
                 <Flex direction='row' justifyContent='center' alignItems='center' wrap='wrap' gap='20px'>
-                    <Flex height={['3rem', '5rem']} width={['200px', '260px']} alignItems='center' justifyContent='center' borderRadius='10px' padding='10px' bg='yellow3.800' color='yellow2.200' onClick={() => navigate("activities")} _hover={{ cursor: 'pointer', boxShadow: 'lg' }}>
+                    <Flex height={['3rem', '5rem']} width={['200px', '260px']} alignItems='center' justifyContent='center' border='4px' borderColor ='yellow3.800' borderRadius='10px' padding='10px' bgGradient='linear(to-r, yellow3.700, yellow3.800, yellow3.700)' color='yellow2.200' onClick={() => navigate("activities")} _hover={{ cursor: 'pointer', boxShadow: 'lg' }}>
                         <Heading as='h4' size={['sm', 'md']} textAlign='center'>
                             Activities
                         </Heading>
                     </Flex>
-                    <Flex height={['3rem', '5rem']} width={['200px', '260px']} alignItems='center' justifyContent='center' borderRadius='10px' padding='10px' bg='yellow3.800' color='yellow2.200' onClick={() => navigate("machines")} _hover={{ cursor: 'pointer', boxShadow: 'lg' }}>
+                    <Flex height={['3rem', '5rem']} width={['200px', '260px']} alignItems='center' justifyContent='center' border='4px' borderColor ='yellow3.800' borderRadius='10px' padding='10px' bgGradient='linear(to-r, yellow3.700, yellow3.800, yellow3.700)' color='yellow2.200' onClick={() => navigate("machines")} _hover={{ cursor: 'pointer', boxShadow: 'lg' }}>
                         <Heading as='h4' size={['sm', 'md']} textAlign='center'>
                             Machines
                         </Heading>
                     </Flex>
-                    <Flex height={['3rem', '5rem']} width={['200px', '260px']} alignItems='center' justifyContent='center' borderRadius='10px' padding='10px' bg='yellow3.400' color='yellow2.200' _hover={{ cursor: 'no-drop', boxShadow: 'lg' }}>
+                    <Flex height={['3rem', '5rem']} width={['200px', '260px']} alignItems='center' justifyContent='center' border='4px' borderColor ='yellow3.400' borderRadius='10px' padding='10px' bgGradient='linear(to-r, yellow3.300, yellow3.400, yellow3.300)' color='yellow2.200' _hover={{ cursor: 'no-drop', boxShadow: 'lg' }}>
                         <Heading as='h4' size={['sm', 'md']} textAlign='center'>
                             Inspections
                         </Heading>
                     </Flex>
-                    <Flex height={['3rem', '5rem']} width={['200px', '260px']} alignItems='center' justifyContent='center' borderRadius='10px' padding='10px' bg='yellow3.400' color='yellow2.200' _hover={{ cursor: 'no-drop', boxShadow: 'lg' }}>
+                    <Flex height={['3rem', '5rem']} width={['200px', '260px']} alignItems='center' justifyContent='center' border='4px' borderColor ='yellow3.400' borderRadius='10px' padding='10px' bgGradient='linear(to-r, yellow3.300, yellow3.400, yellow3.300)' color='yellow2.200' _hover={{ cursor: 'no-drop', boxShadow: 'lg' }}>
                         <Heading as='h4' size={['sm', 'md']} textAlign='center'>
                             Cleaning
                         </Heading>
                     </Flex>
-                    <Flex height={['3rem', '5rem']} width={['200px', '260px']} alignItems='center' justifyContent='center' borderRadius='10px' padding='10px' bg='yellow3.400' color='yellow2.200' _hover={{ cursor: 'no-drop', boxShadow: 'lg' }}>
+                    <Flex height={['3rem', '5rem']} width={['200px', '260px']} alignItems='center' justifyContent='center' border='4px' borderColor ='yellow3.400' borderRadius='10px' padding='10px' bgGradient='linear(to-r, yellow3.300, yellow3.400, yellow3.300)' color='yellow2.200' _hover={{ cursor: 'no-drop', boxShadow: 'lg' }}>
                         <Heading as='h4' size={['sm', 'md']} textAlign='center'>
                             Care
                         </Heading>
                     </Flex>
-                    <Flex height={['3rem', '5rem']} width={['200px', '260px']} alignItems='center' justifyContent='center' borderRadius='10px' padding='10px' bg='yellow3.400' color='yellow2.200' _hover={{ cursor: 'no-drop', boxShadow: 'lg' }}>
+                    <Flex height={['3rem', '5rem']} width={['200px', '260px']} alignItems='center' justifyContent='center' border='4px' borderColor ='yellow3.400' borderRadius='10px' padding='10px' bgGradient='linear(to-r, yellow3.300, yellow3.400, yellow3.300)' color='yellow2.200' _hover={{ cursor: 'no-drop', boxShadow: 'lg' }}>
                         <Heading as='h4' size={['sm', 'md']} textAlign='center'>
                             Inventory
                         </Heading>
                     </Flex>
-                    <Flex height={['3rem', '5rem']} width={['200px', '260px']} alignItems='center' justifyContent='center' borderRadius='10px' padding='10px' bg='yellow3.400' color='yellow2.200' _hover={{ cursor: 'no-drop', boxShadow: 'lg' }}>
+                    <Flex height={['3rem', '5rem']} width={['200px', '260px']} alignItems='center' justifyContent='center' border='4px' borderColor ='yellow3.400' borderRadius='10px' padding='10px' bgGradient='linear(to-r, yellow3.300, yellow3.400, yellow3.300)' color='yellow2.200' _hover={{ cursor: 'no-drop', boxShadow: 'lg' }}>
                         <Heading as='h4' size={['sm', 'md']} textAlign='center'>
                             Administration
                         </Heading>

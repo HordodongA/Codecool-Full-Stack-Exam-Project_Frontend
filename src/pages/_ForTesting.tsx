@@ -21,7 +21,7 @@ const _ForTesting: FC = () => {
                 onSuccess: () => toast({
                     title: 'Operation successful',
                     description: 'Your account successfully updated with test data.',
-                    status: 'success',
+                    status: 'warning',
                     duration: 5000,
                     position: 'bottom-left',
                     isClosable: true,

@@ -19,7 +19,7 @@ const Navbar: FC = () => {
 
 
     return (
-        <Flex p='1% 1%' width='100%' maxH='70px' justify='space-between' bg='yellow2.500'>
+        <Flex p='1% 1%' width='100%' maxH='70px' justify='space-between' bgGradient='linear(to-t, yellow2.500, yellow2.300, yellow2.500)'>
             <Center minW='50px'>
                 <Menu>
                     {() => (

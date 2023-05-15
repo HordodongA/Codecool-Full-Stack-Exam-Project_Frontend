@@ -144,7 +144,7 @@ export const testData = {
             notes: "Home sweet home",
             activities: [
                 {
-                    name: "ssss",
+                    name: "activity one",
                     _id: "64564ee4cac578d21c5eac14"
                 }
             ],

@@ -39,7 +39,7 @@ const Assets: FC = () => {
                 <Flex direction='row' justifyContent='center' alignItems='center' wrap='wrap' gap='20px'>
                     {userData && userData.assets && userData.assets.map((asset, i) => {
                         return (
-                            <Flex key={i} height={['3rem', '5rem']} width={['200px', '260px']} alignItems='center' borderRadius='10px' padding='10px 40px 10px 10px' bg='yellow3.800' color='yellow2.200' _hover={{ cursor: 'pointer', boxShadow: 'lg' }} >
+                            <Flex key={i} height={['3rem', '5rem']} width={['200px', '260px']} alignItems='center' border='4px' borderColor ='yellow3.800' borderRadius='10px' padding='10px 40px 10px 10px' bgGradient='linear(to-r, yellow3.800, yellow3.600)' color='yellow2.200' _hover={{ cursor: 'pointer', boxShadow: 'lg' }} >
                                 <Heading as='h4' size={['sm', 'md']} textAlign='left' onClick={() => navigate(asset._id!)}>
                                     {asset.name}
                                 </Heading>
@@ -52,7 +52,7 @@ const Assets: FC = () => {
                                             onSuccess: () => toast({
                                                 title: 'Operation successful',
                                                 description: `${asset.name} asset successfully deleted.`,
-                                                status: 'success',
+                                                status: 'warning',
                                                 duration: 5000,
                                                 position: 'bottom-left',
                                                 isClosable: true,
@@ -84,7 +84,7 @@ const Assets: FC = () => {
                                     onSuccess: () => toast({
                                         title: 'Operation successful',
                                         description: "Asset created",
-                                        status: 'success',
+                                        status: 'warning',
                                         duration: 5000,
                                         position: 'bottom-left',
                                         isClosable: true,

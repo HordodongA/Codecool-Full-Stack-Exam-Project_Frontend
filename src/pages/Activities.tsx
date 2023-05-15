@@ -51,14 +51,14 @@ const Activities: FC = () => {
             <NavigateAndInfo help="activities" />
 
             <VStack maxWidth='95%' spacing='1.5rem'>
-                <Heading as='h3' size='lg'>
+                <Heading as='h3' size='lg' textAlign='center'>
                     Activities ({thisAsset?.name} asset)
                 </Heading>
 
                 <Flex direction='row' justifyContent='center' alignItems='center' wrap='wrap' gap='20px'>
                     {userData && thisAsset && thisAsset.activities && thisAsset.activities.map((activity, i) => {
                         return (
-                            <Flex key={i} height={['3rem', '5rem']} width={['200px', '260px']} alignItems='center' borderRadius='10px' padding='10px 40px 10px 10px' bg='yellow3.800' color='yellow2.200' _hover={{ cursor: 'pointer', boxShadow: 'lg' }} >
+                            <Flex key={i} height={['3rem', '5rem']} width={['200px', '260px']} alignItems='center' border='4px' borderColor='yellow3.800' borderRadius='10px' padding='10px 40px 10px 10px' bgGradient='linear(to-r, yellow3.800, yellow3.600)' color='yellow2.200' _hover={{ cursor: 'pointer', boxShadow: 'lg' }} >
                                 <Heading as='h4' size={['sm', 'md']} textAlign='left' onClick={() => navigate(activity._id!)}>
                                     {activity.name}
                                 </Heading>
@@ -71,7 +71,7 @@ const Activities: FC = () => {
                                             onSuccess: () => toast({
                                                 title: 'Operation successful',
                                                 description: `${activity.name} asset successfully deleted.`,
-                                                status: 'success',
+                                                status: 'warning',
                                                 duration: 5000,
                                                 position: 'bottom-left',
                                                 isClosable: true,
@@ -103,7 +103,7 @@ const Activities: FC = () => {
                                     onSuccess: () => toast({
                                         title: 'Operation successful',
                                         description: "Activity created",
-                                        status: 'success',
+                                        status: 'warning',
                                         duration: 5000,
                                         position: 'bottom-left',
                                         isClosable: true,

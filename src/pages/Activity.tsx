@@ -88,7 +88,7 @@ const Activity: FC = () => {
                                 onSuccess: () => toast({
                                     title: 'Operation successful',
                                     description: `${thisActivity?.name} activity successfully updated.`,
-                                    status: 'success',
+                                    status: 'warning',
                                     duration: 5000,
                                     position: 'bottom-left',
                                     isClosable: true,

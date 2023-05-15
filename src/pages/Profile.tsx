@@ -70,7 +70,7 @@ const Profile: FC = () => {
                         onSuccess: () => toast({
                             title: 'Operation successful',
                             description: "Data successfully deleted from our system.",
-                            status: 'success',
+                            status: 'warning',
                             duration: 5000,
                             position: 'bottom-left',
                             isClosable: true,
