@@ -32,12 +32,12 @@ const AssetSchema = z.object({
 })
 export type AssetType = z.infer<typeof AssetSchema>
 
-export const UserDataShema = z.object({
+export const UserDataSchema = z.object({
     sub: z.string(),
     assets: AssetSchema.array().optional(),
     _id: z.string().optional()
 })
-export type UserDataType = z.infer<typeof UserDataShema>
+export type UserDataType = z.infer<typeof UserDataSchema>
 
 
 // userData reactive state
@@ -58,7 +58,7 @@ type CallbackType = {
 }
 
 export const updateUserData = async (data: UserDataType, callback: CallbackType): Promise<void> => {
-    const result = UserDataShema.safeParse(data)
+    const result = UserDataSchema.safeParse(data)
     if (result.success === false)
         return callback.onError()
     $userData.next(result.data)
@@ -71,7 +71,7 @@ export const updateUserData = async (data: UserDataType, callback: CallbackType)
 }
 
 
-// Handling user Data: DELETE (boundled to deletion of $user value - triggered by user action: delete profile)
+// Handling user Data: DELETE (bundled to deletion of $user value - triggered by user action: delete profile)
 export const deleteUserData = async (): Promise<void> => {
     $userData.next(null)
 }

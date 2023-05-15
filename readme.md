@@ -70,7 +70,7 @@ Have you ever returned a rented drill only to remember that you forgot to drill 
 After stowing away the chemicals and protective gear, you recall there was something else you needed to take care of. Perhaps you waited weeks for an appointment and only later realized you forgot to mention something crucial while at the car repair shop, and now you're miles away. Or maybe you remember after the silicone caulk or super glue has already dried that there was something else you intended to fix with them.  
 This module helps you collect and store important notes so that you can access them when needed.  
 Here are some examples of how you can use this module:  
-* List items that require a hammer drill, super glue, or acid or degreaser treatment.  
+* List items that require a hammer drill, super glue, or acid or degrease treatment.  
 * Avoid forgetting anything when you have to pay high drop-off fees and wait a long time for an appointment with a plumber, electrician, or appliance repairer.  
 * Keep track of items you need to buy when you go to the department store, such as things your car or garden needs before winter.  
 

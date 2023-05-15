@@ -3,7 +3,7 @@ import { z } from "zod"
 import { BehaviorSubject } from "rxjs"
 import jwt_decode from "jwt-decode"
 import { landlordBackendUrl } from "../config"
-import { UserDataShema, downloadUserData } from "../states/userData"
+import { UserDataSchema, downloadUserData } from "../states/userData"
 
 
 // Configure Axios
@@ -70,7 +70,7 @@ export const dataRequest = async <T>(method: string, path: string, payload: T | 
             headers: { "Authorization": localStorage.getItem("token") },
         })
         if (method === "get" || method === "put") {
-            const result = UserDataShema.safeParse(response.data)
+            const result = UserDataSchema.safeParse(response.data)
             if (result.success === false) {
                 console.log(result.error)
                 return {

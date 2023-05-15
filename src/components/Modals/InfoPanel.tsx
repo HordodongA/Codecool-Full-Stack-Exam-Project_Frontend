@@ -10,11 +10,11 @@ import {
 import { IoIosHelp } from "react-icons/io"
 
 
-type ProprsType = {
+type PropsType = {
     help: string
 }
 
-const InfoPanel: FC<ProprsType> = ({ help }) => {
+const InfoPanel: FC<PropsType> = ({ help }) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
     let message = ""

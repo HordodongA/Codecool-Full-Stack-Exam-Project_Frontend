@@ -10,11 +10,11 @@ import { Flex, IconButton, Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@c
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
 
 
-type ProprsType = {
+type PropsType = {
     help: string
 }
 
-const NavigateAndInfo: FC<ProprsType> = ({ help }) => {
+const NavigateAndInfo: FC<PropsType> = ({ help }) => {
 
     const userData = useGlobal($userData)
     const navigate = useNavigate()
