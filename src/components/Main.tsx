@@ -66,17 +66,6 @@ const Main: FC = () => {
                         </Protected>
                     }
                 />
-                <Route
-                    path="/testing/*"
-                    element={
-                        <Protected hasAccess={!!user}>
-                            <Routes>
-                                <Route path="/" element={<_ForTesting />} />
-                                <Route path="*" element={<NotFound />} />
-                            </Routes>
-                        </Protected>
-                    }
-                />
                 <Route path="/callback" element={<Callback />} />
                 <Route path="/about" element={<About />} />
                 <Route path="*" element={<NotFound />} />
