@@ -35,7 +35,7 @@ const ConfirmDeleteDocument: FC<PropsType> = ({ docType, docName, onConfirm }) =
                 >
                     Delete {docType}
                 </Button>
-            <Modal  initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
+            <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent bg='yellow3.100' >
                     <ModalHeader>Delete {docType}</ModalHeader>
