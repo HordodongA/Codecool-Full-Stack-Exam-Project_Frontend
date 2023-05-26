@@ -12,7 +12,7 @@ import { Box, Flex, Heading, Text, useToast, VStack } from '@chakra-ui/react'
 
 type MachineForEditType = {
     name?: string,
-    type?: string,
+    model?: string,
     unique_id?: string,
     service?: string,
     todos?: string
@@ -30,7 +30,7 @@ const Machine: FC = () => {
     let thisAsset: AssetType | undefined
     let indexOfThisMachine: number
     let thisMachine: MachineType | undefined
-    const thisMachineEmpty: MachineForEditType = { name: "", type: "", unique_id: "", service: "", todos: "" }
+    const thisMachineEmpty: MachineForEditType = { name: "", model: "", unique_id: "", service: "", todos: "" }
     let thisMachineForEdit: MachineForEditType | undefined
     if (userData && userData.assets) {
         indexOfThisAsset = userData.assets.findIndex(asset => asset._id === params.asset)

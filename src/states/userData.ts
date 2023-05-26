@@ -12,7 +12,7 @@ export type ActivityType = z.infer<typeof ActivitySchema>
 
 const MachineSchema = z.object({
     name: z.string(),
-    type: z.string().optional(),
+    model: z.string().optional(),
     unique_id: z.string().optional().optional(),
     service: z.string().optional(),
     todos: z.string().optional(),

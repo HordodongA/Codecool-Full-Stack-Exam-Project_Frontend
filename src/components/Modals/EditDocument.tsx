@@ -63,7 +63,7 @@ const EditDocument: FC<PropsType> = ({ docType, dataForEdit, updateAsset, onConf
                         <Button variant='ghost' mr={3} onClick={onClose}>
                             Cancel
                         </Button>
-                        <Button colorScheme='yellow' onClick={() => {
+                        <Button colorScheme='yellow' isDisabled={!fields.name} onClick={() => {
                             updateAsset(fields)
                             onConfirm()
                             onClose()
