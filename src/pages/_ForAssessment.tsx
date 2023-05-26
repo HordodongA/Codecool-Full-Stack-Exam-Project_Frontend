@@ -8,7 +8,7 @@ import { testData } from '../config'
 import { Box, VStack, Container, Center, Image, Heading, Text, Button, useToast } from '@chakra-ui/react'
 
 
-const _ForTesting: FC = () => {
+const _ForAssessment: FC = () => {
 
     const userData = useGlobal($userData)
     const toast = useToast()
@@ -73,4 +73,4 @@ const _ForTesting: FC = () => {
     )
 }
 
-export default _ForTesting
+export default _ForAssessment

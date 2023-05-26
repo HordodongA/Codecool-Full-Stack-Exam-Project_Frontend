@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import React, { FC } from 'react'
 // Import Chakra UI components
 import {
     Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton,
@@ -16,6 +16,7 @@ type PropsType = {
 const ConfirmDeleteDocument: FC<PropsType> = ({ docType, docName, onConfirm }) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const initialRef = React.useRef(null)
 
 
     return (
@@ -34,7 +35,7 @@ const ConfirmDeleteDocument: FC<PropsType> = ({ docType, docName, onConfirm }) =
                 >
                     Delete {docType}
                 </Button>
-            <Modal isOpen={isOpen} onClose={onClose}>
+            <Modal  initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent bg='yellow3.100' >
                     <ModalHeader>Delete {docType}</ModalHeader>
@@ -55,7 +56,7 @@ const ConfirmDeleteDocument: FC<PropsType> = ({ docType, docName, onConfirm }) =
                         <Button variant='ghost' mr={3} onClick={onClose}>
                             Cancel
                         </Button>
-                        <Button colorScheme='orange' onClick={() => {
+                        <Button ref={initialRef} colorScheme='orange' onClick={() => {
                             onConfirm()
                             onClose()
                         }} >

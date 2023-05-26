@@ -56,7 +56,7 @@ const CreateDocument: FC<PropsType> = ({ userData, docType, pushNew, onConfirm }
                         <Button variant='ghost' mr={3} onClick={onClose}>
                             Cancel
                         </Button>
-                        <Button colorScheme='yellow' onClick={() => {
+                        <Button colorScheme='yellow' isDisabled={!input} onClick={() => {
                             pushNew({ name: input })
                             onConfirm(userData)
                             onClose()

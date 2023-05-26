@@ -40,7 +40,7 @@ const Navbar: FC = () => {
                                 <MenuItem bg='yellow2.400' icon={<Icon as={FiClipboard} mr='5px' />} onClick={() => navigate("/about")}>About</MenuItem>
                                 {!user && <MenuItem bg='yellow2.400' icon={<Icon as={FiLogIn} mr='5px' />} as='a' href={fullUrl} >Login with Google</MenuItem>}
                                 {user && <MenuItem bg='yellow2.400' icon={<Icon as={FiLogOut} mr='5px' />} onClick={() => logout({ onSuccess: () => navigate("/") })}>Logout</MenuItem>}
-                                {user && <MenuItem bg='yellow2.400' icon={<Icon as={FiBookOpen} mr='5px' />} onClick={() => navigate("/testing")}>Mentor Area</MenuItem>}
+                                {user && <MenuItem bg='yellow2.400' icon={<Icon as={FiBookOpen} mr='5px' />} onClick={() => navigate("/assessment")}>Assessment Area</MenuItem>}
                             </MenuList>
                         </>
                     )}
