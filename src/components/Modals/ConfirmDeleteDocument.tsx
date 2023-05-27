@@ -21,20 +21,24 @@ const ConfirmDeleteDocument: FC<PropsType> = ({ docType, docName, onConfirm }) =
 
     return (
         <>
-                <Button
-                    as={IconButton}
-                    icon={<DeleteIcon boxSize={4} />}
-                    variant='solid'
-                    size='xs'
-                    position='absolute'
-                    transform={['translate(650%, -0.5em)', 'translate(900%, -1.9em)']}
-                    colorScheme='orange'
-                    width='20px'
-                    paddingLeft='auto'
-                    onClick={onOpen}
-                >
-                    Delete {docType}
-                </Button>
+            <Button
+                as={IconButton}
+                icon={<DeleteIcon boxSize={4} />}
+                variant='solid'
+                size='xs'
+                position='absolute'
+                transform={['translate(650%, -0.5em)', 'translate(900%, -1.9em)']}
+                colorScheme='orange'
+                width='20px'
+                paddingLeft='auto'
+                onClick={e => {
+                    onOpen()
+                    e.stopPropagation()
+                }
+                }
+            >
+                Delete {docType}
+            </Button>
             <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent bg='yellow3.100' >
