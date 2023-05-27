@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 // Import own hooks and states
 import useGlobal from '../hooks/useGlobal'
@@ -38,15 +38,12 @@ const Machine: FC = () => {
         if (thisAsset.machines && userData.assets[indexOfThisAsset]) {
             indexOfThisMachine = thisAsset.machines.findIndex(machine => machine._id === params.machine)
             thisMachine = thisAsset.machines.filter(machine => machine._id === params.machine)[0]
+            if (!thisMachine) navigate(-1)
             let thisMachineFiltered = { ...thisMachine }
             delete thisMachineFiltered._id
             thisMachineForEdit = { ...thisMachineEmpty, ...thisMachineFiltered }
         }
     }
-
-    useEffect(() => {
-        if (!thisAsset) navigate(-1)
-    }, [params])
 
     const updateMachine = (data: MachineForEditType): void => {
         if (userData && userData.assets && userData.assets[indexOfThisAsset]) {

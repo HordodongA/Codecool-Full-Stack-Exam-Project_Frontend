@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 // Import own hooks and states
 import useGlobal from '../hooks/useGlobal'
@@ -35,15 +35,12 @@ const Activity: FC = () => {
         if (thisAsset.activities && userData.assets[indexOfThisAsset]) {
             indexOfThisActivity = thisAsset.activities.findIndex(activity => activity._id === params.activity)
             thisActivity = thisAsset.activities?.filter(activity => activity._id === params.activity)[0]
+            if (!thisActivity) navigate(-1)
             let thisActivityFiltered = { ...thisActivity }
             delete thisActivityFiltered._id
             thisActivityForEdit = { ...thisActivityEmpty, ...thisActivityFiltered }
         }
     }
-
-    useEffect(() => {
-        if (!thisAsset) navigate(-1)
-    }, [params])
 
     const updateActivity = (data: ActivityForEditType): void => {
         if (userData && userData.assets && userData.assets[indexOfThisAsset]) {
