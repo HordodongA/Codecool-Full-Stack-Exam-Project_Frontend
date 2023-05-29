@@ -2,7 +2,7 @@
 const url = "https://accounts.google.com/o/oauth2/v2/auth"
 const client_id = "231875441502-e9o5b1ivucareb2r4bplgqpf7326cpe7.apps.googleusercontent.com"
 // const redirect_URI = "http://localhost:5173/callback"       // When running locally
-const redirect_URI = "https://landlord-app.netlify.app/about/callback"
+const redirect_URI = "https://landlord-app.netlify.app/callback"
 const scope = "profile%20email%20openid"
 const response_type = "code"
 
