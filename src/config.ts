@@ -8,10 +8,10 @@ const response_type = "code"
 export const fullUrl = `${url}?client_id=${client_id}&redirect_uri=${redirect_URI}&scope=${scope}&response_type=${response_type}&prompt=consent%20select_account`
 
 // Landlord backend server URL
-export const landlordBackendUrl = "http://localhost:3003"
+export const landlordBackendUrl = "https://landlord-backend-dvw43.ondigitalocean.app"
 
 // OpenApi (Swagger) 3.0 documentation URL
-export const landlordApiDocsUrl = "http://localhost:3003/api/docs"
+export const landlordApiDocsUrl = "https://landlord-backend-dvw43.ondigitalocean.app/api/docs"
 
 // Backend readme.md GitHub URL
 export const landlordBackendReadmeUrl = "https://github.com/HordodongA/Codecool-Full-Stack-Exam-Project_Backend/blob/main/readme.md"
